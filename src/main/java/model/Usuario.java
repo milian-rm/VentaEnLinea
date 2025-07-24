@@ -32,7 +32,7 @@ public class Usuario {
     private String telefono;
     @Column(name = "direccionUsuario", nullable = false)
     private String direccion;
-    @Column(name = "fechaRegistro", insertable = false,
+    @Column(name = "fechaRegistro", nullable = false,
              updatable = false)
     private Timestamp fechaRegistro;
     @Column(name = "contrasena", nullable = false)
