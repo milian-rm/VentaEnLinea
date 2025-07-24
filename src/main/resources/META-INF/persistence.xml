@@ -6,7 +6,7 @@
     <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
     <!--class de entidad-->
     <non-jta-data-source>jdbc/libreria</non-jta-data-source>
-    <class/>
+    <class>model.Usuario</class>
     <!--propiedades-->
     <properties>
       <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL8Dialect"/>

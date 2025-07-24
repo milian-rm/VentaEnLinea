@@ -27,31 +27,31 @@
                         <div class="mb-4">
                             ¿Ya tienes una cuenta? <a href="#">Inicia Sesión</a>
                         </div>
-                        <form action="/servletAgregarUsuario">
+                        <form action="${pageContext.request.contextPath}/registro" method="post">
                             <div class="row mb-3">
                                 <div class="col form-floating pe-1">
-                                    <input type="text" class="form-control rounded-end rounded-5  ps-4" id="floatingName" placeholder="Nombre" style="background-color: #f1f1f1;" required>
+                                    <input type="text" class="form-control rounded-end rounded-5  ps-4" id="floatingName" placeholder="Nombre" name="nombre" style="background-color: #f1f1f1;" required>
                                     <label class="ms-3 ps-4" for="floatingName">Nombre</label>
                                 </div>
                                 <div class="col form-floating ps-1">
-                                    <input type="text" class="form-control rounded-start rounded-5  ps-4" id="floatingLastName" placeholder="Apellido" style="background-color: #f1f1f1;" required>
+                                    <input type="text" class="form-control rounded-start rounded-5  ps-4" id="floatingLastName" placeholder="Apellido" name="apellido" style="background-color: #f1f1f1;" required>
                                     <label class="ms-3" for="floatingLastName">Apellido</label>
                                 </div>
                             </div>
                             <div class="form-floating mb-3">
-                                <input type="email" class="form-control rounded-5 ps-4" id="floatingInput" placeholder="nombre@example.com" style="background-color: #f1f1f1;" required>
+                                <input type="email" class="form-control rounded-5 ps-4" id="floatingInput" placeholder="nombre@example.com" name="email" style="background-color: #f1f1f1;" required>
                                 <label class="ps-4" for="floatingInput">Correo Electrónico</label>
                             </div>
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control rounded-5 ps-4" id="floatingPhoneNum" placeholder="12345678" style="background-color: #f1f1f1;" required>
+                                <input type="text" class="form-control rounded-5 ps-4" id="floatingPhoneNum" placeholder="12345678" name="telefono" style="background-color: #f1f1f1;" required>
                                 <label class="ps-4" for="floatingPhoneNum">Teléfono</label>
                             </div>
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control rounded-5 ps-4" id="floatingAddres" placeholder="Guatemala" style="background-color: #f1f1f1;" required>
+                                <input type="text" class="form-control rounded-5 ps-4" id="floatingAddres" placeholder="Guatemala" name="direccion" style="background-color: #f1f1f1;" required>
                                 <label class="ps-4" for="floatingAddres">Dirección</label>
                             </div>
                             <div class="form-floating">
-                                <input type="password" class="form-control rounded-5 ps-4" id="floatingPassword" placeholder="Password" style="background-color: #f1f1f1 !important;" required>
+                                <input type="password" class="form-control rounded-5 ps-4" id="floatingPassword" placeholder="Password" name="contrasena" style="background-color: #f1f1f1 !important;" required>
                                 <label class="ps-4" for="floatingPassword">Contraseña</label>
                             </div>
                             <div class="d-grid gap-2 col-6 mx-auto">
@@ -74,29 +74,29 @@
                         <div class="mb-4">
                             ¿Ya tienes una cuenta? <a href="#">Inicia Sesión</a>
                         </div>
-                        <form action="/servletAgregarUsuario">
+                        <form action="${pageContext.request.contextPath}/registro" method="post">
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control rounded-5 ps-4" id="floatingName" placeholder="Nombre" style="background-color: #f1f1f1;" required>
+                                <input type="text" class="form-control rounded-5 ps-4" id="floatingName" placeholder="Nombre" name="nombre" style="background-color: #f1f1f1;" required>
                                 <label class="ps-4" for="floatingName">Nombre</label>
                             </div>
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control rounded-5 ps-4" id="floatingLastName" placeholder="Apellido" style="background-color: #f1f1f1;" required>
+                                <input type="text" class="form-control rounded-5 ps-4" id="floatingLastName" placeholder="Apellido" name="apellido" style="background-color: #f1f1f1;" required>
                                 <label class=" ps-4" for="floatingLastName">Apellido</label>
                             </div>
                             <div class="form-floating mb-3">
-                                <input type="email" class="form-control rounded-5 ps-4" id="floatingInput" placeholder="nombre@example.com" style="background-color: #f1f1f1;" required>
+                                <input type="email" class="form-control rounded-5 ps-4" id="floatingInput" placeholder="nombre@example.com" name="email" style="background-color: #f1f1f1;" required>
                                 <label class="ps-4" for="floatingInput">Correo Electrónico</label>
                             </div>
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control rounded-5 ps-4" id="floatingPhoneNum" placeholder="12345678" style="background-color: #f1f1f1;" required>
+                                <input type="text" class="form-control rounded-5 ps-4" id="floatingPhoneNum" placeholder="12345678" name="telefono" style="background-color: #f1f1f1;" required>
                                 <label class="ps-4" for="floatingPhoneNum">Teléfono</label>
                             </div>
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control rounded-5 ps-4" id="floatingAddres" placeholder="Guatemala" style="background-color: #f1f1f1;" required>
+                                <input type="text" class="form-control rounded-5 ps-4" id="floatingAddres" placeholder="Guatemala" name="direccion" style="background-color: #f1f1f1;" required>
                                 <label class="ps-4" for="floatingAddres">Dirección</label>
                             </div>
                             <div class="form-floating">
-                                <input type="password" class="form-control rounded-5 ps-4" id="floatingPassword" placeholder="Password" style="background-color: #f1f1f1 !important;" required>
+                                <input type="password" class="form-control rounded-5 ps-4" id="floatingPassword" placeholder="Password" name="contrasena" style="background-color: #f1f1f1 !important;" required>
                                 <label class="ps-4" for="floatingPassword">Contraseña</label>
                             </div>
                             <div class="d-grid gap-2 col-8 mx-auto">

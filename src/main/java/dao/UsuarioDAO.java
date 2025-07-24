@@ -7,32 +7,31 @@ package dao;
 import model.Usuario;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence; // Importa esto para crear el EMF
+import javax.persistence.Persistence;
 
 public class UsuarioDAO {
 
-    // Se recomienda que el EntityManagerFactory sea estático o se inicialice una vez.
-    // El nombre "PruebaWeb" debe coincidir con el <persistence-unit name="PruebaWeb"> en persistence.xml
-    private static final EntityManagerFactory EMF = Persistence.createEntityManagerFactory("PruebaWeb");
+
+    private static final EntityManagerFactory EMF = Persistence.createEntityManagerFactory("libreriaPU");
 
     public void saveUsuario(Usuario usuario) {
-        EntityManager em = null; // Declara el EntityManager
+        EntityManager em = null;
         try {
-            em = EMF.createEntityManager(); // Crea tu propio EntityManager
-            em.getTransaction().begin();    // INICIA la transacción local
+            em = EMF.createEntityManager(); 
+            em.getTransaction().begin();    
             em.persist(usuario);
-            em.getTransaction().commit();   // HACE COMMIT de la transacción
+            em.getTransaction().commit();  
         } catch (Exception e) {
             if (em != null && em.getTransaction().isActive()) {
-                em.getTransaction().rollback(); // HACE ROLLBACK en caso de error
+                em.getTransaction().rollback(); 
             }
             System.err.println("Error al guardar usuario: " + e.getMessage());
             e.printStackTrace();
-            // Puedes relanzar la excepción o manejarla de otra forma
+            
             throw new RuntimeException("No se pudo guardar el usuario", e);
         } finally {
             if (em != null && em.isOpen()) {
-                em.close(); // CIERRA el EntityManager
+                em.close(); 
             }
         }
     }
@@ -45,17 +44,17 @@ public class UsuarioDAO {
                     .setParameter("email", email)
                     .getSingleResult();
         } catch (javax.persistence.NoResultException e) {
-            return null; // No se encontró ningún usuario
+            return null;
         } catch (Exception e) {
             System.err.println("Error al buscar usuario por email: " + e.getMessage());
             e.printStackTrace();
             throw new RuntimeException("Error buscando usuario", e);
         } finally {
             if (em != null && em.isOpen()) {
-                em.close(); // CIERRA el EntityManager
+                em.close();
             }
         }
     }
 
-    // Otros métodos, si es necesario, con el mismo patrón de manejo de EM y transacciones
+  
 }

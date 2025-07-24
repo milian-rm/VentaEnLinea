@@ -15,94 +15,89 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/registro")
 public class RegistroServlet extends HttpServlet {
 
-    // El EntityManagerFactory es pesado de crear, debe ser una única instancia y es thread-safe.
-    // Lo hacemos estático o lo inicializamos solo una vez en init().
     private EntityManagerFactory entityManagerFactory;
 
     @Override
     public void init() throws ServletException {
-        // Creamos el EntityManagerFactory una sola vez al iniciar el servlet.
-        entityManagerFactory = Persistence.createEntityManagerFactory("PruebaWeb");
+        entityManagerFactory = Persistence.createEntityManagerFactory("libreriaPU");
+    }
+    
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.getWriter().println("El servlet está funcionando.");
     }
 
-    // Manejo de la solicitud POST del formulario de registro.
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        // CADA SOLICITUD DEBE TENER SU PROPIO EntityManager
-        EntityManager entityManager = null; // Declaramos aquí para asegurar que se cierre en finally
-        EntityTransaction transaction = null; // Declaramos aquí para asegurar que se haga rollback
+        EntityManager entityManager = null;
+        EntityTransaction transaction = null;
 
         try {
-            // Recuperar los datos del formulario.
+            // Obtener parámetros del formulario
             String nombre = request.getParameter("nombre");
             String apellido = request.getParameter("apellido");
             String email = request.getParameter("email");
             String telefono = request.getParameter("telefono");
             String direccion = request.getParameter("direccion");
-            String contraseña = request.getParameter("contraseña");
+            String contrasena = request.getParameter("contrasena");
 
-            // Validación de campos vacíos.
-            if (nombre == null || nombre.isEmpty() || apellido == null || apellido.isEmpty() ||
-                email == null || email.isEmpty() || contraseña == null || contraseña.isEmpty()) {
-                response.sendRedirect("registro.jsp?error=campos_vacios");
+            // Validación básica de campos obligatorios
+            if (nombre == null || nombre.isEmpty() ||
+                apellido == null || apellido.isEmpty() ||
+                email == null || email.isEmpty() ||
+                contrasena == null || contrasena.isEmpty()) {
+                response.sendRedirect("register.jsp?error=campos_incompletos");
                 return;
             }
 
-            // Validación de formato de email.
+            // Validación del formato de correo electrónico
             if (!email.matches("^[A-Za-z0-9+_.-]+@(.+)$")) {
-                response.sendRedirect("registro.jsp?error=email_invalido");
+                response.sendRedirect("register.jsp?error=email_invalido");
                 return;
             }
 
-            // **IMPORTANTE:** Crear el EntityManager para ESTA solicitud dentro del método de servicio.
             entityManager = entityManagerFactory.createEntityManager();
             transaction = entityManager.getTransaction();
-
-            // Iniciar la transacción.
             transaction.begin();
 
-            // Verificar si el usuario ya existe.
-            Long count = (Long) entityManager.createQuery("SELECT COUNT(u) FROM Usuario u WHERE u.correo = :email") // Asumo que el campo es 'correo' en tu entidad Usuario
+            // Verificar si el correo ya está registrado
+            Long count = (Long) entityManager.createQuery("SELECT COUNT(u) FROM Usuario u WHERE u.correo = :email")
                     .setParameter("email", email)
                     .getSingleResult();
 
             if (count > 0) {
-                // Si el usuario existe, hacemos rollback de la transacción actual
-                // (aunque no se haya persistido nada, es buena práctica si ya se inició)
                 transaction.rollback();
-                response.sendRedirect("registro.jsp?error=ya_existe");
+                response.sendRedirect("register.jsp?error=ya_existe");
                 return;
             }
 
-            // Crear un nuevo usuario.
+            // Crear nuevo usuario
             Usuario usuario = new Usuario();
             usuario.setNombre(nombre);
             usuario.setApellido(apellido);
             usuario.setCorreo(email);
             usuario.setTelefono(telefono);
             usuario.setDireccion(direccion);
-            usuario.setContrasena(contraseña);
+            usuario.setContrasena(contrasena); // ¡En producción deberías cifrarla!
 
-            // Persistir el nuevo usuario en la base de datos.
+            // Persistir usuario
             entityManager.persist(usuario);
-
-            // Confirmar la transacción.
             transaction.commit();
 
-            // Redirigir a la página de login con el mensaje de éxito.
-            response.sendRedirect("login.jsp?registro=exitoso");
+            // Redirigir con éxito
+            response.sendRedirect("index.jsp?register=exitoso");
 
         } catch (Exception e) {
-            e.printStackTrace();
-            // Asegurarse de que la transacción se haga rollback si está activa
+            e.printStackTrace(); // Mantenerlo para logs del servidor
+            System.out.println("ERROR EN SERVLET: " + e.getMessage()); 
             if (transaction != null && transaction.isActive()) {
                 transaction.rollback();
             }
-            response.sendRedirect("registro.jsp?error=servidor");
+            response.sendRedirect("register.jsp?error=servidor");
         } finally {
-            // **IMPORTANTE:** Cerrar el EntityManager al final de cada solicitud.
             if (entityManager != null && entityManager.isOpen()) {
                 entityManager.close();
             }
@@ -111,7 +106,6 @@ public class RegistroServlet extends HttpServlet {
 
     @Override
     public void destroy() {
-        // Cerrar EntityManagerFactory cuando el servlet se destruya.
         if (entityManagerFactory != null && entityManagerFactory.isOpen()) {
             entityManagerFactory.close();
         }
