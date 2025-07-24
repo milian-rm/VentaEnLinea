@@ -28,22 +28,21 @@ public class Usuario {
     @Column(name = "apellidoUsuario", nullable = false)
     private String apellido;
     @Column(name = "emailUsuario", nullable = false)
-    private String email;
+    private String emailUsuario;
     @Column(name = "telefonoUsuario", nullable = false)
     private String telefono;
     @Column(name = "direccionUsuario", nullable = false)
     private String direccion;
-    @Column(name = "fechaRegistro", insertable = false,
-             updatable = false)
+    @Column(name = "fechaRegistro", nullable = false)
     private Timestamp fechaRegistro;
     @Column(name = "contrasena", nullable = false)
     private String contrasena;
 
-    public Usuario(int idUsuario, String nombre, String apellido, String email, String telefono, String direccion, String contrasena) {
+    public Usuario(int idUsuario, String nombre, String apellido, String emailUsuario, String telefono, String direccion, String contrasena) {
         this.idUsuario = idUsuario;
         this.nombre = nombre;
         this.apellido = apellido;
-        this.email = email;
+        this.emailUsuario = emailUsuario;
         this.telefono = telefono;
         this.direccion = direccion;
         this.contrasena = contrasena;
@@ -79,11 +78,11 @@ public class Usuario {
     }
 
     public String getCorreo() {
-        return email;
+        return emailUsuario;
     }
 
-    public void setCorreo(String email) {
-        this.email = email;
+    public void setCorreo(String emailUsuario) {
+        this.emailUsuario = emailUsuario;
     }
 
     public String getTelefono() {

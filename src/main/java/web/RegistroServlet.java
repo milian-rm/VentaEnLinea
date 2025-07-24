@@ -1,6 +1,8 @@
 package web;
 
 import java.io.IOException;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import model.Usuario;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -39,7 +41,7 @@ public class RegistroServlet extends HttpServlet {
             // Obtener parámetros del formulario
             String nombre = request.getParameter("nombre");
             String apellido = request.getParameter("apellido");
-            String email = request.getParameter("email");
+            String emailUsuario = request.getParameter("email");
             String telefono = request.getParameter("telefono");
             String direccion = request.getParameter("direccion");
             String contrasena = request.getParameter("contrasena");
@@ -47,40 +49,41 @@ public class RegistroServlet extends HttpServlet {
             // Validación básica de campos obligatorios
             if (nombre == null || nombre.isEmpty() ||
                 apellido == null || apellido.isEmpty() ||
-                email == null || email.isEmpty() ||
+                emailUsuario == null || emailUsuario.isEmpty() ||
                 contrasena == null || contrasena.isEmpty()) {
-                response.sendRedirect("register.jsp?error=campos_incompletos");
+                response.sendRedirect("pages/register.jsp?error=campos_incompletos");
                 return;
             }
 
             // Validación del formato de correo electrónico
-            if (!email.matches("^[A-Za-z0-9+_.-]+@(.+)$")) {
-                response.sendRedirect("register.jsp?error=email_invalido");
-                return;
-            }
+//            if (!email.matches("^[A-Za-z0-9+_.-]+@(.+)$")) {
+//                response.sendRedirect("pages/register.jsp?error=email_invalido");
+//                return;
+//            }
 
             entityManager = entityManagerFactory.createEntityManager();
             transaction = entityManager.getTransaction();
             transaction.begin();
 
             // Verificar si el correo ya está registrado
-            Long count = (Long) entityManager.createQuery("SELECT COUNT(u) FROM Usuario u WHERE u.correo = :email")
-                    .setParameter("email", email)
-                    .getSingleResult();
-
-            if (count > 0) {
-                transaction.rollback();
-                response.sendRedirect("register.jsp?error=ya_existe");
-                return;
-            }
+//            Long count = (Long) entityManager.createQuery("SELECT COUNT(u) FROM Usuario u WHERE u.emailUsuario = :email")
+//                    .setParameter("email", emailUsuario)
+//                    .getSingleResult();
+//
+//            if (count > 0) {
+//                transaction.rollback();
+//                response.sendRedirect("pages/register.jsp?error=ya_existe");
+//                return;
+//            }
 
             // Crear nuevo usuario
             Usuario usuario = new Usuario();
             usuario.setNombre(nombre);
             usuario.setApellido(apellido);
-            usuario.setCorreo(email);
+            usuario.setCorreo(emailUsuario);
             usuario.setTelefono(telefono);
             usuario.setDireccion(direccion);
+            usuario.setFechaRegistro(Timestamp.valueOf(LocalDateTime.now()));
             usuario.setContrasena(contrasena); // ¡En producción deberías cifrarla!
 
             // Persistir usuario
@@ -96,7 +99,7 @@ public class RegistroServlet extends HttpServlet {
             if (transaction != null && transaction.isActive()) {
                 transaction.rollback();
             }
-            response.sendRedirect("register.jsp?error=servidor");
+            response.sendRedirect("pages/register.jsp?error=servidor");
         } finally {
             if (entityManager != null && entityManager.isOpen()) {
                 entityManager.close();
