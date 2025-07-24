@@ -25,7 +25,7 @@
                             Crear cuenta
                         </div>
                         <div class="mb-4">
-                            ¿Ya tienes una cuenta? <a href="#">Inicia Sesión</a>
+                            ¿Ya tienes una cuenta? <a href="../pages/login.jsp">Inicia Sesión</a>
                         </div>
                         <form action="${pageContext.request.contextPath}/registro" method="post">
                             <div class="row mb-3">
@@ -72,7 +72,7 @@
                             Crear cuenta
                         </div>
                         <div class="mb-4">
-                            ¿Ya tienes una cuenta? <a href="#">Inicia Sesión</a>
+                            ¿Ya tienes una cuenta? <a href="../pages/login.jsp">Inicia Sesión</a>
                         </div>
                         <form action="${pageContext.request.contextPath}/registro" method="post">
                             <div class="form-floating mb-3">

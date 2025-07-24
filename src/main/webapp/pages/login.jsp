@@ -6,7 +6,6 @@
         <title>Login de Usuario</title>
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-
         <style>
             body {
                 font-family: 'Open Sans', sans-serif;
@@ -42,7 +41,6 @@
                 margin-top: 50px;
             }
 
-            /* Encabezado H2 */
             .login-container h2 {
                 color: red;
                 margin-bottom: 15px;
@@ -106,6 +104,25 @@
                 transform: translateY(0);
             }
 
+            .btn-registrarse {
+                margin-top: 20px;
+                border-radius: 60px;
+                padding: 12px 30px;
+                font-size: 1.1em;
+                font-weight: 600;
+                letter-spacing: 1px;
+                text-decoration: none;
+                color: #7C0000;
+                border: 2px solid #7C0000;
+                transition: background-color 0.3s ease, transform 0.2s ease;
+                display: inline-block;
+            }
+
+            .btn-registrarse:hover {
+                background-color: #7C0000;
+                color: white;
+                transform: translateY(-2px);
+            }
         </style>
     </head>
     <body>
@@ -145,10 +162,15 @@
                     <input type="password" name="contrasena" id="contrasena" required>
 
                     <input type="submit" value="Ingresar">
+
+                    <a href="../pages/register.jsp" class="btn-registrarse">Registrarse</a>
                 </form>
             </div>
         </div>
-        <div class="container"> <div class="d-block d-lg-none"> <div class="logo-container">
+
+        <div class="container">
+            <div class="d-block d-lg-none">
+                <div class="logo-container">
                     <img src="https://i.imgur.com/GUP9CG7.png" alt="Logo de la Aplicación"/>
                 </div>
                 <div class="login-container">
@@ -181,6 +203,8 @@
                         <input type="password" name="contrasena" id="contrasena" required>
 
                         <input type="submit" value="Ingresar">
+
+                        <a href="../pages/register.jsp" class="btn-registrarse">Registrarse</a>
                     </form>
                 </div>
             </div>

@@ -29,9 +29,8 @@
             <input type="text" id="buscador" placeholder="Buscar guitarra...">
         </div>
         <nav class="nav-header" id="navHeader">
-            <a href="index.html">Iniciar Sesión</a>
-            <a href="">Registrarse</a>
-            <a href="">Contacto</a>
+            <a href="pages/login.jsp">Iniciar Sesión</a>
+            <a href="pages/register.jsp">Registrarse</a>
             <a href="">Acerca de</a>
             <a href=""></a>
         </nav>

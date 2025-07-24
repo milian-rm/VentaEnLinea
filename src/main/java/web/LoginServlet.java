@@ -82,7 +82,7 @@ public class LoginServlet extends HttpServlet {
                 transaction.commit();
 
                 // Redirigir al inicio
-                response.sendRedirect("index.jsp");
+                response.sendRedirect("menuPrincipal.jsp");
             } else {
                 // Si las credenciales son incorrectas (contraseña no coincide)
             // Hacemos rollback aunque no haya habido cambios, para cerrar la transacción iniciada.

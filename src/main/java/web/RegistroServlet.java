@@ -66,15 +66,14 @@ public class RegistroServlet extends HttpServlet {
             transaction.begin();
 
             // Verificar si el correo ya está registrado
-//            Long count = (Long) entityManager.createQuery("SELECT COUNT(u) FROM Usuario u WHERE u.emailUsuario = :email")
-//                    .setParameter("email", emailUsuario)
-//                    .getSingleResult();
-//
-//            if (count > 0) {
-//                transaction.rollback();
-//                response.sendRedirect("pages/register.jsp?error=ya_existe");
-//                return;
-//            }
+            Long count = (Long) entityManager.createQuery("SELECT COUNT(u) FROM Usuario u WHERE u.emailUsuario = :email")
+                    .setParameter("email", emailUsuario)
+                    .getSingleResult();
+            
+            if (count > 0) {
+                response.sendRedirect("pages/register.jsp?error=ya_existe");
+                return;
+            }
 
             // Crear nuevo usuario
             Usuario usuario = new Usuario();
@@ -91,7 +90,7 @@ public class RegistroServlet extends HttpServlet {
             transaction.commit();
 
             // Redirigir con éxito
-            response.sendRedirect("index.jsp?register=exitoso");
+            response.sendRedirect("pages/login.jsp?register=exitoso");
 
         } catch (Exception e) {
             e.printStackTrace(); // Mantenerlo para logs del servidor
@@ -106,6 +105,7 @@ public class RegistroServlet extends HttpServlet {
             }
         }
     }
+   
 
     @Override
     public void destroy() {
