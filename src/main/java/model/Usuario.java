@@ -1,9 +1,8 @@
-/*
+    /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package model;
-
 import java.sql.Timestamp;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -33,10 +32,14 @@ public class Usuario {
     private String telefono;
     @Column(name = "direccionUsuario", nullable = false)
     private String direccion;
-    @Column(name = "fechaRegistro", nullable = false)
+    @Column(name = "fechaRegistro", insertable = false,
+             updatable = false)
     private Timestamp fechaRegistro;
     @Column(name = "contrasena", nullable = false)
     private String contrasena;
+
+    public Usuario() {
+    }
 
     public Usuario(int idUsuario, String nombre, String apellido, String emailUsuario, String telefono, String direccion, String contrasena) {
         this.idUsuario = idUsuario;
@@ -47,11 +50,6 @@ public class Usuario {
         this.direccion = direccion;
         this.contrasena = contrasena;
     }
-
-    public Usuario() {
-    }
-    
-    
 
     public int getIdUsuario() {
         return idUsuario;
