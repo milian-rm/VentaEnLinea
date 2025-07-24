@@ -27,7 +27,7 @@ public class LoginServlet extends HttpServlet {
     @Override
     public void init() throws ServletException {
         // Inicializar el EntityManagerFactory una sola vez cuando el servlet se inicia.
-        entityManagerFactory = Persistence.createEntityManagerFactory("PruebaWeb");
+        entityManagerFactory = Persistence.createEntityManagerFactory("libreriaPU");
     }
 
     @Override
@@ -41,11 +41,11 @@ public class LoginServlet extends HttpServlet {
         try {
             // Recuperar los datos del formulario.
             String email = request.getParameter("email");
-            String contraseña = request.getParameter("contraseña");
+            String contrasena = request.getParameter("contrasena");
 
             // Validación básica de campos (puedes agregar más validaciones aquí si es necesario)
-            if (email == null || email.isEmpty() || contraseña == null || contraseña.isEmpty()) {
-                response.sendRedirect("login.jsp?error=campos_vacios");
+            if (email == null || email.isEmpty() || contrasena == null || contrasena.isEmpty()) {
+                response.sendRedirect("pages/login.jsp?error=campos_vacios");
                 return;
             }
 
@@ -66,12 +66,12 @@ public class LoginServlet extends HttpServlet {
             } catch (NoResultException e) {
                 // Usuario no encontrado
                 // No se necesita rollback si solo fue una consulta de lectura fallida
-                response.sendRedirect("login.jsp?error=no_encontrado");
+                response.sendRedirect("pages/login.jsp?error=no_encontrado");
                 return; // Importante retornar para no continuar el flujo
             }
 
             // Si el usuario fue encontrado, verificar la contraseña
-            if (usuario != null && usuario.getContrasena().equals(contraseña)) {
+            if (usuario != null && usuario.getContrasena().equals(contrasena)) {
                 // Si las credenciales son correctas, se crea la sesión
                 HttpSession session = request.getSession();
                 session.setAttribute("idUsuario", usuario.getIdUsuario());
@@ -82,12 +82,12 @@ public class LoginServlet extends HttpServlet {
                 transaction.commit();
 
                 // Redirigir al inicio
-                response.sendRedirect("inicio.jsp");
+                response.sendRedirect("index.jsp");
             } else {
                 // Si las credenciales son incorrectas (contraseña no coincide)
             // Hacemos rollback aunque no haya habido cambios, para cerrar la transacción iniciada.
                 transaction.rollback();
-                response.sendRedirect("login.jsp?error=credenciales");
+                response.sendRedirect("pages/login.jsp?error=credenciales");
             }
 
         } catch (Exception e) {
@@ -95,7 +95,7 @@ public class LoginServlet extends HttpServlet {
             if (transaction != null && transaction.isActive()) {
                 transaction.rollback();
             }
-            response.sendRedirect("login.jsp?error=error_servidor");
+            response.sendRedirect("pages/login.jsp?error=error_servidor");
         } finally {
             if (entityManager != null && entityManager.isOpen()) {
                 entityManager.close();

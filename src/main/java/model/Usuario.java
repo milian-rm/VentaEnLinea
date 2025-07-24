@@ -27,7 +27,7 @@ public class Usuario {
     @Column(name = "apellidoUsuario", nullable = false)
     private String apellido;
     @Column(name = "emailUsuario", nullable = false)
-    private String correo;
+    private String emailUsuario;
     @Column(name = "telefonoUsuario", nullable = false)
     private String telefono;
     @Column(name = "direccionUsuario", nullable = false)
@@ -41,11 +41,11 @@ public class Usuario {
     public Usuario() {
     }
 
-    public Usuario(int idUsuario, String nombre, String apellido, String correo, String telefono, String direccion, String contrasena) {
+    public Usuario(int idUsuario, String nombre, String apellido, String emailUsuario, String telefono, String direccion, String contrasena) {
         this.idUsuario = idUsuario;
         this.nombre = nombre;
         this.apellido = apellido;
-        this.correo = correo;
+        this.emailUsuario = emailUsuario;
         this.telefono = telefono;
         this.direccion = direccion;
         this.contrasena = contrasena;
@@ -76,11 +76,11 @@ public class Usuario {
     }
 
     public String getCorreo() {
-        return correo;
+        return emailUsuario;
     }
 
-    public void setCorreo(String correo) {
-        this.correo = correo;
+    public void setCorreo(String emailUsuario) {
+        this.emailUsuario = emailUsuario;
     }
 
     public String getTelefono() {

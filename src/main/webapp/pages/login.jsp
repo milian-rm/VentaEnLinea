@@ -116,12 +116,33 @@
 
             <div class="login-container">
                 <h2>Iniciar Sesión</h2>
-                <form method="post" action="LoginServlet">
+                <%
+                    String error = request.getParameter("error");
+                    if (error != null) {
+                        String mensaje = "";
+                        if ("campos_vacios".equals(error)) {
+                            mensaje = "Por favor complete todos los campos.";
+                        } else if ("no_encontrado".equals(error)) {
+                            mensaje = "Usuario no encontrado.";
+                        } else if ("credenciales".equals(error)) {
+                            mensaje = "Correo o contraseña incorrectos.";
+                        } else if ("error_servidor".equals(error)) {
+                            mensaje = "Error interno del servidor.";
+                        }
+                %>
+                <div class="alert alert-danger" role="alert">
+                    <%= mensaje%>
+                </div>
+                <%
+                    }
+                %>
+
+                <form method="post" action="${pageContext.request.contextPath}/login">
                     <label for="email">Correo Electrónico:</label>
                     <input type="email" name="email" id="email" required>
 
-                    <label for="password">Contraseña:</label>
-                    <input type="password" name="password" id="password" required>
+                    <label for="contrasena">Contraseña:</label>
+                    <input type="password" name="contrasena" id="contrasena" required>
 
                     <input type="submit" value="Ingresar">
                 </form>
@@ -132,12 +153,32 @@
                 </div>
                 <div class="login-container">
                     <h2>Iniciar Sesión</h2>
-                    <form method="post" action="LoginServlet">
+                    <%
+                        if (error != null) {
+                            String mensaje = "";
+                            if ("campos_vacios".equals(error)) {
+                                mensaje = "Por favor complete todos los campos.";
+                            } else if ("no_encontrado".equals(error)) {
+                                mensaje = "Usuario no encontrado.";
+                            } else if ("credenciales".equals(error)) {
+                                mensaje = "Correo o contraseña incorrectos.";
+                            } else if ("error_servidor".equals(error)) {
+                                mensaje = "Error interno del servidor.";
+                            }
+                    %>
+                    <div class="alert alert-danger" role="alert">
+                        <%= mensaje%>
+                    </div>
+                    <%
+                        }
+                    %>
+
+                    <form method="post" action="${pageContext.request.contextPath}/login">
                         <label for="email">Correo Electrónico:</label>
                         <input type="email" name="email" id="email" required>
 
-                        <label for="password">Contraseña:</label>
-                        <input type="password" name="password" id="password" required>
+                        <label for="contrasena">Contraseña:</label>
+                        <input type="password" name="contrasena" id="contrasena" required>
 
                         <input type="submit" value="Ingresar">
                     </form>
