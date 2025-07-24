@@ -12,6 +12,6 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1><a href="pages/register.jsp">Hello World!</a></h1>
+        <h1><a href="pages/acercaDe.jsp">Hello World!</a></h1>
     </body>
 </html>
