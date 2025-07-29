@@ -1,8 +1,5 @@
-    /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package model;
+
 import java.sql.Timestamp;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -18,37 +15,63 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "Usuarios")
 public class Usuario {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idUsuario;
+
     @Column(name = "nombreUsuario", nullable = false)
     private String nombre;
+
     @Column(name = "apellidoUsuario", nullable = false)
     private String apellido;
-    @Column(name = "emailUsuario", nullable = false)
+
+    @Column(name = "emailUsuario", nullable = false, unique = true)
     private String emailUsuario;
-    @Column(name = "telefonoUsuario", nullable = false)
+
+    @Column(name = "telefonoUsuario")
     private String telefono;
-    @Column(name = "direccionUsuario", nullable = false)
+
+    @Column(name = "direccionUsuario")
     private String direccion;
-    @Column(name = "fechaRegistro", nullable = false,
-             updatable = false)
+
+    @Column(name = "fechaRegistro", nullable = false, updatable = false)
     private Timestamp fechaRegistro;
+
     @Column(name = "contrasena", nullable = false)
     private String contrasena;
+
+    @Column(name = "rol", columnDefinition = "ENUM('Cliente', 'Admin') DEFAULT 'Cliente'")
+    private String rol;
+
+    @Column(name = "nit", nullable = false)
+    private String nit;
 
     public Usuario() {
     }
 
-    public Usuario(int idUsuario, String nombre, String apellido, String emailUsuario, String telefono, String direccion, String contrasena) {
-        this.idUsuario = idUsuario;
+    public Usuario(String nombre, String apellido, String emailUsuario, String telefono, String direccion, String contrasena, String rol, String nit) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.emailUsuario = emailUsuario;
         this.telefono = telefono;
         this.direccion = direccion;
         this.contrasena = contrasena;
+        this.rol = rol; 
+        this.nit = nit;
+    }
+
+    public Usuario(int idUsuario, String nombre, String apellido, String emailUsuario, String telefono, String direccion, Timestamp fechaRegistro, String contrasena, String rol, String nit) {
+        this.idUsuario = idUsuario;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.emailUsuario = emailUsuario;
+        this.telefono = telefono;
+        this.direccion = direccion;
+        this.fechaRegistro = fechaRegistro;
+        this.contrasena = contrasena;
+        this.rol = rol; 
+        this.nit = nit;
     }
 
     public int getIdUsuario() {
@@ -75,11 +98,11 @@ public class Usuario {
         this.apellido = apellido;
     }
 
-    public String getCorreo() {
+    public String getEmailUsuario() {
         return emailUsuario;
     }
 
-    public void setCorreo(String emailUsuario) {
+    public void setEmailUsuario(String emailUsuario) {
         this.emailUsuario = emailUsuario;
     }
 
@@ -114,6 +137,20 @@ public class Usuario {
     public void setContrasena(String contrasena) {
         this.contrasena = contrasena;
     }
-    
-    
+
+    public String getRol() { 
+        return rol;
+    }
+
+    public void setRol(String rol) { 
+        this.rol = rol;
+    }
+
+    public String getNit() {
+        return nit;
+    }
+
+    public void setNit(String nit) {
+        this.nit = nit;
+    }
 }

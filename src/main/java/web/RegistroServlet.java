@@ -79,7 +79,7 @@ public class RegistroServlet extends HttpServlet {
             Usuario usuario = new Usuario();
             usuario.setNombre(nombre);
             usuario.setApellido(apellido);
-            usuario.setCorreo(emailUsuario);
+            usuario.setEmailUsuario(emailUsuario);
             usuario.setTelefono(telefono);
             usuario.setDireccion(direccion);
             usuario.setFechaRegistro(Timestamp.valueOf(LocalDateTime.now()));
