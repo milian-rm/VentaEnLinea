@@ -1,6 +1,6 @@
 <%--
-    Document   : administracionCompras
-    Created on : 28/07/2025, 15:51:02
+    Document   : agregarCompra
+    Created on : 29/07/2025, 09:10:00
     Author     : Bradley Oliva
 --%>
 
@@ -9,15 +9,11 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Administración de Compras - GuitarKinal</title>
+        <title>Agregar Compra - GuitarKinal</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
-        <style>
-            .table-responsive {
-                margin-top: 20px;
-            }
-        </style>
     </head>
-    <body class="d-flex flex-column min-vh-100">
+    <body>
+        <%-- Barra de Navegación Superior --%>
         <nav class="navbar navbar-dark bg-danger px-3">
             <div class="container-fluid">
                 <a class="navbar-brand" href="<%= request.getContextPath() %>/index.jsp">
@@ -32,6 +28,7 @@
             </div>
         </nav>
 
+        <%-- Menú Desplegable (Offcanvas) --%>
         <div class="offcanvas offcanvas-end" tabindex="-1" id="menuPrincipal" aria-labelledby="menuLabel">
             <div class="offcanvas-header">
                 <h5 class="offcanvas-title" id="menuLabel">Menú</h5>
@@ -89,73 +86,57 @@
             </div>
         </div>
 
-        <main class="container mt-5 flex-grow-1">
-            <div class="d-flex justify-content-between align-items-center mb-4">
-                <h1 class="mb-0">Administración de Compras</h1>
-                <a href="agregarCompra.jsp" class="btn btn-success">Agregar Nueva Compra</a>
-            </div>
+        <%-- Contenido Principal: Formulario de Agregar Compra --%>
+        <main class="container mt-5">
+            <div class="row justify-content-center">
+                <div class="col-md-6 col-lg-5">
+                    <h1 class="mb-4 text-center">Agregar Nueva Compra</h1>
+                    <%-- El formulario enviará los datos al ServletAgregarCompra para guardar la compra --%>
+                    <form action="ServletAgregarCompra" method="post">
+                        <%-- Campo oculto para indicar al servlet la acción a realizar --%>
+                        <input type="hidden" name="accion" value="insertar">
 
-            <div class="table-responsive">
-                <table class="table table-striped table-bordered table-hover">
-                    <thead class="table-dark">
-                        <tr>
-                            <th>ID Compra</th>
-                            <th>ID Usuario</th>
-                            <th>Fecha Compra</th>
-                            <th>Total</th>
-                            <th>Estado</th>
-                            <th>Acciones</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <%-- Ejemplos de datos de compras --%>
-                        <tr>
-                            <td>C001</td>
-                            <td>U001</td>
-                            <td>2024-07-25 10:00:00</td>
-                            <td>$599.99</td>
-                            <td>Completada</td>
-                            <td>
-                                <a href="editarCompra.jsp?id=C001" class="btn btn-warning btn-sm">Editar</a>
-                                <a href="eliminarCompra?id=C001" class="btn btn-danger btn-sm" onclick="return confirm('¿Desea eliminar esta compra?')">Eliminar</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>C002</td>
-                            <td>U002</td>
-                            <td>2024-07-26 14:30:00</td>
-                            <td>$150.00</td>
-                            <td>Pendiente</td>
-                            <td>
-                                <a href="editarCompra.jsp?id=C002" class="btn btn-warning btn-sm">Editar</a>
-                                <a href="eliminarCompra?id=C002" class="btn btn-danger btn-sm" onclick="return confirm('¿Desea eliminar esta compra?')">Eliminar</a>
-                            </td>
-                        </tr>
-                         <tr>
-                            <td>C003</td>
-                            <td>U001</td>
-                            <td>2024-07-27 09:15:00</td>
-                            <td>$85.50</td>
-                            <td>Enviado</td>
-                            <td>
-                                <a href="editarCompra.jsp?id=C003" class="btn btn-warning btn-sm">Editar</a>
-                                <a href="eliminarCompra?id=C003" class="btn btn-danger btn-sm" onclick="return confirm('¿Desea eliminar esta compra?')">Eliminar</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="6" class="text-center text-muted">
-                                Aquí se mostrarán las compras de la base de datos (cuando se conecte). Estos son ejemplos.
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                        <div class="mb-3">
+                            <label for="idUsuario" class="form-label">ID Usuario:</label>
+                            <%-- Idealmente, este campo podría ser un select dinámico con IDs de usuarios existentes --%>
+                            <input type="text" id="idUsuario" name="idUsuario" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="fechaCompra" class="form-label">Fecha de Compra:</label>
+                            <%-- Usamos datetime-local para fecha y hora. El valor inicial puede ser la fecha y hora actual. --%>
+                            <input type="datetime-local" id="fechaCompra" name="fechaCompra" class="form-control" value="<%= new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm").format(new java.util.Date()) %>" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="totalCompra" class="form-label">Total:</label>
+                            <input type="number" id="totalCompra" name="totalCompra" class="form-control" step="0.01" min="0" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="estadoCompra" class="form-label">Estado:</label>
+                            <select id="estadoCompra" name="estadoCompra" class="form-select" required>
+                                <option value="Pendiente" selected>Pendiente</option>
+                                <option value="Completada">Completada</option>
+                                <option value="Enviado">Enviado</option>
+                                <option value="Cancelada">Cancelada</option>
+                            </select>
+                        </div>
+
+                        <%-- Botones de acción --%>
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-success btn-lg">Guardar Compra</button>
+                            <%-- El botón Cancelar regresa a la página de administración de compras --%>
+                            <a href="<%= request.getContextPath() %>/pages/administracionCompras.jsp" class="btn btn-secondary btn-lg">Cancelar</a>
+                        </div>
+                    </form>
+                </div>
             </div>
         </main>
 
-        <footer class="bg-dark text-white text-center py-3 mt-auto">
+        <%-- Pie de Página (Footer) --%>
+        <footer class="bg-dark text-white text-center py-3 mt-5">
             Tienda de Guitarras. Todos los derechos reservados.
         </footer>
 
+        <%-- Script de Bootstrap para funcionalidades --%>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     </body>
 </html>
