@@ -41,8 +41,7 @@ public class Usuario {
     public Usuario() {
     }
 
-    public Usuario(int idUsuario, String nombre, String apellido, String emailUsuario, String telefono, String direccion, String contrasena) {
-        this.idUsuario = idUsuario;
+    public Usuario(String nombre, String apellido, String emailUsuario, String telefono, String direccion, String contrasena) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.emailUsuario = emailUsuario;
