@@ -77,9 +77,9 @@
         <main class="container mt-5">
             <div class="row justify-content-center">
                 <div class="col-md-6 col-lg-5">
-                    <h1 class="mb-4 text-center">Editar Producto</h1> <%-- Título cambiado a "Editar Producto" --%>
+                    <h1 class="mb-4 text-center">Editar Producto</h1>
                     <%-- El formulario enviará los datos al ServletEditarProducto para actualizar el producto --%>
-                    <form action="ServletEditarProducto" method="post"> <%-- La acción del formulario apunta a ServletEditarProducto --%>
+                    <form action="ServletEditarProducto" method="post">
                         <%-- Campo oculto para indicar al servlet la acción a realizar (actualizar) --%>
                         <input type="hidden" name="accion" value="actualizar">
                         <%-- Campo oculto para enviar el ID del producto que se está editando.
@@ -87,44 +87,52 @@
                         <input type="hidden" name="idProducto" value="<%= request.getParameter("id") != null ? request.getParameter("id") : "" %>">
                         <%-- Nota: En un caso real, el 'value' del idProducto vendría de un objeto Producto cargado del DB. --%>
 
-
                         <div class="mb-3">
-                            <label for="nombreProducto" class="form-label">Nombre del Producto: </label>
-                            <%-- El 'value' debe ser pre-llenado con el nombre actual del producto.
-                                 Aquí se usa un ejemplo genérico, deberías usar la propiedad del objeto Producto. --%>
+                            <label for="nombreProducto" class="form-label">Nombre del Producto:</label>
                             <input type="text" id="nombreProducto" name="nombreProducto" class="form-control" value="Nombre Actual del Producto" required>
                         </div>
                         <div class="mb-3">
-                            <label for="descripcionProducto" class="form-label">Descripción: </label>
-                            <%-- La descripción también debe pre-llenarse. --%>
+                            <label for="descripcionProducto" class="form-label">Descripción:</label>
                             <textarea id="descripcionProducto" name="descripcionProducto" class="form-control" rows="3">Descripción actual del producto.</textarea>
                         </div>
                         <div class="mb-3">
-                            <label for="precio" class="form-label">Precio: </label>
+                            <label for="precio" class="form-label">Precio:</label>
                             <input type="number" id="precio" name="precio" class="form-control" step="0.01" min="0" value="199.99" required>
                         </div>
                         <div class="mb-3">
-                            <label for="stock" class="form-label">Stock: </label>
+                            <label for="stock" class="form-label">Stock:</label>
                             <input type="number" id="stock" name="stock" class="form-control" min="0" value="30" required>
                         </div>
+                        
+                        <%-- Nuevos campos basados en la tabla Productos --%>
                         <div class="mb-3">
-                            <label for="categoria" class="form-label">Categoría: </label>
-                            <input type="text" id="categoria" name="categoria" class="form-control" value="Categoría Actual">
+                            <label for="idCategoria" class="form-label">ID Categoría:</label>
+                            <input type="number" id="idCategoria" name="idCategoria" class="form-control" min="1" value="1" required>
                         </div>
                         <div class="mb-3">
-                            <label for="marca" class="form-label">Marca: </label>
+                            <label for="idProveedor" class="form-label">ID Proveedor:</label>
+                            <input type="number" id="idProveedor" name="idProveedor" class="form-control" min="1" value="5" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="fechaCreacion" class="form-label">Fecha de Creación:</label>
+                            <%-- Usamos type="datetime-local" para una mejor UX si el navegador lo soporta,
+                                 o type="text" si necesitas un formato específico sin selector.
+                                 El valor debe ser en formato YYYY-MM-DDTHH:MM:SS para datetime-local. --%>
+                            <input type="datetime-local" id="fechaCreacion" name="fechaCreacion" class="form-control" value="2024-07-29T10:00:00" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="marca" class="form-label">Marca:</label>
                             <input type="text" id="marca" name="marca" class="form-control" value="Marca Actual">
                         </div>
-                         <%-- Campo para la imagen, si decides pre-llenarlo con la URL o mostrarla --%>
                         <div class="mb-3">
-                            <label for="imagen" class="form-label">URL de la Imagen: </label>
+                            <label for="imagen" class="form-label">URL de la Imagen:</label>
                             <input type="text" id="imagen" name="imagen" class="form-control" value="image/Guitarra Acustica.jpg">
-                             <%-- Puedes añadir una vista previa de la imagen aquí: --%>
-                             <img src="image/Guitarra Acustica.jpg" alt="Vista previa" style="width: 100px; height: auto; margin-top: 10px;">
+                            <img src="image/Guitarra Acustica.jpg" alt="Vista previa" style="width: 100px; height: auto; margin-top: 10px;">
                         </div>
+
                         <%-- Botones de acción --%>
                         <div class="d-grid gap-2">
-                            <button type="submit" class="btn btn-success btn-lg">Guardar Cambios</button> <%-- Texto del botón cambiado --%>
+                            <button type="submit" class="btn btn-success btn-lg">Guardar Cambios</button>
                             <%-- El botón Cancelar regresa a la página de administración de productos --%>
                             <a href="administracionProductos.jsp" class="btn btn-secondary btn-lg">Cancelar</a>
                         </div>

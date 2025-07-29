@@ -1,9 +1,3 @@
-<%--
-    Document   : administracion
-    Created on : 28 jul 2025, 15:40:00
-    Author     : Bradley Oliva
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%-- ELIMINAR O COMENTAR LA SIGUIENTE LÍNEA: --%>
 <%-- <%@page import="model.Producto" %> --%>
@@ -86,28 +80,30 @@
                 <table class="table table-striped table-bordered table-hover">
                     <thead class="table-dark">
                         <tr>
-                            <th>Código</th>
+                            <th>ID Producto</th>
+                            <th>ID Categoría</th>
+                            <th>ID Proveedor</th>
                             <th>Nombre</th>
                             <th>Descripción</th>
                             <th>Precio</th>
                             <th>Stock</th>
-                            <th>Categoría</th>
-                            <th>Marca</th>
-                            <th>Fecha Creación</th> <%-- Agregado: Columna para Fecha Creación --%>
-                            <th>Imagen</th>
+                            <th>Fecha Creación</th>
+                            <th>Marca</th> <%-- Nuevo: Agregado según la tabla de la base de datos --%>
+                            <th>Imagen</th> <%-- Nuevo: Agregado según la tabla de la base de datos --%>
                             <th>Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td>101</td>
+                            <td>1</td> <%-- Ejemplo de idCategoria --%>
+                            <td>5</td> <%-- Ejemplo de idProveedor --%>
                             <td>Guitarra Acústica Modelo X</td>
                             <td>Guitarra clásica de madera de abeto, ideal para principiantes.</td>
                             <td>$299.99</td>
                             <td>50</td>
-                            <td>Acústicas</td>
-                            <td>Yamaha</td>
-                            <td>2024-07-28 10:30:00</td> <%-- Ejemplo de Fecha Creación --%>
+                            <td>2024-07-28 10:30:00</td>
+                            <td>Yamaha</td> <%-- Ejemplo de Marca --%>
                             <td><img src="image/Guitarra Acustica.jpg" alt="Producto" style="width: 80px; height: auto;"></td>
                             <td>
                                 <a href="editarProducto.jsp?id=101" class="btn btn-warning btn-sm">Editar</a>
@@ -116,13 +112,14 @@
                         </tr>
                         <tr>
                             <td>102</td>
+                            <td>2</td> <%-- Ejemplo de idCategoria --%>
+                            <td>8</td> <%-- Ejemplo de idProveedor --%>
                             <td>Pedal Distorsión ZVex</td>
                             <td>Pedal de efectos de alta ganancia, ideal para rock y metal.</td>
                             <td>$129.50</td>
                             <td>25</td>
-                            <td>Pedales</td>
-                            <td>ZVex</td>
-                            <td>2024-07-27 14:00:00</td> <%-- Ejemplo de Fecha Creación --%>
+                            <td>2024-07-27 14:00:00</td>
+                            <td>ZVex</td> <%-- Ejemplo de Marca --%>
                             <td><img src="image/Pedal de Efectos.jpg" alt="Producto" style="width: 80px; height: auto;"></td>
                             <td>
                                 <a href="editarProducto.jsp?id=102" class="btn btn-warning btn-sm">Editar</a>
@@ -130,8 +127,8 @@
                             </td>
                         </tr>
                         <tr>
-                            <%-- colspan ajustado para incluir la nueva columna de Fecha Creación --%>
-                            <td colspan="10" class="text-center">Aquí se mostrarán los productos de la base de datos (cuando se conecte)Estos son ejemplos.</td>
+                            <%-- colspan ajustado para incluir todas las nuevas columnas --%>
+                            <td colspan="11" class="text-center">Aquí se mostrarán los productos de la base de datos (cuando se conecte)Estos son ejemplos.</td>
                         </tr>
                     </tbody>
                 </table>
