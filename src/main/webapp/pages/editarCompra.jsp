@@ -14,6 +14,11 @@
         <meta charset="UTF-8">
         <title>Editar Compra - GuitarKinal</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+        <style>
+            .navbar-brand img {
+                border-radius: 8px;
+            }
+        </style>
     </head>
     <body>
         <%-- Barra de Navegación Superior --%>
@@ -65,24 +70,16 @@
                         </ul>
                     </li>
                     <li class="list-group-item">
-                        <a href="<%= request.getContextPath() %>/pages/administracionProductos.jsp" class="text-danger text-decoration-none">
-                            <strong class="text-danger">Administración de Productos</strong>
-                        </a>
-                    </li>
-                    <li class="list-group-item">
-                        <a href="<%= request.getContextPath() %>/pages/administracionUsuarios.jsp" class="text-danger text-decoration-none">
-                            <strong class="text-danger">Administración de Usuarios</strong>
-                        </a>
-                    </li>
-                    <li class="list-group-item">
-                        <a href="<%= request.getContextPath() %>/pages/administracionDetalleCompra.jsp" class="text-danger text-decoration-none">
-                            <strong class="text-danger">Administración de Detalles de Compra</strong>
-                        </a>
-                    </li>
-                    <li class="list-group-item">
-                        <a href="<%= request.getContextPath() %>/pages/administracionCompras.jsp" class="text-danger text-decoration-none">
-                            <strong class="text-danger">Administración de Compras</strong>
-                        </a>
+                        <strong class="text-danger">Administración</strong>
+                        <ul class="list-unstyled ps-3 mt-2">
+                            <li><a href="<%= request.getContextPath() %>/pages/administracionProductos.jsp" class="text-danger text-decoration-none">Productos</a></li>
+                            <li><a href="<%= request.getContextPath() %>/pages/administracionCompras.jsp" class="text-danger text-decoration-none">Compras</a></li>
+                            <li><a href="<%= request.getContextPath() %>/pages/administracionDetalleCompra.jsp" class="text-danger text-decoration-none">Detalle Compras</a></li>
+                            <li><a href="<%= request.getContextPath() %>/pages/administracionProveedor.jsp" class="text-danger text-decoration-none">Proveedores</a></li>
+                            <li><a href="<%= request.getContextPath() %>/pages/administracionUsuarios.jsp" class="text-danger text-decoration-none">Usuarios</a></li>
+                            <li><a href="<%= request.getContextPath() %>/pages/administracionCategoria.jsp" class="text-danger text-decoration-none">Categorias</a></li>
+                            <li><a href="<%= request.getContextPath() %>/pages/administracionRecibo.jsp" class="text-danger text-decoration-none">Recibo</a></li>
+                        </ul>
                     </li>
                 </ul>
             </div>

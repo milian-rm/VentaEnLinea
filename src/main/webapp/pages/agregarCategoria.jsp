@@ -1,30 +1,25 @@
 <%--
-    Document   : administracionProveedor
-    Created on : 29/07/2025, 08:01:51
+    Document   : agregarCategoria
+    Created on : 29 jul 2025, 11:31:08
     Author     : informatica
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%-- <%@page import="java.util.List, model.Proveedor" %> --%>
+
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Administración de Proveedores - GuitarKinal</title>
+        <title>Agregar Categoría - GuitarKinal</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
         <style>
-            .table-responsive {
-                margin-top: 20px;
-            }
             .navbar-brand img {
                 border-radius: 8px;
-            }
-            .btn-sm {
-                margin-right: 5px;
             }
         </style>
     </head>
     <body>
+        <%-- Barra de Navegación Superior --%>
         <nav class="navbar navbar-dark bg-danger px-3">
             <div class="container-fluid">
                 <a class="navbar-brand" href="<%= request.getContextPath() %>/index.jsp">
@@ -39,6 +34,7 @@
             </div>
         </nav>
 
+        <%-- Menú Desplegable (Offcanvas) --%>
         <div class="offcanvas offcanvas-end" tabindex="-1" id="menuPrincipal" aria-labelledby="menuLabel">
             <div class="offcanvas-header">
                 <h5 class="offcanvas-title" id="menuLabel">Menú</h5>
@@ -72,6 +68,7 @@
                             <li><a href="#" class="text-danger text-decoration-none">Valores</a></li>
                         </ul>
                     </li>
+                    
                     <li class="list-group-item">
                         <strong class="text-danger">Administración</strong>
                         <ul class="list-unstyled ps-3 mt-2">
@@ -88,70 +85,49 @@
             </div>
         </div>
 
-        <%-- Contenido Principal: Tabla de Proveedores --%>
+        <%-- Contenido Principal: Formulario de Agregar Categoría --%>
         <main class="container mt-5">
-            <div class="d-flex justify-content-between align-items-center mb-4">
-                <h1 class="mb-0">Administración de Proveedores</h1>
-                <a href="agregarProveedor.jsp" class="btn btn-success">Agregar Proveedor</a>
-            </div>
+            <div class="row justify-content-center">
+                <div class="col-md-6 col-lg-5">
+                    <h1 class="mb-4 text-center">Agregar Nueva Categoría</h1>
+                    <%-- El formulario enviará los datos al ServletCategoria para guardar la categoría --%>
+                    <form action="ServletCategoria" method="post">
+                        <%-- Campo oculto para indicar al servlet la acción a realizar --%>
+                        <input type="hidden" name="accion" value="insertar">
 
-            <div class="table-responsive">
-                <table class="table table-striped table-bordered table-hover">
-                    <thead class="table-dark">
-                        <tr>
-                            <th>ID</th>
-                            <th>Nombre</th>
-                            <th>Contacto</th>
-                            <th>Teléfono</th>
-                            <th>Email</th>
-                            <th>Dirección</th>
-                            <th>País Origen</th>
-                            <th>Estado</th>
-                            <th>Acciones</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <%-- Aquí se mostrarán los proveedores de la base de datos (cuando se conecte)Estos son ejemplos. --%>
-                        <tr>
-                            <td>1</td>
-                            <td>Music Corp.</td>
-                            <td>Ana López</td>
-                            <td>+1 (123) 456-7890</td>
-                            <td>info@musiccorp.com</td>
-                            <td>123 Main St, Anytown</td>
-                            <td>USA</td>
-                            <td>Activo</td>
-                            <td>
-                                <a href="editarProveedor.jsp?id=1" class="btn btn-warning btn-sm">Editar</a>
-                                <a href="ServletProveedor?accion=eliminar&id=1" class="btn btn-danger btn-sm" onclick="return confirm('¿Desea eliminar a este proveedor?')">Eliminar</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Global Instruments</td>
-                            <td>Carlos Ruiz</td>
-                            <td>+44 20 1234 5678</td>
-                            <td>sales@globalinst.co.uk</td>
-                            <td>45 Park Lane, London</td>
-                            <td>Reino Unido</td>
-                            <td>Activo</td>
-                            <td>
-                                <a href="editarProveedor.jsp?id=2" class="btn btn-warning btn-sm">Editar</a>
-                                <a href="ServletProveedor?accion=eliminar&id=2" class="btn btn-danger btn-sm" onclick="return confirm('¿Desea eliminar a este proveedor?')">Eliminar</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="9" class="text-center text-muted">Aquí se mostrarán los proveedores de la base de datos. Estos son ejemplos.</td>
-                        </tr>
-                    </tbody>
-                </table>
+                        <div class="mb-3">
+                            <label for="nombreCategoria" class="form-label">Nombre de la Categoría:</label>
+                            <input type="text" id="nombreCategoria" name="nombreCategoria" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="descripcion" class="form-label">Descripción:</label>
+                            <textarea id="descripcion" name="descripcion" class="form-control" rows="3"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="estado" class="form-label">Estado:</label>
+                            <select id="estado" name="estado" class="form-select" required>
+                                <option value="Activo">Activo</option>
+                                <option value="Inactivo">Inactivo</option>
+                            </select>
+                        </div>
+
+                        <%-- Botones de acción --%>
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-success btn-lg">Guardar Categoría</button>
+                            <%-- El botón Cancelar regresa a la página de administración de categorías --%>
+                            <a href="<%= request.getContextPath() %>/pages/administracionCategoria.jsp" class="btn btn-secondary btn-lg">Cancelar</a>
+                        </div>
+                    </form>
+                </div>
             </div>
         </main>
 
-        <footer class="bg-dark text-white text-center py-3 mt-auto">
+        <%-- Pie de Página (Footer) --%>
+        <footer class="bg-dark text-white text-center py-3 mt-5">
             Tienda de Guitarras. Todos los derechos reservados.
         </footer>
 
+        <%-- Script de Bootstrap para funcionalidades --%>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     </body>
 </html>

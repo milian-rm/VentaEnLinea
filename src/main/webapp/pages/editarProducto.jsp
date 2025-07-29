@@ -14,6 +14,11 @@
         <meta charset="UTF-8">
         <title>Editar Producto - GuitarKinal</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+        <style>
+            .navbar-brand img {
+                border-radius: 8px;
+            }
+        </style>
     </head>
     <body>
         <%-- Barra de Navegación Superior --%>
@@ -65,9 +70,16 @@
                         </ul>
                     </li>
                     <li class="list-group-item">
-                        <a href="administracion.jsp" class="text-danger text-decoration-none">
-                            <strong class="text-danger">Administración de Productos</strong>
-                        </a>
+                        <strong class="text-danger">Administración</strong>
+                        <ul class="list-unstyled ps-3 mt-2">
+                            <li><a href="<%= request.getContextPath() %>/pages/administracionProductos.jsp" class="text-danger text-decoration-none">Productos</a></li>
+                            <li><a href="<%= request.getContextPath() %>/pages/administracionCompras.jsp" class="text-danger text-decoration-none">Compras</a></li>
+                            <li><a href="<%= request.getContextPath() %>/pages/administracionDetalleCompra.jsp" class="text-danger text-decoration-none">Detalle Compras</a></li>
+                            <li><a href="<%= request.getContextPath() %>/pages/administracionProveedor.jsp" class="text-danger text-decoration-none">Proveedores</a></li>
+                            <li><a href="<%= request.getContextPath() %>/pages/administracionUsuarios.jsp" class="text-danger text-decoration-none">Usuarios</a></li>
+                            <li><a href="<%= request.getContextPath() %>/pages/administracionCategoria.jsp" class="text-danger text-decoration-none">Categorias</a></li>
+                            <li><a href="<%= request.getContextPath() %>/pages/administracionRecibo.jsp" class="text-danger text-decoration-none">Recibo</a></li>
+                        </ul>
                     </li>
                 </ul>
             </div>
@@ -127,14 +139,14 @@
                         <div class="mb-3">
                             <label for="imagen" class="form-label">URL de la Imagen:</label>
                             <input type="text" id="imagen" name="imagen" class="form-control" value="image/Guitarra Acustica.jpg">
-                            <img src="image/Guitarra Acustica.jpg" alt="Vista previa" style="width: 100px; height: auto; margin-top: 10px;">
+                            <img src="<%= request.getContextPath() %>/image/Guitarra Acustica.jpg" alt="Vista previa" style="width: 100px; height: auto; margin-top: 10px;">
                         </div>
 
                         <%-- Botones de acción --%>
                         <div class="d-grid gap-2">
                             <button type="submit" class="btn btn-success btn-lg">Guardar Cambios</button>
                             <%-- El botón Cancelar regresa a la página de administración de productos --%>
-                            <a href="administracionProductos.jsp" class="btn btn-secondary btn-lg">Cancelar</a>
+                            <a href="<%= request.getContextPath() %>/pages/administracionProductos.jsp" class="btn btn-secondary btn-lg">Cancelar</a>
                         </div>
                     </form>
                 </div>

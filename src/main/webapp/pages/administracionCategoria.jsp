@@ -1,26 +1,25 @@
 <%--
-    Document   : administracionProveedor
-    Created on : 29/07/2025, 08:01:51
-    Author     : informatica
+    Document   : administracionCategoria
+    Created on : 29 jul 2025, 11:25:43
+    Author     : bradley oliva
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%-- <%@page import="java.util.List, model.Proveedor" %> --%>
+<%-- ELIMINAR O COMENTAR LA SIGUIENTE LÍNEA CUANDO SE USE UN MODELO REAL: --%>
+<%-- <%@page import="model.Categoria" %> --%>
+
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Administración de Proveedores - GuitarKinal</title>
+        <title>Administración de Categorías - GuitarKinal</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
         <style>
-            .table-responsive {
-                margin-top: 20px;
-            }
             .navbar-brand img {
                 border-radius: 8px;
             }
-            .btn-sm {
-                margin-right: 5px;
+            .table-responsive {
+                margin-top: 20px;
             }
         </style>
     </head>
@@ -72,6 +71,7 @@
                             <li><a href="#" class="text-danger text-decoration-none">Valores</a></li>
                         </ul>
                     </li>
+                   
                     <li class="list-group-item">
                         <strong class="text-danger">Administración</strong>
                         <ul class="list-unstyled ps-3 mt-2">
@@ -88,60 +88,57 @@
             </div>
         </div>
 
-        <%-- Contenido Principal: Tabla de Proveedores --%>
         <main class="container mt-5">
             <div class="d-flex justify-content-between align-items-center mb-4">
-                <h1 class="mb-0">Administración de Proveedores</h1>
-                <a href="agregarProveedor.jsp" class="btn btn-success">Agregar Proveedor</a>
+                <h1 class="mb-0">Administración de Categorías</h1>
+                <a href="<%= request.getContextPath() %>/pages/agregarCategoria.jsp" class="btn btn-success">Agregar Categoría</a>
             </div>
 
             <div class="table-responsive">
                 <table class="table table-striped table-bordered table-hover">
                     <thead class="table-dark">
                         <tr>
-                            <th>ID</th>
-                            <th>Nombre</th>
-                            <th>Contacto</th>
-                            <th>Teléfono</th>
-                            <th>Email</th>
-                            <th>Dirección</th>
-                            <th>País Origen</th>
+                            <th>ID Categoría</th>
+                            <th>Nombre Categoría</th>
+                            <th>Descripción</th>
                             <th>Estado</th>
                             <th>Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <%-- Aquí se mostrarán los proveedores de la base de datos (cuando se conecte)Estos son ejemplos. --%>
+                        <%-- Ejemplo de una fila de categoría. En un caso real, esto sería dinámico desde la base de datos --%>
                         <tr>
                             <td>1</td>
-                            <td>Music Corp.</td>
-                            <td>Ana López</td>
-                            <td>+1 (123) 456-7890</td>
-                            <td>info@musiccorp.com</td>
-                            <td>123 Main St, Anytown</td>
-                            <td>USA</td>
+                            <td>Guitarras Acústicas</td>
+                            <td>Variedad de guitarras acústicas para todos los niveles.</td>
                             <td>Activo</td>
                             <td>
-                                <a href="editarProveedor.jsp?id=1" class="btn btn-warning btn-sm">Editar</a>
-                                <a href="ServletProveedor?accion=eliminar&id=1" class="btn btn-danger btn-sm" onclick="return confirm('¿Desea eliminar a este proveedor?')">Eliminar</a>
+                                <a href="<%= request.getContextPath() %>/pages/editarCategoria.jsp?id=1" class="btn btn-warning btn-sm">Editar</a>
+                                <a href="<%= request.getContextPath() %>/ServletCategoria?accion=eliminar&id=1" class="btn btn-danger btn-sm" onclick="return confirm('¿Desea eliminar esta categoría?')">Eliminar</a>
                             </td>
                         </tr>
                         <tr>
                             <td>2</td>
-                            <td>Global Instruments</td>
-                            <td>Carlos Ruiz</td>
-                            <td>+44 20 1234 5678</td>
-                            <td>sales@globalinst.co.uk</td>
-                            <td>45 Park Lane, London</td>
-                            <td>Reino Unido</td>
+                            <td>Pedales de Efectos</td>
+                            <td>Amplia selección de pedales para transformar el sonido.</td>
                             <td>Activo</td>
                             <td>
-                                <a href="editarProveedor.jsp?id=2" class="btn btn-warning btn-sm">Editar</a>
-                                <a href="ServletProveedor?accion=eliminar&id=2" class="btn btn-danger btn-sm" onclick="return confirm('¿Desea eliminar a este proveedor?')">Eliminar</a>
+                                <a href="<%= request.getContextPath() %>/pages/editarCategoria.jsp?id=2" class="btn btn-warning btn-sm">Editar</a>
+                                <a href="<%= request.getContextPath() %>/ServletCategoria?accion=eliminar&id=2" class="btn btn-danger btn-sm" onclick="return confirm('¿Desea eliminar esta categoría?')">Eliminar</a>
                             </td>
                         </tr>
                         <tr>
-                            <td colspan="9" class="text-center text-muted">Aquí se mostrarán los proveedores de la base de datos. Estos son ejemplos.</td>
+                            <td>3</td>
+                            <td>Cuerdas</td>
+                            <td>Cuerdas de alta calidad para guitarras eléctricas y acústicas.</td>
+                            <td>Inactivo</td>
+                            <td>
+                                <a href="<%= request.getContextPath() %>/pages/editarCategoria.jsp?id=3" class="btn btn-warning btn-sm">Editar</a>
+                                <a href="<%= request.getContextPath() %>/ServletCategoria?accion=eliminar&id=3" class="btn btn-danger btn-sm" onclick="return confirm('¿Desea eliminar esta categoría?')">Eliminar</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="5" class="text-center">Aquí se mostrarán las categorías de la base de datos (cuando se conecte). Estos son ejemplos.</td>
                         </tr>
                     </tbody>
                 </table>

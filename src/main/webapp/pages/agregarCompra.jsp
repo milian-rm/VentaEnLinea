@@ -63,24 +63,16 @@
                         </ul>
                     </li>
                     <li class="list-group-item">
-                        <a href="<%= request.getContextPath() %>/pages/administracionProductos.jsp" class="text-danger text-decoration-none">
-                            <strong class="text-danger">Administración de Productos</strong>
-                        </a>
-                    </li>
-                    <li class="list-group-item">
-                        <a href="<%= request.getContextPath() %>/pages/administracionUsuarios.jsp" class="text-danger text-decoration-none">
-                            <strong class="text-danger">Administración de Usuarios</strong>
-                        </a>
-                    </li>
-                    <li class="list-group-item">
-                        <a href="<%= request.getContextPath() %>/pages/administracionDetalleCompra.jsp" class="text-danger text-decoration-none">
-                            <strong class="text-danger">Administración de Detalles de Compra</strong>
-                        </a>
-                    </li>
-                    <li class="list-group-item">
-                        <a href="<%= request.getContextPath() %>/pages/administracionCompras.jsp" class="text-danger text-decoration-none">
-                            <strong class="text-danger">Administración de Compras</strong>
-                        </a>
+                        <strong class="text-danger">Administración</strong>
+                        <ul class="list-unstyled ps-3 mt-2">
+                            <li><a href="<%= request.getContextPath() %>/pages/administracionProductos.jsp" class="text-danger text-decoration-none">Productos</a></li>
+                            <li><a href="<%= request.getContextPath() %>/pages/administracionCompras.jsp" class="text-danger text-decoration-none">Compras</a></li>
+                            <li><a href="<%= request.getContextPath() %>/pages/administracionDetalleCompra.jsp" class="text-danger text-decoration-none">Detalle Compras</a></li>
+                            <li><a href="<%= request.getContextPath() %>/pages/administracionProveedor.jsp" class="text-danger text-decoration-none">Proveedores</a></li>
+                            <li><a href="<%= request.getContextPath() %>/pages/administracionUsuarios.jsp" class="text-danger text-decoration-none">Usuarios</a></li>
+                            <li><a href="<%= request.getContextPath() %>/pages/administracionCategoria.jsp" class="text-danger text-decoration-none">Categorias</a></li>
+                            <li><a href="<%= request.getContextPath() %>/pages/administracionRecibo.jsp" class="text-danger text-decoration-none">Recibo</a></li>
+                        </ul>
                     </li>
                 </ul>
             </div>

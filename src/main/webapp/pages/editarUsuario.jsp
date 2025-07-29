@@ -1,4 +1,4 @@
-<%-- 
+<%--
     Document   : editarUsuario
     Created on : 28 jul 2025, 17:50:10
     Author     : Marcos
@@ -11,7 +11,7 @@
     <head>
         <meta charset="UTF-8">
         <title>Editar Usuario - GuitarKinal</title>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" xintegrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
         <style>
             .navbar-brand img {
                 border-radius: 8px;
@@ -66,15 +66,18 @@
                             <li><a href="#" class="text-danger text-decoration-none">Valores</a></li>
                         </ul>
                     </li>
+                    ---
                     <li class="list-group-item">
-                        <a href="administracion.jsp" class="text-danger text-decoration-none">
-                            <strong class="text-danger">Administración de Productos</strong>
-                        </a>
-                    </li>
-                    <li class="list-group-item">
-                        <a href="administracionUsuarios.jsp" class="text-danger text-decoration-none">
-                            <strong class="text-danger">Administración de Usuarios</strong>
-                        </a>
+                        <strong class="text-danger">Administración</strong>
+                        <ul class="list-unstyled ps-3 mt-2">
+                            <li><a href="<%= request.getContextPath() %>/pages/administracionProductos.jsp" class="text-danger text-decoration-none">Productos</a></li>
+                            <li><a href="<%= request.getContextPath() %>/pages/administracionCompras.jsp" class="text-danger text-decoration-none">Compras</a></li>
+                            <li><a href="<%= request.getContextPath() %>/pages/administracionDetalleCompra.jsp" class="text-danger text-decoration-none">Detalle Compras</a></li>
+                            <li><a href="<%= request.getContextPath() %>/pages/administracionProveedor.jsp" class="text-danger text-decoration-none">Proveedores</a></li>
+                            <li><a href="<%= request.getContextPath() %>/pages/administracionUsuarios.jsp" class="text-danger text-decoration-none">Usuarios</a></li>
+                            <li><a href="<%= request.getContextPath() %>/pages/administracionCategoria.jsp" class="text-danger text-decoration-none">Categorias</a></li>
+                            <li><a href="<%= request.getContextPath() %>/pages/administracionRecibo.jsp" class="text-danger text-decoration-none">Recibo</a></li>
+                        </ul>
                     </li>
                 </ul>
             </div>
@@ -110,19 +113,19 @@
                             <textarea id="direccionUsuario" name="direccionUsuario" class="form-control" rows="3">Dirección actual del usuario.</textarea>
                         </div>
                         <%--
-                            Por seguridad no se pre-llena la contraseña.
-                            Se puede añadir un campo para cambiarla si el usuario lo desea,
-                            pero no es recomendable mostrar la contraseña actual.
+                            Por security, do not pre-fill the password.
+                            You can add a field for changing it if the user wishes,
+                            but it's not recommended to display the current password.
                         --%>
                         <div class="mb-3">
                             <label for="nuevaContrasena" class="form-label">Nueva Contraseña (Dejar vacío para no cambiar):</label>
                             <input type="password" id="nuevaContrasena" name="nuevaContrasena" class="form-control">
                         </div>
 
-                        <%-- Botones de acción --%>
+                        <%-- Action Buttons --%>
                         <div class="d-grid gap-2">
                             <button type="submit" class="btn btn-success btn-lg">Guardar Cambios</button>
-                            <a href="administracionUsuarios.jsp" class="btn btn-secondary btn-lg">Cancelar</a>
+                            <a href="<%= request.getContextPath() %>/pages/administracionUsuarios.jsp" class="btn btn-secondary btn-lg">Cancelar</a>
                         </div>
                     </form>
                 </div>
