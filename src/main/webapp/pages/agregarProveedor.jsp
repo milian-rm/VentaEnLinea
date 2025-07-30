@@ -96,7 +96,7 @@
                     <h1 class="mb-4 text-center">Agregar Nuevo Proveedor</h1>
                     <%-- El formulario enviará los datos al ServletProveedor para guardar el proveedor --%>
                     <form action="<%= request.getContextPath() %>/ProveedorServlet" method="post">
-                        <input type="hidden" name="accion" value="insertar">
+                        <input type="hidden" name="accion" value="agregar">
 
                         <div class="mb-3">
                             <label for="nombreProveedor" class="form-label">Nombre del Proveedor:</label>

@@ -79,7 +79,7 @@ public class ProveedorServlet extends HttpServlet {
     protected void editarProveedor(HttpServletRequest solicitud, HttpServletResponse respuesta) throws ServletException, IOException {
         ProveedorDAO dao = new ProveedorDAO();
 
-        int idActualizar = Integer.parseInt(solicitud.getParameter("id"));
+        int idActualizar = Integer.parseInt(solicitud.getParameter("idProveedor"));
         String nombreProveedor = solicitud.getParameter("nombreProveedor");
         String contacto = solicitud.getParameter("contacto");
         String telefono = solicitud.getParameter("telefono");

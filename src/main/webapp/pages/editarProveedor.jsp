@@ -107,31 +107,31 @@
 
                         <div class="mb-3">
                             <label for="nombreProveedor" class="form-label">Nombre del Proveedor:</label>
-                            <input type="text" id="nombreProveedor" name="nombreProveedor" class="form-control" value="Nombre Actual del Proveedor" required>
+                            <input type="text" id="nombreProveedor" name="nombreProveedor" class="form-control"  value="<%= pro.getNombreProveedor() %>">
                         </div>
                         <div class="mb-3">
                             <label for="contacto" class="form-label">Contacto:</label>
-                            <input type="text" id="contacto" name="contacto" class="form-control" value="Contacto Actual">
+                            <input type="text" id="contacto" name="contacto" class="form-control" value="<%= pro.getContacto() %>">
                         </div>
                         <div class="mb-3">
                             <label for="telefono" class="form-label">Teléfono:</label>
-                            <input type="text" id="telefono" name="telefono" class="form-control" value="123-456-7890">
+                            <input type="text" id="telefono" name="telefono" class="form-control" value="<%= pro.getTelefono() %>">
                         </div>
                         <div class="mb-3">
                             <label for="email" class="form-label">Email:</label>
-                            <input type="email" id="email" name="email" class="form-control" value="email.actual@proveedor.com">
+                            <input type="email" id="email" name="email" class="form-control" value="<%= pro.getEmail() %>">
                         </div>
                         <div class="mb-3">
                             <label for="direccion" class="form-label">Dirección:</label>
-                            <textarea id="direccion" name="direccion" class="form-control" rows="3" required>Dirección actual del proveedor.</textarea>
-                        </div>
+                            <input id="direccion" name="direccion" class="form-control" rows="3" required value="<%= pro.getDireccion() %>">
+                        </div>  
                         <div class="mb-3">
                             <label for="paisOrigen" class="form-label">País de Origen:</label>
-                            <input type="text" id="paisOrigen" name="paisOrigen" class="form-control" value="País Actual">
+                            <input type="text" id="paisOrigen" name="paisOrigen" class="form-control" value="<%= pro.getPaisOrigen() %>">
                         </div>
                         <div class="mb-3">
                             <label for="estado" class="form-label">Estado (Activo/Inactivo):</label>
-                            <input type="text" id="estado" name="estado" class="form-control" value="Activo">
+                            <input type="text" id="estado" name="estado" class="form-control" value="<%= pro.getEstado() %>">
                         </div>
 
                         <%-- Botones de acción --%>

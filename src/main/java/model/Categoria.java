@@ -28,8 +28,7 @@ public class Categoria {
     public Categoria() {
     }
 
-    public Categoria(int idCategoria, String nombreCategoria, String descripcion, String estado) {
-        this.idCategoria = idCategoria;
+    public Categoria(String nombreCategoria, String descripcion, String estado) {
         this.nombreCategoria = nombreCategoria;
         this.descripcion = descripcion;
         this.estado = estado;
