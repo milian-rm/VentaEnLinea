@@ -32,7 +32,7 @@
             <a href="pages/login.jsp">Iniciar Sesión</a>
             <a href="pages/register.jsp">Registrarse</a>
             <a href="pages/acercaDe.jsp">Acerca de</a>
-            <a href=""></a>
+            <a href="pages/admin-login.jsp">Administracion</a>
         </nav>
     </header>
 
