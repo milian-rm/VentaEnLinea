@@ -71,33 +71,47 @@ public class CategoriaServlet extends HttpServlet {
         solicitud.getRequestDispatcher("/pages/editarCategoria.jsp").forward(solicitud, respuesta);
     }
     
+    //Metodo para editar Categoria
+    protected void editarCategoria(HttpServletRequest solicitud, HttpServletResponse respuesta) throws ServletException, IOException {
+        CategoriaDAO dao = new CategoriaDAO();
+        
+        int idActualizar = Integer.parseInt(solicitud.getParameter("idCategoria"));
+        String nombreCategoria = solicitud.getParameter("nombreCategoria");
+        String descripcion = solicitud.getParameter("descripcion");
+        String estado = solicitud.getParameter("estado");
+        
+        Categoria categoria = dao.getCategoriaById(idActualizar);
+        categoria.setNombreCategoria(nombreCategoria);
+        categoria.setDescripcion(descripcion);
+        categoria.setEstado(estado);
+        
+        dao.updateCategoria(categoria);
+        
+        respuesta.sendRedirect("CategoriaServlet?accion=listar");
+    }
     
+    //Metodo para eliminar Categoria
+    protected void eliminarCategoria(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        int idEliminar = Integer.parseInt(request.getParameter("id"));
+        CategoriaDAO dao = new CategoriaDAO();
+        dao.deleteCategoria(idEliminar);
+        response.sendRedirect("CategoriaServlet?accion=listar");
+    }
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    //Metodo para listar Categoria
+    protected void listarCategoria(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        CategoriaDAO dao = new CategoriaDAO();
+        List<Categoria> listaCategoria = dao.getAllCategorias();
+        request.setAttribute("listaCategoria", listaCategoria);
+        request.getRequestDispatcher("/pages/administracionCategoria.jsp").forward(request, response);
+    }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    @Override
+   @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
-
+ 
     /**
      * Handles the HTTP <code>POST</code> method.
      *
@@ -111,7 +125,7 @@ public class CategoriaServlet extends HttpServlet {
             throws ServletException, IOException {
         processRequest(request, response);
     }
-
+ 
     /**
      * Returns a short description of the servlet.
      *

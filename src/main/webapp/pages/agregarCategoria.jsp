@@ -91,9 +91,9 @@
                 <div class="col-md-6 col-lg-5">
                     <h1 class="mb-4 text-center">Agregar Nueva Categoría</h1>
                     <%-- El formulario enviará los datos al ServletCategoria para guardar la categoría --%>
-                    <form action="ServletCategoria" method="post">
+                    <form action="<%= request.getContextPath() %>/CategoriaServlet" method="post">
                         <%-- Campo oculto para indicar al servlet la acción a realizar --%>
-                        <input type="hidden" name="accion" value="insertar">
+                        <input type="hidden" name="accion" value="agregar">
 
                         <div class="mb-3">
                             <label for="nombreCategoria" class="form-label">Nombre de la Categoría:</label>
@@ -115,7 +115,7 @@
                         <div class="d-grid gap-2">
                             <button type="submit" class="btn btn-success btn-lg">Guardar Categoría</button>
                             <%-- El botón Cancelar regresa a la página de administración de categorías --%>
-                            <a href="<%= request.getContextPath() %>/pages/administracionCategoria.jsp" class="btn btn-secondary btn-lg">Cancelar</a>
+                            <a href="<%= request.getContextPath() %>/CategoriaServlet?accion=listar" class="btn btn-secondary btn-lg">Cancelar</a>
                         </div>
                     </form>
                 </div>

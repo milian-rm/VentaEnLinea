@@ -3,7 +3,7 @@
     Created on : 29 jul 2025, 11:30:22
     Author     : informatica
 --%>
-
+<%@page import="model.Categoria"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%-- Importa tu clase Categoria si ya la tienes definida, para pre-llenar los campos --%>
 <%-- Ejemplo: <%@page import="model.Categoria" %> --%>
@@ -93,36 +93,35 @@
                 <div class="col-md-6 col-lg-5">
                     <h1 class="mb-4 text-center">Editar Categoría</h1>
                     <%-- El formulario enviará los datos al ServletCategoria para actualizar la categoría --%>
-                    <form action="ServletCategoria" method="post">
+                    <%
+                    Categoria cate = (Categoria) request.getAttribute("listaCategoria");
+                    %>
+                    <form action="<%= request.getContextPath() %>/CategoriaServlet" method="post">
                         <%-- Campo oculto para indicar al servlet la acción a realizar (actualizar) --%>
                         <input type="hidden" name="accion" value="actualizar">
                         <%-- Campo oculto para enviar el ID de la categoría que se está editando.
                              Este ID será necesario en el servlet para saber qué categoría actualizar. --%>
-                        <input type="hidden" name="idCategoria" value="<%= request.getParameter("id") != null ? request.getParameter("id") : "" %>">
+                        <input type="hidden" name="idCategoria" value="<%= cate.getIdCategoria() %>">
                         <%-- Nota: En un caso real, el 'value' del idCategoria vendría de un objeto Categoria cargado de la DB. --%>
 
                         <div class="mb-3">
                             <label for="nombreCategoria" class="form-label">Nombre de la Categoría:</label>
-                            <input type="text" id="nombreCategoria" name="nombreCategoria" class="form-control" value="Nombre Actual de la Categoría" required>
+                            <input type="text" id="nombreCategoria" name="nombreCategoria" class="form-control" value="<%= cate.getNombreCategoria() %>" >
                         </div>
                         <div class="mb-3">
                             <label for="descripcion" class="form-label">Descripción:</label>
-                            <textarea id="descripcion" name="descripcion" class="form-control" rows="3">Descripción actual de la categoría.</textarea>
+                            <input id="descripcion" name="descripcion" class="form-control" rows="3" required value="<%= cate.getDescripcion() %>">
                         </div>
                         <div class="mb-3">
-                            <label for="estado" class="form-label">Estado:</label>
-                            <select id="estado" name="estado" class="form-select" required>
-                                <option value="Activo" selected>Activo</option>
-                                <option value="Inactivo">Inactivo</option>
-                                <%-- En un caso real, la opción seleccionada dependería del valor actual de la categoría --%>
-                            </select>
+                            <label for="estado" class="form-label">Estado (Activo/Inactivo):</label>
+                            <input type="text" id="estado" name="estado" class="form-control" value="<%= cate.getEstado() %>">
                         </div>
 
                         <%-- Botones de acción --%>
                         <div class="d-grid gap-2">
                             <button type="submit" class="btn btn-success btn-lg">Guardar Cambios</button>
                             <%-- El botón Cancelar regresa a la página de administración de categorías --%>
-                            <a href="<%= request.getContextPath() %>/pages/administracionCategoria.jsp" class="btn btn-secondary btn-lg">Cancelar</a>
+                            <a href="<%= request.getContextPath() %>/CategoriaServlet?accion=listar" class="btn btn-secondary btn-lg">Cancelar</a>
                         </div>
                     </form>
                 </div>

@@ -3,7 +3,8 @@
     Created on : 29 jul 2025, 11:25:43
     Author     : bradley oliva
 --%>
-
+<%@page import="model.Categoria"%>
+<%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%-- ELIMINAR O COMENTAR LA SIGUIENTE LÍNEA CUANDO SE USE UN MODELO REAL: --%>
 <%-- <%@page import="model.Categoria" %> --%>
@@ -106,40 +107,30 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <%
+                        List<Categoria> lista = (List<Categoria>) request.getAttribute("listaCategoria");
+                        if (lista != null && !lista.isEmpty()) {
+                            for (Categoria cate : lista) {
+                            System.out.println(lista);                     
+                        %>
                         <%-- Ejemplo de una fila de categoría. En un caso real, esto sería dinámico desde la base de datos --%>
                         <tr>
-                            <td>1</td>
-                            <td>Guitarras Acústicas</td>
-                            <td>Variedad de guitarras acústicas para todos los niveles.</td>
-                            <td>Activo</td>
+                            <td><%= cate.getIdCategoria() %></td>
+                            <td><%= cate.getNombreCategoria() %></td>
+                            <td><%= cate.getDescripcion() %></td>
+                            <td><%= cate.getEstado() %></td>
+
                             <td>
-                                <a href="<%= request.getContextPath() %>/pages/editarCategoria.jsp?id=1" class="btn btn-warning btn-sm">Editar</a>
-                                <a href="<%= request.getContextPath() %>/ServletCategoria?accion=eliminar&id=1" class="btn btn-danger btn-sm" onclick="return confirm('¿Desea eliminar esta categoría?')">Eliminar</a>
+                                <a href="CategoriaServlet?accion=editar&id=<%= cate.getIdCategoria() %>" class="btn btn-warning btn-sm">Editar</a>
+                                <a href="CategoriaServlet?accion=eliminar&id=<%= cate.getIdCategoria() %>" class="btn btn-danger btn-sm" onclick="return confirm('¿Desea eliminar esta categoría?')">Eliminar</a>
                             </td>
                         </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Pedales de Efectos</td>
-                            <td>Amplia selección de pedales para transformar el sonido.</td>
-                            <td>Activo</td>
-                            <td>
-                                <a href="<%= request.getContextPath() %>/pages/editarCategoria.jsp?id=2" class="btn btn-warning btn-sm">Editar</a>
-                                <a href="<%= request.getContextPath() %>/ServletCategoria?accion=eliminar&id=2" class="btn btn-danger btn-sm" onclick="return confirm('¿Desea eliminar esta categoría?')">Eliminar</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>Cuerdas</td>
-                            <td>Cuerdas de alta calidad para guitarras eléctricas y acústicas.</td>
-                            <td>Inactivo</td>
-                            <td>
-                                <a href="<%= request.getContextPath() %>/pages/editarCategoria.jsp?id=3" class="btn btn-warning btn-sm">Editar</a>
-                                <a href="<%= request.getContextPath() %>/ServletCategoria?accion=eliminar&id=3" class="btn btn-danger btn-sm" onclick="return confirm('¿Desea eliminar esta categoría?')">Eliminar</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="5" class="text-center">Aquí se mostrarán las categorías de la base de datos (cuando se conecte). Estos son ejemplos.</td>
-                        </tr>
+                        <%
+                                }
+                            } else {
+                        %> 
+                        <tr><td colspan="5">No hay Categorias registrados</td></tr>
+                        <% } %>
                     </tbody>
                 </table>
             </div>

@@ -112,6 +112,9 @@
                         <a href="ProveedorServlet?accion=listar" class="text-danger text-decoration-none">
                             <strong class="text-danger">Administración de Proveedores</strong>
                         </a>
+                        <a href="CategoriaServlet?accion=listar" class="text-danger text-decoration-none">
+                            <strong class="text-danger">Administración de Categorias</strong>
+                        </a>
                     </li>
                 </ul>
             </div>
