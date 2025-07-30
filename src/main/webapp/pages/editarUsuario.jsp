@@ -118,6 +118,14 @@
                             <label for="nuevaContrasena" class="form-label">Nueva Contraseña (Dejar vacío para no cambiar):</label>
                             <input type="password" id="nuevaContrasena" name="nuevaContrasena" class="form-control">
                         </div>
+                        <div class="mb-3">
+                            <label for="rolUsuario" class="form-label">Rol:</label>
+                            <input type="text" id="rolUsuario" name="rolUsuario" class="form-control" value="Rol Actual del Usuario" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="nitUsuario" class="form-label">Nit:</label>
+                            <input type="text" id="nitUsuario" name="nitUsuario" class="form-control" value="NIT Actual del Usuario" required>
+                        </div>
 
                         <%-- Botones de acción --%>
                         <div class="d-grid gap-2">

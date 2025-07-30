@@ -103,6 +103,8 @@
                             <th>Teléfono</th>
                             <th>Dirección</th>
                             <th>Fecha Registro</th>
+                            <th>Rol</th>
+                            <th>NIT</th>
                             <th>Acciones</th>
                         </tr>
                     </thead>
@@ -117,6 +119,8 @@
                             <td>555-1234</td>
                             <td>Calle Falsa 123, Ciudad</td>
                             <td>2024-07-28 10:00:00</td>
+                            <td>Cliente</td>
+                            <td>65154115</td>
                             <td>
                                 <a href="editarUsuario.jsp?id=1" class="btn btn-warning btn-sm">Editar</a>
                                 <a href="ServletUsuarios?accion=eliminar&id=1" class="btn btn-danger btn-sm" onclick="return confirm('¿Desea eliminar a este usuario?')">Eliminar</a>
@@ -130,6 +134,8 @@
                             <td>555-5678</td>
                             <td>Avenida Siempre Viva 456, Pueblo</td>
                             <td>2024-07-27 15:30:00</td>
+                            <td>Cliente</td>
+                            <td>17616520</td>
                             <td>
                                 <a href="editarUsuario.jsp?id=2" class="btn btn-warning btn-sm">Editar</a>
                                 <a href="ServletUsuarios?accion=eliminar&id=2" class="btn btn-danger btn-sm" onclick="return confirm('¿Desea eliminar a este usuario?')">Eliminar</a>
