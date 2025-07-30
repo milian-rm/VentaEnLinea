@@ -90,7 +90,7 @@
                             <li><a href="#" class="text-danger text-decoration-none">Pedales</a></li>
                         </ul>
                     </li>
-                      
+
                     <li class="list-group-item">
                         <strong class="text-danger">Nosotros</strong>
                         <ul class="list-unstyled ps-3 mt-2">
@@ -108,6 +108,9 @@
                         </a>
                         <a href="DetalleServlet?accion=listar" class="text-danger text-decoration-none">
                             <strong class="text-danger">Administración de Detalles de Compra</strong>
+                        </a>
+                        <a href="ProveedorServlet?accion=listar" class="text-danger text-decoration-none">
+                            <strong class="text-danger">Administración de Proveedores</strong>
                         </a>
                     </li>
                 </ul>

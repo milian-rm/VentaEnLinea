@@ -36,8 +36,7 @@ public class Proveedor {
     public Proveedor() {
     }
 
-    public Proveedor(int idProveedor, String nombreProveedor, String contacto, String telefono, String email, String direccion, String paisOrigen, String estado) {
-        this.idProveedor = idProveedor;
+    public Proveedor(String nombreProveedor, String contacto, String telefono, String email, String direccion, String paisOrigen, String estado) {
         this.nombreProveedor = nombreProveedor;
         this.contacto = contacto;
         this.telefono = telefono;
