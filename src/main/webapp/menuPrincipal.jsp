@@ -109,6 +109,9 @@
                         <a href="DetalleServlet?accion=listar" class="text-danger text-decoration-none">
                             <strong class="text-danger">Administración de Detalles de Compra</strong>
                         </a>
+                        <a href="ReciboServlet?accion=listar" class="text-danger text-decoration-none">
+                            <strong class="text-danger">Administración de Recibos</strong>
+                        </a>
                     </li>
                 </ul>
             </div>
