@@ -100,7 +100,7 @@
                         </ul>
                     </li>
                     <li class="list-group-item">
-                        <a href="pages/administracionProductos.jsp" class="text-danger text-decoration-none">
+                        <a href="ProductoServlet?accion=listar" class="text-danger text-decoration-none">
                             <strong class="text-danger">Administración de productos</strong>
                         </a>
                         <a href="pages/administracionUsuarios.jsp" class="text-danger text-decoration-none">

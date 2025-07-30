@@ -1,6 +1,8 @@
 package model;
 
 import java.sql.Timestamp;
+import java.time.Instant;
+import static java.time.LocalDateTime.now;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -55,6 +57,7 @@ public class Producto {
         this.descripcionProducto = descripcionProducto;
         this.precio = precio;
         this.stock = stock;
+        fechaCreacion = Timestamp.from(Instant.now());
     }
     
     public Producto(int idProducto, Categoria categoria, Proveedor proveedor, String nombreProducto, String descripcionProducto, double precio, int stock, Timestamp fechaCreacion) {

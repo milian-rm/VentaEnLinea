@@ -111,5 +111,9 @@ public class Proveedor {
         this.estado = estado;
     }
     
+    @Override
+    public String toString() {
+        return "" + idProveedor + "";
+    }
     
 }

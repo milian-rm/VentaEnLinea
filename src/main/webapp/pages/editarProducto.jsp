@@ -4,6 +4,7 @@
     Author     : Bradley Oliva
 --%>
 
+<%@page import="model.Producto"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%-- Importa tu clase Producto si ya la tienes definida, para pre-llenar los campos --%>
 <%-- Ejemplo: <%@page import="model.Producto" %> --%>
@@ -79,54 +80,48 @@
                 <div class="col-md-6 col-lg-5">
                     <h1 class="mb-4 text-center">Editar Producto</h1> <%-- Título cambiado a "Editar Producto" --%>
                     <%-- El formulario enviará los datos al ServletEditarProducto para actualizar el producto --%>
-                    <form action="ServletEditarProducto" method="post"> <%-- La acción del formulario apunta a ServletEditarProducto --%>
-                        <%-- Campo oculto para indicar al servlet la acción a realizar (actualizar) --%>
+                    <%
+                    Producto p = (Producto) request.getAttribute("listaProducto");
+                    %>
+                    <form action="<%= request.getContextPath() %>/ProductoServlet" method="post"> 
+
                         <input type="hidden" name="accion" value="actualizar">
-                        <%-- Campo oculto para enviar el ID del producto que se está editando.
-                             Este ID será necesario en el servlet para saber qué producto actualizar. --%>
-                        <input type="hidden" name="idProducto" value="<%= request.getParameter("id") != null ? request.getParameter("id") : "" %>">
-                        <%-- Nota: En un caso real, el 'value' del idProducto vendría de un objeto Producto cargado del DB. --%>
+
+                        <input type="hidden" name="id" value="<%= p.getIdProducto() %>">
+                       
 
 
                         <div class="mb-3">
                             <label for="nombreProducto" class="form-label">Nombre del Producto: </label>
-                            <%-- El 'value' debe ser pre-llenado con el nombre actual del producto.
-                                 Aquí se usa un ejemplo genérico, deberías usar la propiedad del objeto Producto. --%>
-                            <input type="text" id="nombreProducto" name="nombreProducto" class="form-control" value="Nombre Actual del Producto" required>
+                          
+                            <input type="text" id="nombreProducto" name="nombreProducto" class="form-control" value="<%= p.getNombreProducto() %>" required>
                         </div>
                         <div class="mb-3">
                             <label for="descripcionProducto" class="form-label">Descripción: </label>
-                            <%-- La descripción también debe pre-llenarse. --%>
-                            <textarea id="descripcionProducto" name="descripcionProducto" class="form-control" rows="3">Descripción actual del producto.</textarea>
+                            <input id="descripcionProducto" name="descripcionProducto" class="form-control" value="<%= p.getDescripcionProducto()%>">
                         </div>
                         <div class="mb-3">
                             <label for="precio" class="form-label">Precio: </label>
-                            <input type="number" id="precio" name="precio" class="form-control" step="0.01" min="0" value="199.99" required>
+                            <input type="number" id="precio" name="precio" class="form-control" step="0.01" min="0" value="<%= p.getPrecio()%>">
                         </div>
                         <div class="mb-3">
                             <label for="stock" class="form-label">Stock: </label>
-                            <input type="number" id="stock" name="stock" class="form-control" min="0" value="30" required>
+                            <input type="number" id="stock" name="stock" class="form-control" min="0" value="<%= p.getStock()%>">
                         </div>
                         <div class="mb-3">
-                            <label for="categoria" class="form-label">Categoría: </label>
-                            <input type="text" id="categoria" name="categoria" class="form-control" value="Categoría Actual">
+                            <label for="idCategoria" class="form-label">Categoría: </label>
+                            <input type="text" id="categoria" name="idCategoria" class="form-control" value="<%= p.getCategoria() %>">
                         </div>
                         <div class="mb-3">
-                            <label for="marca" class="form-label">Marca: </label>
-                            <input type="text" id="marca" name="marca" class="form-control" value="Marca Actual">
+                            <label for="idProveedor" class="form-label">Marca: </label>
+                            <input type="text" id="marca" name="idProveedor" class="form-control" value="<%= p.getProveedor() %>">
                         </div>
-                         <%-- Campo para la imagen, si decides pre-llenarlo con la URL o mostrarla --%>
-                        <div class="mb-3">
-                            <label for="imagen" class="form-label">URL de la Imagen: </label>
-                            <input type="text" id="imagen" name="imagen" class="form-control" value="image/Guitarra Acustica.jpg">
-                             <%-- Puedes añadir una vista previa de la imagen aquí: --%>
-                             <img src="image/Guitarra Acustica.jpg" alt="Vista previa" style="width: 100px; height: auto; margin-top: 10px;">
-                        </div>
+                        
                         <%-- Botones de acción --%>
                         <div class="d-grid gap-2">
                             <button type="submit" class="btn btn-success btn-lg">Guardar Cambios</button> <%-- Texto del botón cambiado --%>
                             <%-- El botón Cancelar regresa a la página de administración de productos --%>
-                            <a href="administracionProductos.jsp" class="btn btn-secondary btn-lg">Cancelar</a>
+                            <a href="<%= request.getContextPath() %>/ProductoServlet?accion=listar" class="btn btn-secondary btn-lg">Cancelar</a>
                         </div>
                     </form>
                 </div>

@@ -4,33 +4,35 @@
  */
 package dao;
 
-import model.Producto;
+/**
+ *
+ * @author informatica
+ */
+import model.Proveedor;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import java.util.List;
-/**
- *
- * @author Emilio
- */
-public class ProductoDAO {
+import javax.persistence.NoResultException;
+
+public class ProveedorDAO {
 
     private static final EntityManagerFactory EMF = Persistence.createEntityManagerFactory("libreriaPU");
 
-    public void saveProducto(Producto producto) {
+    public void saveProveedor(Proveedor proveedor) {
         EntityManager em = null;
         try {
             em = EMF.createEntityManager();
             em.getTransaction().begin();
-            em.persist(producto);
+            em.persist(proveedor);
             em.getTransaction().commit();
         } catch (Exception e) {
             if (em != null && em.getTransaction().isActive()) {
                 em.getTransaction().rollback();
             }
-            System.err.println("Error al guardar producto: " + e.getMessage());
+            System.err.println("Error al guardar proveedor: " + e.getMessage());
             e.printStackTrace();
-            throw new RuntimeException("No se pudo guardar el producto", e);
+            throw new RuntimeException("No se pudo guardar el proveedor", e);
         } finally {
             if (em != null && em.isOpen()) {
                 em.close();
@@ -38,15 +40,15 @@ public class ProductoDAO {
         }
     }
 
-    public Producto getProductoById(Integer id) {
+    public Proveedor getProveedorById(Integer id) {
         EntityManager em = null;
         try {
             em = EMF.createEntityManager();
-            return em.find(Producto.class, id);
+            return em.find(Proveedor.class, id);
         } catch (Exception e) {
-            System.err.println("Error al buscar producto por ID: " + e.getMessage());
+            System.err.println("Error al buscar proveedor por ID: " + e.getMessage());
             e.printStackTrace();
-            throw new RuntimeException("Error buscando producto", e);
+            throw new RuntimeException("Error buscando proveedor por ID", e);
         } finally {
             if (em != null && em.isOpen()) {
                 em.close();
@@ -54,20 +56,20 @@ public class ProductoDAO {
         }
     }
 
-    public void updateProducto(Producto producto) {
+    public void updateProveedor(Proveedor proveedor) {
         EntityManager em = null;
         try {
             em = EMF.createEntityManager();
             em.getTransaction().begin();
-            em.merge(producto);
+            em.merge(proveedor);
             em.getTransaction().commit();
         } catch (Exception e) {
             if (em != null && em.getTransaction().isActive()) {
                 em.getTransaction().rollback();
             }
-            System.err.println("Error al actualizar producto: " + e.getMessage());
+            System.err.println("Error al actualizar proveedor: " + e.getMessage());
             e.printStackTrace();
-            throw new RuntimeException("No se pudo actualizar el producto", e);
+            throw new RuntimeException("No se pudo actualizar el proveedor", e);
         } finally {
             if (em != null && em.isOpen()) {
                 em.close();
@@ -75,41 +77,23 @@ public class ProductoDAO {
         }
     }
 
-    public void deleteProducto(Integer id) {
+    public void deleteProveedor(Integer id) {
         EntityManager em = null;
         try {
             em = EMF.createEntityManager();
             em.getTransaction().begin();
-            Producto producto = em.find(Producto.class, id);
-            if (producto != null) {
-                em.remove(producto);
+            Proveedor proveedor = em.find(Proveedor.class, id);
+            if (proveedor != null) {
+                em.remove(proveedor);
             }
             em.getTransaction().commit();
         } catch (Exception e) {
             if (em != null && em.getTransaction().isActive()) {
                 em.getTransaction().rollback();
             }
-            System.err.println("Error al eliminar producto: " + e.getMessage());
+            System.err.println("Error al eliminar proveedor: " + e.getMessage());
             e.printStackTrace();
-            throw new RuntimeException("No se pudo eliminar el producto", e);
-        } finally {
-            if (em != null && em.isOpen()) {
-                em.close();
-            }
-        }
-    }
-
-    // muestra o obtiene todos los productos de la base de datos
-    public List<Producto> getAllProductos() {
-        EntityManager em = null;
-        try {
-            em = EMF.createEntityManager();
-            // JPQL para seleccionar todos los productos
-            return em.createQuery("SELECT p FROM Producto p", Producto.class).getResultList();
-        } catch (Exception e) {
-            System.err.println("Error al obtener todos los productos: " + e.getMessage());
-            e.printStackTrace();
-            throw new RuntimeException("Error obteniendo productos", e);
+            throw new RuntimeException("No se pudo eliminar el proveedor", e);
         } finally {
             if (em != null && em.isOpen()) {
                 em.close();
@@ -117,5 +101,20 @@ public class ProductoDAO {
         }
     }
     
-    
+    //Obtiene TODOS los provedores de la base de datos
+    public List<Proveedor> getAllProveedores() {
+        EntityManager em = null;
+        try {
+            em = EMF.createEntityManager();
+            return em.createQuery("SELECT p FROM Proveedor p", Proveedor.class).getResultList();
+        } catch (Exception e) {
+            System.err.println("Error al obtener todos los proveedores: " + e.getMessage());
+            e.printStackTrace();
+            throw new RuntimeException("Error obteniendo proveedores", e);
+        } finally {
+            if (em != null && em.isOpen()) {
+                em.close();
+            }
+        }
+    }
 }

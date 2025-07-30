@@ -4,9 +4,9 @@
     Author     : Bradley Oliva
 --%>
 
+<%@page import="model.Producto"%>
+<%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%-- ELIMINAR O COMENTAR LA SIGUIENTE LÍNEA: --%>
-<%-- <%@page import="model.Producto" %> --%>
 
 <!DOCTYPE html>
 <html>
@@ -79,7 +79,7 @@
         <main class="container mt-5">
             <div class="d-flex justify-content-between align-items-center mb-4">
                 <h1 class="mb-0">Administración de Productos</h1>
-                <a href="agregarProducto.jsp" class="btn btn-success">Agregar Producto</a>
+                <a href="<%= request.getContextPath() %>/pages/agregarProducto.jsp" class="btn btn-success">Agregar Producto</a>
             </div>
 
             <div class="table-responsive">
@@ -87,52 +87,43 @@
                     <thead class="table-dark">
                         <tr>
                             <th>Código</th>
+                            <th>Categoría</th>
+                            <th>Marca</th>
                             <th>Nombre</th>
                             <th>Descripción</th>
                             <th>Precio</th>
                             <th>Stock</th>
-                            <th>Categoría</th>
-                            <th>Marca</th>
-                            <th>Fecha Creación</th> <%-- Agregado: Columna para Fecha Creación --%>
-                            <th>Imagen</th>
+                            <th>Fecha Creación</th> 
                             <th>Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
+                        <%
+                            List<Producto> lista = (List<Producto>) request.getAttribute("listaProducto");
+                            if (lista != null && !lista.isEmpty()) {
+                                for (Producto p : lista) {
+                                System.out.println(p);
+                        %>
                         <tr>
-                            <td>101</td>
-                            <td>Guitarra Acústica Modelo X</td>
-                            <td>Guitarra clásica de madera de abeto, ideal para principiantes.</td>
-                            <td>$299.99</td>
-                            <td>50</td>
-                            <td>Acústicas</td>
-                            <td>Yamaha</td>
-                            <td>2024-07-28 10:30:00</td> <%-- Ejemplo de Fecha Creación --%>
-                            <td><img src="image/Guitarra Acustica.jpg" alt="Producto" style="width: 80px; height: auto;"></td>
+                            <td><%= p.getIdProducto() %></td>
+                            <td><%= p.getCategoria() %></td>
+                            <td><%= p.getProveedor() %></td>
+                            <td><%= p.getNombreProducto() %></td>
+                            <td><%= p.getDescripcionProducto()%></td>
+                            <td><%= p.getPrecio() %></td>
+                            <td><%= p.getStock() %></td> 
+                            <td><%= p.getFechaCreacion() %></td>                        
                             <td>
-                                <a href="editarProducto.jsp?id=101" class="btn btn-warning btn-sm">Editar</a>
-                                <a href="eliminarProducto?id=101" class="btn btn-danger btn-sm" onclick="return confirm('¿Desea eliminar este producto?')">Eliminar</a>
+                                <a href="ProductoServlet?accion=editar&id=<%= p.getIdProducto()%>" class="btn btn-warning btn-sm">Editar</a>
+                                <a href="ProductoServlet?accion=eliminar&id=<%= p.getIdProducto()%>" class="btn btn-danger btn-sm" onclick="return confirm('¿Estás seguro de eliminar este usuario?');">Eliminar</a>
                             </td>
                         </tr>
-                        <tr>
-                            <td>102</td>
-                            <td>Pedal Distorsión ZVex</td>
-                            <td>Pedal de efectos de alta ganancia, ideal para rock y metal.</td>
-                            <td>$129.50</td>
-                            <td>25</td>
-                            <td>Pedales</td>
-                            <td>ZVex</td>
-                            <td>2024-07-27 14:00:00</td> <%-- Ejemplo de Fecha Creación --%>
-                            <td><img src="image/Pedal de Efectos.jpg" alt="Producto" style="width: 80px; height: auto;"></td>
-                            <td>
-                                <a href="editarProducto.jsp?id=102" class="btn btn-warning btn-sm">Editar</a>
-                                <a href="eliminarProducto?id=102" class="btn btn-danger btn-sm" onclick="return confirm('¿Desea eliminar este producto?')">Eliminar</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <%-- colspan ajustado para incluir la nueva columna de Fecha Creación --%>
-                            <td colspan="10" class="text-center">Aquí se mostrarán los productos de la base de datos (cuando se conecte)Estos son ejemplos.</td>
-                        </tr>
+                        <%
+                                }
+                            } else {
+                        %>
+                        <tr><td colspan="7">No hay usuarios registrados.</td></tr>
+                        <% } %>
                     </tbody>
                 </table>
             </div>
