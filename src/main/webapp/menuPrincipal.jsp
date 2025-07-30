@@ -90,6 +90,7 @@
                             <li><a href="#" class="text-danger text-decoration-none">Pedales</a></li>
                         </ul>
                     </li>
+                      
                     <li class="list-group-item">
                         <strong class="text-danger">Nosotros</strong>
                         <ul class="list-unstyled ps-3 mt-2">
@@ -97,6 +98,17 @@
                             <li><a href="#" class="text-danger text-decoration-none">Misión</a></li>
                             <li><a href="#" class="text-danger text-decoration-none">Valores</a></li>
                         </ul>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="pages/administracionProductos.jsp" class="text-danger text-decoration-none">
+                            <strong class="text-danger">Administración de productos</strong>
+                        </a>
+                        <a href="pages/administracionUsuarios.jsp" class="text-danger text-decoration-none">
+                            <strong class="text-danger">Administración de Usuarios</strong>
+                        </a>
+                        <a href="DetalleServlet?accion=listar" class="text-danger text-decoration-none">
+                            <strong class="text-danger">Administración de Detalles de Compra</strong>
+                        </a>
                     </li>
                 </ul>
             </div>
