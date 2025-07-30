@@ -18,68 +18,31 @@
             .table-responsive {
                 margin-top: 20px;
             }
+            /* Added for navbar brand image styling */
+            .navbar-brand img {
+                border-radius: 8px;
+            }
         </style>
     </head>
     <body>
         <nav class="navbar navbar-dark bg-danger px-3">
             <div class="container-fluid">
-<a class="navbar-brand" href="<%= request.getContextPath() %>/index.jsp"><img src="<%= request.getContextPath() %>/image/logo.png" alt="Logo" height="90"></a>
+                <a class="navbar-brand" href="<%= request.getContextPath() %>/index.jsp">
+                    <img src="<%= request.getContextPath() %>/image/logo.png" alt="Logo" height="90">
+                </a>
                 <div class="container mt-1 text-center text-light text-start" style="margin-left: 6rem;">
                     <p class="fs-4"><strong><h2>Bienvenido a tienda GuitarKinal</h2></strong></p>
                 </div>
-                <button class="btn btn-outline-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuPrincipal" aria-controls="menuPrincipal">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+
             </div>
         </nav>
 
-        <div class="offcanvas offcanvas-end" tabindex="-1" id="menuPrincipal" aria-labelledby="menuLabel">
-            <div class="offcanvas-header">
-                <h5 class="offcanvas-title" id="menuLabel">Menú</h5>
-
-                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Cerrar"></button>
-            </div>
-            <div class="offcanvas-body">
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item">
-                        <strong class="text-danger">Guitarras</strong>
-                        <ul class="list-unstyled ps-3 mt-2">
-                            <li><a href="#" class="text-danger text-decoration-none">Acústicas</a></li>
-                            <li><a href="#" class="text-danger text-decoration-none">Eléctricas</a></li>
-                            <li><a href="#" class="text-danger text-decoration-none">Electroacústicas</a></li>
-                            <li><a href="#" class="text-danger text-decoration-none">Clásicas</a></li>
-                        </ul>
-                    </li>
-                    <li class="list-group-item">
-                        <strong class="text-danger">Accesorios</strong>
-                        <ul class="list-unstyled ps-3 mt-2">
-                            <li><a href="#" class="text-danger text-decoration-none">Cuerdas</a></li>
-                            <li><a href="#" class="text-danger text-decoration-none">Afinadores</a></li>
-                            <li><a href="#" class="text-danger text-decoration-none">Estuches</a></li>
-                            <li><a href="#" class="text-danger text-decoration-none">Pedales</a></li>
-                        </ul>
-                    </li>
-                    <li class="list-group-item">
-                        <strong class="text-danger">Nosotros</strong>
-                        <ul class="list-unstyled ps-3 mt-2">
-                            <li><a href="#" class="text-danger text-decoration-none">Visión</a></li>
-                            <li><a href="#" class="text-danger text-decoration-none">Misión</a></li>
-                            <li><a href="#" class="text-danger text-decoration-none">Valores</a></li>
-                        </ul>
-                    </li>
-                    <li class="list-group-item">
-                        <a href="administracion.jsp" class="text-danger text-decoration-none">
-                            <strong class="text-danger">Administración de Productos</strong>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-
         <main class="container mt-5">
             <div class="d-flex justify-content-between align-items-center mb-4">
+                <%-- Botón "Volver al Panel" --%>
+                <a href="<%= request.getContextPath() %>/pages/admin_dashboard.jsp" class="btn btn-danger me-auto">Volver al Panel</a>
                 <h1 class="mb-0">Administración de Productos</h1>
-                <a href="<%= request.getContextPath() %>/pages/agregarProducto.jsp" class="btn btn-success">Agregar Producto</a>
+                <a href="<%= request.getContextPath() %>/pages/agregarProducto.jsp" class="btn btn-success ms-auto">Agregar Producto</a>
             </div>
 
             <div class="table-responsive">
@@ -93,7 +56,7 @@
                             <th>Descripción</th>
                             <th>Precio</th>
                             <th>Stock</th>
-                            <th>Fecha Creación</th> 
+                            <th>Fecha Creación</th>
                             <th>Acciones</th>
                         </tr>
                     </thead>
@@ -111,8 +74,8 @@
                             <td><%= p.getNombreProducto() %></td>
                             <td><%= p.getDescripcionProducto()%></td>
                             <td><%= p.getPrecio() %></td>
-                            <td><%= p.getStock() %></td> 
-                            <td><%= p.getFechaCreacion() %></td>                        
+                            <td><%= p.getStock() %></td>
+                            <td><%= p.getFechaCreacion() %></td>
                             <td>
                                 <a href="ProductoServlet?accion=editar&id=<%= p.getIdProducto()%>" class="btn btn-warning btn-sm">Editar</a>
                                 <a href="ProductoServlet?accion=eliminar&id=<%= p.getIdProducto()%>" class="btn btn-danger btn-sm" onclick="return confirm('¿Estás seguro de eliminar este usuario?');">Eliminar</a>
@@ -122,7 +85,7 @@
                                 }
                             } else {
                         %>
-                        <tr><td colspan="7">No hay usuarios registrados.</td></tr>
+                        <tr><td colspan="9">No hay usuarios registrados.</td></tr>
                         <% } %>
                     </tbody>
                 </table>

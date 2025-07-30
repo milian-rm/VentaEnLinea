@@ -25,7 +25,6 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
 </head>
 <body class="bg-light">
-    <!-- Header -->
     <nav class="navbar navbar-dark bg-danger">
         <div class="container-fluid">
             <a class="navbar-brand" href="../index.jsp">
@@ -43,24 +42,29 @@
 
     <div class="container-fluid mt-4">
         <div class="row">
-            <!-- Sidebar -->
             <div class="col-md-3 col-lg-2">
                 <div class="card">
                     <div class="card-header bg-dark text-white">
                         <h6 class="mb-0"><i class="bi bi-gear"></i> Mantenimientos</h6>
                     </div>
                     <div class="list-group list-group-flush">
-                        <a href="usuarios.jsp" class="list-group-item list-group-item-action">
-                            <i class="bi bi-people"></i> Gestión de Usuarios
+                        <a href="administracionUsuarios.jsp" class="list-group-item list-group-item-action">
+                            <i class="bi bi-people"></i> Administración de Usuarios
+                        </a>
+                        <a href="../ProductoServlet?accion=listar" class="list-group-item list-group-item-action">
+                            <i class="bi bi-box"></i> Administración de Productos
+                        </a>
+                        <a href="../DetalleServlet?accion=listar" class="list-group-item list-group-item-action">
+                            <i class="bi bi-clipboard-check"></i> Administración de Detalles de Compra
+                        </a>
+                        <a href="../ReciboServlet?accion=listar" class="list-group-item list-group-item-action">
+                            <i class="bi bi-receipt"></i> Administración de Recibos
                         </a>
                         <a href="categorias.jsp" class="list-group-item list-group-item-action">
                             <i class="bi bi-tags"></i> Categorías
                         </a>
                         <a href="proveedores.jsp" class="list-group-item list-group-item-action">
                             <i class="bi bi-building"></i> Proveedores
-                        </a>
-                        <a href="productos.jsp" class="list-group-item list-group-item-action">
-                            <i class="bi bi-box"></i> Productos
                         </a>
                         <a href="compras.jsp" class="list-group-item list-group-item-action">
                             <i class="bi bi-cart"></i> Compras
@@ -69,10 +73,8 @@
                 </div>
             </div>
 
-            <!-- Main Content -->
             <div class="col-md-9 col-lg-10">
                 <div class="row">
-                    <!-- Estadísticas -->
                     <div class="col-md-3 mb-4">
                         <div class="card text-white bg-primary">
                             <div class="card-body">
@@ -130,7 +132,6 @@
                     </div>
                 </div>
 
-                <!-- Accesos Rápidos -->
                 <div class="row">
                     <div class="col-12">
                         <div class="card">
@@ -140,19 +141,19 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-md-4 mb-3">
-                                        <a href="usuarios.jsp?action=create" class="btn btn-primary w-100">
+                                        <a href="agregarUsuario.jsp?action=create" class="btn btn-primary w-100">
                                             <i class="bi bi-person-plus"></i><br>
                                             Crear Nuevo Usuario
                                         </a>
                                     </div>
                                     <div class="col-md-4 mb-3">
-                                        <a href="productos.jsp?action=create" class="btn btn-success w-100">
+                                        <a href="agregarProducto.jsp?action=create" class="btn btn-success w-100">
                                             <i class="bi bi-plus-square"></i><br>
                                             Agregar Producto
                                         </a>
                                     </div>
                                     <div class="col-md-4 mb-3">
-                                        <a href="categorias.jsp?action=create" class="btn btn-warning w-100">
+                                        <a href="agregarCategoria.jsp?action=create" class="btn btn-warning w-100">
                                             <i class="bi bi-tag"></i><br>
                                             Nueva Categoría
                                         </a>
@@ -163,7 +164,6 @@
                     </div>
                 </div>
 
-                <!-- Actividad Reciente -->
                 <div class="row mt-4">
                     <div class="col-12">
                         <div class="card">
@@ -172,8 +172,7 @@
                             </div>
                             <div class="card-body">
                                 <p class="text-muted">Las últimas acciones se mostrarán aquí...</p>
-                                <!-- Aquí puedes agregar un log de actividades después -->
-                            </div>
+                                </div>
                         </div>
                     </div>
                 </div>
