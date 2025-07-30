@@ -228,7 +228,7 @@ public class AdminUsuarioServlet extends HttpServlet {
             usuario.setDireccion(direccion != null ? direccion.trim() : "");
             usuario.setContrasena(contrasena); // En producción: hashear
             usuario.setNit(nit.trim());
-            usuario.setRol(rol);
+            usuario.setRol(String.valueOf(rol));
             usuario.setFechaRegistro(Timestamp.valueOf(LocalDateTime.now()));
 
             em.persist(usuario);
@@ -292,7 +292,7 @@ public class AdminUsuarioServlet extends HttpServlet {
             
             if (rolString != null && !rolString.isEmpty()) {
                 try {
-                    usuario.setRol(RolUsuario.valueOf(rolString));
+                    usuario.setRol(String.valueOf(RolUsuario.valueOf(rolString)));
                 } catch (IllegalArgumentException e) {
                     // Mantener el rol actual si es inválido
                 }
