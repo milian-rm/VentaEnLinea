@@ -17,7 +17,7 @@
         <style>
             body {
                 font-family: 'Open Sans', sans-serif;
-                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                background: linear-gradient(135deg, #b30000 0%, black 100%);
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
@@ -67,9 +67,15 @@
             }
 
             @keyframes pulse {
-                0% { transform: scale(1); }
-                50% { transform: scale(1.05); }
-                100% { transform: scale(1); }
+                0% {
+                    transform: scale(1);
+                }
+                50% {
+                    transform: scale(1.05);
+                }
+                100% {
+                    transform: scale(1);
+                }
             }
 
             .admin-container h2 {
@@ -117,7 +123,7 @@
             }
 
             input[type="submit"] {
-                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                background: #b30000;
                 color: white;
                 padding: 16px;
                 border: none;
@@ -133,7 +139,7 @@
 
             input[type="submit"]:hover {
                 transform: translateY(-3px);
-                box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+                box-shadow: 0 10px 25px rgba(178, 34, 34, 0.4);
             }
 
             input[type="submit"]:active {
@@ -151,7 +157,7 @@
             }
 
             .logo-small {
-                width: 80px;
+                width: 200px;
                 height: auto;
                 margin-bottom: 20px;
                 opacity: 0.8;
@@ -165,12 +171,10 @@
         </a>
 
         <div class="admin-container">
-            <!-- Logo pequeño -->
-            <img src="https://i.imgur.com/GUP9CG7.png" alt="Logo GuitarKinal" class="logo-small"/>
-            
-            <!-- Icono de administrador -->
+
+            <!-- Icono -->
             <div class="admin-icon">
-                <i class="bi bi-shield-lock"></i>
+                <i><img src="https://i.imgur.com/GUP9CG7.png" alt="Logo GuitarKinal" class="logo-small"/></i>
             </div>
 
             <h2>Panel de Administración</h2>
@@ -201,7 +205,7 @@
                     }
             %>
             <div class="alert alert-danger" role="alert">
-                <i class="bi bi-exclamation-circle"></i> <%= mensaje %>
+                <i class="bi bi-exclamation-circle"></i> <%= mensaje%>
             </div>
             <%
                 }
