@@ -104,7 +104,7 @@ public class CompraDAO {
         EntityManager em = null;
         try {
             em = EMF.createEntityManager();
-            return em.createQuery("SELECT c FROM Compras c", Compra.class).getResultList();
+            return em.createQuery("SELECT c FROM Compra c", Compra.class).getResultList();
         } catch (Exception e) {
             System.err.println("Error al obtener todas las compras: " + e.getMessage());
             e.printStackTrace();

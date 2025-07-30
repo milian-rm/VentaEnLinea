@@ -4,6 +4,8 @@
     Author     : Bradley Oliva
 --%>
 
+<%@page import="model.Compra"%>
+<%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -20,8 +22,8 @@
     <body class="d-flex flex-column min-vh-100">
         <nav class="navbar navbar-dark bg-danger px-3">
             <div class="container-fluid">
-                <a class="navbar-brand" href="<%= request.getContextPath() %>/index.jsp">
-                    <img src="<%= request.getContextPath() %>/image/logo.png" alt="Logo" height="90">
+                <a class="navbar-brand" href="<%= request.getContextPath()%>/index.jsp">
+                    <img src="<%= request.getContextPath()%>/image/logo.png" alt="Logo" height="90">
                 </a>
                 <div class="container mt-1 text-center text-light text-start" style="margin-left: 6rem;">
                     <p class="fs-4"><strong><h2>Bienvenido a tienda GuitarKinal</h2></strong></p>
@@ -66,22 +68,22 @@
                         </ul>
                     </li>
                     <li class="list-group-item">
-                        <a href="<%= request.getContextPath() %>/pages/administracionProductos.jsp" class="text-danger text-decoration-none">
+                        <a href="<%= request.getContextPath()%>/pages/administracionProductos.jsp" class="text-danger text-decoration-none">
                             <strong class="text-danger">Administración de Productos</strong>
                         </a>
                     </li>
                     <li class="list-group-item">
-                        <a href="<%= request.getContextPath() %>/pages/administracionUsuarios.jsp" class="text-danger text-decoration-none">
+                        <a href="<%= request.getContextPath()%>/pages/administracionUsuarios.jsp" class="text-danger text-decoration-none">
                             <strong class="text-danger">Administración de Usuarios</strong>
                         </a>
                     </li>
                     <li class="list-group-item">
-                        <a href="<%= request.getContextPath() %>/pages/administracionDetalleCompra.jsp" class="text-danger text-decoration-none">
+                        <a href="<%= request.getContextPath()%>/pages/administracionDetalleCompra.jsp" class="text-danger text-decoration-none">
                             <strong class="text-danger">Administración de Detalles de Compra</strong>
                         </a>
                     </li>
                     <li class="list-group-item">
-                        <a href="<%= request.getContextPath() %>/pages/administracionCompras.jsp" class="text-danger text-decoration-none">
+                        <a href="<%= request.getContextPath()%>/pages/administracionCompras.jsp" class="text-danger text-decoration-none">
                             <strong class="text-danger">Administración de Compras</strong>
                         </a>
                     </li>
@@ -92,7 +94,7 @@
         <main class="container mt-5 flex-grow-1">
             <div class="d-flex justify-content-between align-items-center mb-4">
                 <h1 class="mb-0">Administración de Compras</h1>
-                <a href="agregarCompra.jsp" class="btn btn-success">Agregar Nueva Compra</a>
+                <a href="<%= request.getContextPath() %>/pages/agregarCompra.jsp" class="btn btn-success">Agregar Nueva Compra</a>
             </div>
 
             <div class="table-responsive">
@@ -108,40 +110,27 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <%
+                            List<Compra> lista = (List<Compra>) request.getAttribute("listaCompra");
+                            if (lista != null && !lista.isEmpty()) {
+                                for (Compra c : lista) {
+                        %>
                         <%-- Ejemplos de datos de compras --%>
                         <tr>
-                            <td>C001</td>
-                            <td>U001</td>
-                            <td>2024-07-25 10:00:00</td>
-                            <td>$599.99</td>
-                            <td>Completada</td>
+                            <td><%= c.getIdOrden()%></td>
+                            <td><%= c.getUsuario()%></td>
+                            <td><%= c.getFechaOrden()%></td>
+                            <td><%= c.getTotalOrden()%></td>
+                            <td><%= c.getEstadoOrden()%></td>
                             <td>
-                                <a href="editarCompra.jsp?id=C001" class="btn btn-warning btn-sm">Editar</a>
-                                <a href="eliminarCompra?id=C001" class="btn btn-danger btn-sm" onclick="return confirm('¿Desea eliminar esta compra?')">Eliminar</a>
+                                <a href="ServletCompra?accion=editar&id=<%= c.getIdOrden()%>" class="btn btn-warning btn-sm">Editar</a>
+                                <a href="ServletCompra?accion=eliminar&id=<%= c.getIdOrden()%>" class="btn btn-danger btn-sm" onclick="return confirm('¿Desea eliminar esta compra?')">Eliminar</a>
                             </td>
                         </tr>
-                        <tr>
-                            <td>C002</td>
-                            <td>U002</td>
-                            <td>2024-07-26 14:30:00</td>
-                            <td>$150.00</td>
-                            <td>Pendiente</td>
-                            <td>
-                                <a href="editarCompra.jsp?id=C002" class="btn btn-warning btn-sm">Editar</a>
-                                <a href="eliminarCompra?id=C002" class="btn btn-danger btn-sm" onclick="return confirm('¿Desea eliminar esta compra?')">Eliminar</a>
-                            </td>
-                        </tr>
-                         <tr>
-                            <td>C003</td>
-                            <td>U001</td>
-                            <td>2024-07-27 09:15:00</td>
-                            <td>$85.50</td>
-                            <td>Enviado</td>
-                            <td>
-                                <a href="editarCompra.jsp?id=C003" class="btn btn-warning btn-sm">Editar</a>
-                                <a href="eliminarCompra?id=C003" class="btn btn-danger btn-sm" onclick="return confirm('¿Desea eliminar esta compra?')">Eliminar</a>
-                            </td>
-                        </tr>
+                        <%
+                            }
+                        }
+                        %>
                         <tr>
                             <td colspan="6" class="text-center text-muted">
                                 Aquí se mostrarán las compras de la base de datos (cuando se conecte). Estos son ejemplos.

@@ -89,7 +89,7 @@ public class ServletCompra extends HttpServlet {
 
         
         solicitud.setAttribute("compraEditar", comp);
-        solicitud.getRequestDispatcher("/pages/compraEditar.jsp").forward(solicitud, respuesta);
+        solicitud.getRequestDispatcher("/pages/editarCompra.jsp").forward(solicitud, respuesta);
 
         //acción es igual a "editar"
     }
@@ -109,7 +109,7 @@ public class ServletCompra extends HttpServlet {
         Usuario usu = usuDao.getUsuarioById(idUsu);
         
         comp.setUsuario(usu);
-        comp.setTotalOrden(Integer.parseInt(solicitud.getParameter("totalOrden")));
+        comp.setTotalOrden(Double.parseDouble(solicitud.getParameter("totalOrden")));
         comp.setEstadoOrden(solicitud.getParameter("estadoOrden"));
 
         dao.updateCompra(comp);
@@ -136,7 +136,7 @@ public class ServletCompra extends HttpServlet {
 
         request.setAttribute("listaCompra", listaCompras);
         
-        request.getRequestDispatcher("/pages/listarCompra.jsp").forward(request, response);
+        request.getRequestDispatcher("/pages/administracionCompras.jsp").forward(request, response);
     }
 
 

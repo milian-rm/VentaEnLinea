@@ -26,7 +26,7 @@ public class Compra {
     @JoinColumn(name = "idUsuario", nullable = false)
     private Usuario usuario;
 
-    @Column(name = "fechaOrden", nullable = false)
+    @Column(name = "fechaOrden", nullable = false, insertable = false, updatable = false)
     private Timestamp fechaOrden;
 
     @Column(name = "totalOrden", nullable = false)

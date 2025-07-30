@@ -92,9 +92,9 @@
                 <div class="col-md-6 col-lg-5">
                     <h1 class="mb-4 text-center">Agregar Nueva Compra</h1>
                     <%-- El formulario enviará los datos al ServletAgregarCompra para guardar la compra --%>
-                    <form action="ServletAgregarCompra" method="post">
+                    <form action="${pageContext.request.contextPath}/ServletCompra" method="post">
                         <%-- Campo oculto para indicar al servlet la acción a realizar --%>
-                        <input type="hidden" name="accion" value="insertar">
+                        <input type="hidden" name="accion" value="agregar">
 
                         <div class="mb-3">
                             <label for="idUsuario" class="form-label">ID Usuario:</label>
@@ -102,17 +102,12 @@
                             <input type="text" id="idUsuario" name="idUsuario" class="form-control" required>
                         </div>
                         <div class="mb-3">
-                            <label for="fechaCompra" class="form-label">Fecha de Compra:</label>
-                            <%-- Usamos datetime-local para fecha y hora. El valor inicial puede ser la fecha y hora actual. --%>
-                            <input type="datetime-local" id="fechaCompra" name="fechaCompra" class="form-control" value="<%= new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm").format(new java.util.Date()) %>" required>
-                        </div>
-                        <div class="mb-3">
                             <label for="totalCompra" class="form-label">Total:</label>
-                            <input type="number" id="totalCompra" name="totalCompra" class="form-control" step="0.01" min="0" required>
+                            <input type="number" id="totalCompra" name="totalOrden" class="form-control" step="0.01" min="0" required>
                         </div>
                         <div class="mb-3">
                             <label for="estadoCompra" class="form-label">Estado:</label>
-                            <select id="estadoCompra" name="estadoCompra" class="form-select" required>
+                            <select id="estadoCompra" name="estadoOrden" class="form-select" required>
                                 <option value="Pendiente" selected>Pendiente</option>
                                 <option value="Completada">Completada</option>
                                 <option value="Enviado">Enviado</option>
@@ -124,9 +119,9 @@
                         <div class="d-grid gap-2">
                             <button type="submit" class="btn btn-success btn-lg">Guardar Compra</button>
                             <%-- El botón Cancelar regresa a la página de administración de compras --%>
-                            <a href="<%= request.getContextPath() %>/pages/administracionCompras.jsp" class="btn btn-secondary btn-lg">Cancelar</a>
                         </div>
                     </form>
+                            <a href="ServletCompra?accion=listar" class="btn btn-secondary btn-lg">Cancelar</a>
                 </div>
             </div>
         </main>

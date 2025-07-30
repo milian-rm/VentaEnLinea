@@ -4,6 +4,7 @@
     Author     : Bradley Oliva
 --%>
 
+<%@page import="model.Compra"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%-- Importa tu clase Compra si ya la tienes definida, para pre-llenar los campos --%>
 <%-- Ejemplo: <%@page import="model.Compra" %> --%>
@@ -19,7 +20,7 @@
         <%-- Barra de Navegación Superior --%>
         <nav class="navbar navbar-dark bg-danger px-3">
             <div class="container-fluid">
-                <a class="navbar-brand" href="<%= request.getContextPath() %>/index.jsp"><img src="<%= request.getContextPath() %>/image/logo.png" alt="Logo" height="90"></a>
+                <a class="navbar-brand" href="<%= request.getContextPath()%>/index.jsp"><img src="<%= request.getContextPath()%>/image/logo.png" alt="Logo" height="90"></a>
 
                 <div class="container mt-1 text-center text-light text-start" style="margin-left: 6rem;">
                     <p class="fs-4"><strong><h2>Bienvenido a tienda GuitarKinal</h2></strong></p>
@@ -65,22 +66,22 @@
                         </ul>
                     </li>
                     <li class="list-group-item">
-                        <a href="<%= request.getContextPath() %>/pages/administracionProductos.jsp" class="text-danger text-decoration-none">
+                        <a href="<%= request.getContextPath()%>/pages/administracionProductos.jsp" class="text-danger text-decoration-none">
                             <strong class="text-danger">Administración de Productos</strong>
                         </a>
                     </li>
                     <li class="list-group-item">
-                        <a href="<%= request.getContextPath() %>/pages/administracionUsuarios.jsp" class="text-danger text-decoration-none">
+                        <a href="<%= request.getContextPath()%>/pages/administracionUsuarios.jsp" class="text-danger text-decoration-none">
                             <strong class="text-danger">Administración de Usuarios</strong>
                         </a>
                     </li>
                     <li class="list-group-item">
-                        <a href="<%= request.getContextPath() %>/pages/administracionDetalleCompra.jsp" class="text-danger text-decoration-none">
+                        <a href="<%= request.getContextPath()%>/pages/administracionDetalleCompra.jsp" class="text-danger text-decoration-none">
                             <strong class="text-danger">Administración de Detalles de Compra</strong>
                         </a>
                     </li>
                     <li class="list-group-item">
-                        <a href="<%= request.getContextPath() %>/pages/administracionCompras.jsp" class="text-danger text-decoration-none">
+                        <a href="<%= request.getContextPath()%>/pages/administracionCompras.jsp" class="text-danger text-decoration-none">
                             <strong class="text-danger">Administración de Compras</strong>
                         </a>
                     </li>
@@ -93,34 +94,39 @@
             <div class="row justify-content-center">
                 <div class="col-md-6 col-lg-5">
                     <h1 class="mb-4 text-center">Editar Compra</h1>
+
+                    <%
+                        Compra comp = (Compra) request.getAttribute("compraEditar");
+                    %>
+
                     <%-- El formulario enviará los datos al ServletEditarCompra para actualizar la compra --%>
-                    <form action="ServletEditarCompra" method="post">
+                    <form action="ServletCompra" method="post">
                         <%-- Campo oculto para indicar al servlet la acción a realizar (actualizar) --%>
                         <input type="hidden" name="accion" value="actualizar">
                         <%-- Campo oculto para enviar el ID de la compra que se está editando.
                              Este ID será necesario en el servlet para saber qué compra actualizar. --%>
-                        <input type="hidden" name="idCompra" value="<%= request.getParameter("id") != null ? request.getParameter("id") : "" %>">
+                        <input type="hidden" name="id" value="<%= comp.getIdOrden()%>">
                         <%-- Nota: En un caso real, el 'value' del idCompra vendría de un objeto Compra cargado de la DB. --%>
 
                         <div class="mb-3">
                             <label for="idUsuario" class="form-label">ID Usuario:</label>
                             <%-- El 'value' debe ser pre-llenado con el ID de usuario actual de la compra. --%>
-                            <input type="text" id="idUsuario" name="idUsuario" class="form-control" value="U001" required>
+                            <input type="text" id="idUsuario" name="idUsuario" class="form-control" value="<%= comp.getUsuario()%>" required>
                         </div>
                         <div class="mb-3">
                             <label for="fechaCompra" class="form-label">Fecha de Compra:</label>
                             <%-- Para la fecha, puedes usar type="date" o type="datetime-local" si necesitas la hora.
                                  El formato del value debe coincidir con el tipo de input. --%>
-                            <input type="datetime-local" id="fechaCompra" name="fechaCompra" class="form-control" value="2024-07-25T10:00" required>
+                            <input type="datetime-local" id="fechaCompra" name="fechaCompra" class="form-control" value="<%= comp.getFechaOrden()%>" required>
                         </div>
                         <div class="mb-3">
                             <label for="totalCompra" class="form-label">Total:</label>
-                            <input type="number" id="totalCompra" name="totalCompra" class="form-control" step="0.01" min="0" value="599.99" required>
+                            <input type="text" id="totalCompra" name="totalOrden" class="form-control" step="0.01" min="0" value="<%= comp.getTotalOrden()%>" required>
                         </div>
                         <div class="mb-3">
                             <label for="estadoCompra" class="form-label">Estado:</label>
-                            <select id="estadoCompra" name="estadoCompra" class="form-select" required>
-                                <option value="Completada" selected>Completada</option> <%-- 'selected' si es el estado actual --%>
+                            <select id="estadoCompra" name="estadoOrden" class="form-select" required>
+                                <option value="Completada">Completada</option> <%-- 'selected' si es el estado actual --%>
                                 <option value="Pendiente">Pendiente</option>
                                 <option value="Enviado">Enviado</option>
                                 <option value="Cancelada">Cancelada</option>
@@ -131,7 +137,7 @@
                         <div class="d-grid gap-2">
                             <button type="submit" class="btn btn-success btn-lg">Guardar Cambios</button>
                             <%-- El botón Cancelar regresa a la página de administración de compras --%>
-                            <a href="<%= request.getContextPath() %>/pages/administracionCompras.jsp" class="btn btn-secondary btn-lg">Cancelar</a>
+                            <a href="ServletCompra?accion=listar" class="btn btn-secondary btn-lg">Cancelar</a>
                         </div>
                     </form>
                 </div>
