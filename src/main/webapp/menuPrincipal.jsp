@@ -1,9 +1,3 @@
-<%-- 
-    Document   : menuPrincipal
-    Created on : 23 jul 2025, 18:20:36
-    Author     : Marcos
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html> 
 <html> 
@@ -90,7 +84,7 @@
                             <li><a href="#" class="text-danger text-decoration-none">Pedales</a></li>
                         </ul>
                     </li>
-                      
+                     
                     <li class="list-group-item">
                         <strong class="text-danger">Nosotros</strong>
                         <ul class="list-unstyled ps-3 mt-2">
@@ -98,14 +92,6 @@
                             <li><a href="#" class="text-danger text-decoration-none">Misión</a></li>
                             <li><a href="#" class="text-danger text-decoration-none">Valores</a></li>
                         </ul>
-                    </li>
-                    <li class="list-group-item">
-                        <a href="pages/administracionProductos.jsp" class="text-danger text-decoration-none">
-                            <strong class="text-danger">Administración de productos</strong>
-                        </a>
-                        <a href="ServletUsuario?accion=listar" class="text-danger text-decoration-none">
-                            <strong class="text-danger">Administración de Usuarios</strong>
-                        </a>
                     </li>
                 </ul>
             </div>

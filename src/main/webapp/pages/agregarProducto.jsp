@@ -76,9 +76,9 @@
                 <div class="col-md-6 col-lg-5">
                     <h1 class="mb-4 text-center">Agregar Nuevo Producto</h1>
                     <%-- El formulario enviará los datos al ServletAgregarProducto para guardar el producto --%>
-                    <form action="ServletAgregarProducto" method="post">
+                    <form action="<%= request.getContextPath() %>/ProductoServlet" method="post">
                         <%-- Campo oculto para indicar al servlet la acción a realizar --%>
-                        <input type="hidden" name="accion" value="insertar">
+                        <input type="hidden" name="accion" value="agregar">
 
                         <div class="mb-3">
                             <label for="nombreProducto" class="form-label">Nombre del Producto: </label>
@@ -99,18 +99,18 @@
                             <input type="number" id="stock" name="stock" class="form-control" min="0" required>
                         </div>
                         <div class="mb-3">
-                            <label for="categoria" class="form-label">Categoría: </label>
-                            <input type="text" id="categoria" name="categoria" class="form-control">
+                            <label for="idCategoria" class="form-label">Categoría: </label>
+                            <input type="text" id="categoria" name="idCategoria" class="form-control">
                         </div>
                         <div class="mb-3">
-                            <label for="marca" class="form-label">Marca: </label>
-                            <input type="text" id="marca" name="marca" class="form-control">
+                            <label for="idProveedor" class="form-label">Marca: </label>
+                            <input type="text" id="marca" name="idProveedor" class="form-control">
                         </div>
                         <%-- Botones de acción --%>
                         <div class="d-grid gap-2">
                             <button type="submit" class="btn btn-success btn-lg">Guardar Producto</button>
                             <%-- El botón Cancelar ahora regresa a la página de administración de productos --%>
-                            <a href="administracionProductos.jsp" class="btn btn-secondary btn-lg">Cancelar</a>
+                            <a href="<%= request.getContextPath() %>/ProductoServlet?accion=listar" class="btn btn-secondary btn-lg">Cancelar</a>
                         </div>
                     </form>
                 </div>

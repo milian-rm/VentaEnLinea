@@ -7,6 +7,9 @@
     <!--class de entidad-->
     <non-jta-data-source>jdbc/libreria</non-jta-data-source>
     <class>model.Usuario</class>
+    <class>model.DetalleCompra</class>
+    <class>model.Producto</class>
+    <class>model.Recibo</class>
     <!--propiedades-->
     <properties>
       <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL8Dialect"/>

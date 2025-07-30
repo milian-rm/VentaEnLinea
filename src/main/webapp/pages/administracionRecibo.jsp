@@ -1,26 +1,29 @@
 <%--
-    Document   : administracion
-    Created on : 28 jul 2025, 15:40:00
-    Author     : Bradley Oliva
+    Document   : administracionRecibo
+    Created on : 29/07/2025, 09:07:13
+    Author     : informatica
 --%>
 
-<%@page import="model.Producto"%>
+<%@page import="model.Recibo"%>
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%-- <%@page import="java.util.List, model.Recibo" %> --%>
 
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Administración de Productos - GuitarKinal</title>
+        <title>Administración de Recibos - GuitarKinal</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
         <style>
             .table-responsive {
                 margin-top: 20px;
             }
-            /* Added for navbar brand image styling */
             .navbar-brand img {
                 border-radius: 8px;
+            }
+            .btn-sm {
+                margin-right: 5px;
             }
         </style>
     </head>
@@ -28,7 +31,7 @@
         <nav class="navbar navbar-dark bg-danger px-3">
             <div class="container-fluid">
                 <a class="navbar-brand" href="<%= request.getContextPath() %>/index.jsp">
-                    <img src="<%= request.getContextPath() %>/image/logo.png" alt="Logo" height="90">
+                    <img src="<%= request.getContextPath() %>/image/logo.png" alt="Logo GuitarKinal" height="90">
                 </a>
                 <div class="container mt-1 text-center text-light text-start" style="margin-left: 6rem;">
                     <p class="fs-4"><strong><h2>Bienvenido a tienda GuitarKinal</h2></strong></p>
@@ -37,55 +40,51 @@
             </div>
         </nav>
 
+
+        <%-- Contenido Principal: Tabla de Recibos --%>
         <main class="container mt-5">
             <div class="d-flex justify-content-between align-items-center mb-4">
                 <%-- Botón "Volver al Panel" --%>
                 <a href="<%= request.getContextPath() %>/pages/admin_dashboard.jsp" class="btn btn-danger me-auto">Volver al Panel</a>
-                <h1 class="mb-0">Administración de Productos</h1>
-                <a href="<%= request.getContextPath() %>/pages/agregarProducto.jsp" class="btn btn-success ms-auto">Agregar Producto</a>
+                <h1 class="mb-0">Administración de Recibos</h1>
+                <a href="<%= request.getContextPath() %>/pages/agregarRecibo.jsp" class="btn btn-success ms-auto">Agregar Recibo</a>
             </div>
 
             <div class="table-responsive">
                 <table class="table table-striped table-bordered table-hover">
                     <thead class="table-dark">
                         <tr>
-                            <th>Código</th>
-                            <th>Categoría</th>
-                            <th>Marca</th>
-                            <th>Nombre</th>
-                            <th>Descripción</th>
-                            <th>Precio</th>
-                            <th>Stock</th>
-                            <th>Fecha Creación</th>
+                            <th>ID Recibo</th>
+                            <th>ID Orden</th>
+                            <th>Fecha Recibo</th>
+                            <th>Total</th>
+                            <th>Método de Pago</th>
                             <th>Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
                         <%
-                            List<Producto> lista = (List<Producto>) request.getAttribute("listaProducto");
+                            List<Recibo> lista = (List<Recibo>) request.getAttribute("listaRecibo");
                             if (lista != null && !lista.isEmpty()) {
-                                for (Producto p : lista) {
-                                System.out.println(p);
+                                for (Recibo r : lista) {
+                                System.out.println(lista);
                         %>
                         <tr>
-                            <td><%= p.getIdProducto() %></td>
-                            <td><%= p.getCategoria() %></td>
-                            <td><%= p.getProveedor() %></td>
-                            <td><%= p.getNombreProducto() %></td>
-                            <td><%= p.getDescripcionProducto()%></td>
-                            <td><%= p.getPrecio() %></td>
-                            <td><%= p.getStock() %></td>
-                            <td><%= p.getFechaCreacion() %></td>
+                            <td><%= r.getIdProveedor() %></td>
+                            <td><%= r.getIdOrden() %></td>
+                            <td><%= r.getFechaRecibo() %></td>
+                            <td><%= r.getTotal() %></td>
+                            <td><%= r.getMetodoPago() %></td>
                             <td>
-                                <a href="ProductoServlet?accion=editar&id=<%= p.getIdProducto()%>" class="btn btn-warning btn-sm">Editar</a>
-                                <a href="ProductoServlet?accion=eliminar&id=<%= p.getIdProducto()%>" class="btn btn-danger btn-sm" onclick="return confirm('¿Estás seguro de eliminar este usuario?');">Eliminar</a>
+                                <a href="ReciboServlet?accion=editar&id=<%= r.getIdProveedor() %>" class="btn btn-warning btn-sm">Editar</a>
+                                <a href="ReciboServlet?accion=eliminar&id=<%= r.getIdProveedor()%>" class="btn btn-danger btn-sm" onclick="return confirm('¿Estás seguro de eliminar este usuario?');">Eliminar</a>
                             </td>
                         </tr>
                         <%
                                 }
                             } else {
                         %>
-                        <tr><td colspan="9">No hay usuarios registrados.</td></tr>
+                        <tr><td colspan="6">No hay recibos registrados.</td></tr>
                         <% } %>
                     </tbody>
                 </table>
