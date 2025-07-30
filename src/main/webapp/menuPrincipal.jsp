@@ -90,6 +90,7 @@
                             <li><a href="#" class="text-danger text-decoration-none">Pedales</a></li>
                         </ul>
                     </li>
+                      
                     <li class="list-group-item">
                         <strong class="text-danger">Nosotros</strong>
                         <ul class="list-unstyled ps-3 mt-2">
@@ -98,10 +99,22 @@
                             <li><a href="#" class="text-danger text-decoration-none">Valores</a></li>
                         </ul>
                     </li>
+                    <!-- Administración de Administrador -->
+                    <li class="list-group-item">
+                        <strong class="text-danger">Administración</strong>
+                        <ul class="list-unstyled ps-3 mt-2">
+                            <li><a href="pages/administracionProductos.jsp" class="text-danger text-decoration-none">Productos</a></li>
+                            <li><a href="pages/administracionCompras.jsp" class="text-danger text-decoration-none">Compras</a></li>
+                            <li><a href="pages/administracionDetalleCompra.jsp" class="text-danger text-decoration-none">Detalle Compras</a></li>
+                            <li><a href="pages/administracionProveedor.jsp" class="text-danger text-decoration-none">Proveedores</a></li>
+                            <li><a href="pages/administracionUsuarios.jsp" class="text-danger text-decoration-none">Usuarios</a></li>
+                            <li><a href="pages/administracionCategoria.jsp" class="text-danger text-decoration-none">Categorias</a></li>
+                            <li><a href="pages/administracionRecibo.jsp" class="text-danger text-decoration-none">Recibo</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
         </div>
-
 
         <main class="flex-grow-1"> 
 
