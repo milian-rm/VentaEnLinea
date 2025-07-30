@@ -72,11 +72,12 @@ public class ServletUsuario extends HttpServlet {
         String telefono = solicitud.getParameter("telefono");
         String direccion = solicitud.getParameter("direccion");
         String contrasena = solicitud.getParameter("contrasena");
+        String rol = solicitud.getParameter("rol");
+        String nit = solicitud.getParameter("nit");
 
         UsuarioDAO dao = new UsuarioDAO();
 
-        //Este constructor se tiene que cambiar, incluye el id. El id auto incrementable
-        Usuario usu = new Usuario(/*id ,*/nombre, apellido, emailUsuario, telefono, direccion, contrasena);
+        Usuario usu = new Usuario(nombre, apellido, emailUsuario, telefono, direccion, contrasena, rol, nit);
 
         dao.saveUsuario(usu);
 
@@ -93,9 +94,8 @@ public class ServletUsuario extends HttpServlet {
         //Este metedo en el dao no existe, añadanlo
         Usuario usu = dao.getUsuarioById(idEditar);
 
-        
         solicitud.setAttribute("usuarioEditar", usu);
-        solicitud.getRequestDispatcher("/pages/usuarioEditar.jsp").forward(solicitud, respuesta);
+        solicitud.getRequestDispatcher("/pages/editarUsuario.jsp").forward(solicitud, respuesta);
 
         //acción es igual a "editar"
     }
@@ -105,13 +105,15 @@ public class ServletUsuario extends HttpServlet {
         UsuarioDAO dao = new UsuarioDAO();
         int idActualizar = Integer.parseInt(solicitud.getParameter("id"));
         Usuario usu = dao.getUsuarioById(idActualizar);
-        
-        usu.setNombre(solicitud.getParameter("nombre"));
-        usu.setApellido(solicitud.getParameter("apellido"));
-        usu.setCorreo(solicitud.getParameter("emailUsuario"));
-        usu.setTelefono(solicitud.getParameter("telefono"));
-        usu.setDireccion(solicitud.getParameter("direccion"));
-        usu.setContrasena(solicitud.getParameter("contrasena"));
+
+        usu.setNombre(String.valueOf(solicitud.getParameter("nombre")));
+        usu.setApellido(String.valueOf(solicitud.getParameter("apellido")));
+        usu.setCorreo(String.valueOf(solicitud.getParameter("emailUsuario")));
+        usu.setTelefono(String.valueOf(solicitud.getParameter("telefono")));
+        usu.setDireccion(String.valueOf(solicitud.getParameter("direccion")));
+        usu.setContrasena(String.valueOf(solicitud.getParameter("contrasena")));
+        usu.setRol(String.valueOf(solicitud.getParameter("rol")));
+        usu.setNit(String.valueOf(solicitud.getParameter("nit")));
 
         dao.updateUsuario(usu);
         respuesta.sendRedirect("ServletUsuario?accion=listar");
@@ -137,8 +139,8 @@ public class ServletUsuario extends HttpServlet {
         List<Usuario> listaClientes = dao.getAllUsuarios();
 
         request.setAttribute("listaUsuario", listaClientes);
-        
-        request.getRequestDispatcher("/pages/listarUsuario.jsp").forward(request, response);
+
+        request.getRequestDispatcher("/pages/administracionUsuarios.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

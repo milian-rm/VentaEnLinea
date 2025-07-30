@@ -4,10 +4,12 @@
     Author     : Marcos
 --%>
 
+<%@page import="model.Usuario"%>
+<%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%--<%@page import="java.util.List, model.Usuario" %>--%>
 <!DOCTYPE html>
-<html>
+<html lang="es">
     <head>
         <meta charset="UTF-8">
         <title>Administración de Usuarios - GuitarKinal</title>
@@ -27,8 +29,8 @@
     <body>
         <nav class="navbar navbar-dark bg-danger px-3">
             <div class="container-fluid">
-                <a class="navbar-brand" href="<%= request.getContextPath() %>/index.jsp">
-                    <img src="<%= request.getContextPath() %>/image/logo.png" alt="Logo GuitarKinal" height="90">
+                <a class="navbar-brand" href="<%= request.getContextPath()%>/index.jsp">
+                    <img src="<%= request.getContextPath()%>/image/logo.png" alt="Logo GuitarKinal" height="90">
                 </a>
                 <div class="container mt-1 text-center text-light text-start" style="margin-left: 6rem;">
                     <p class="fs-4"><strong><h2>Bienvenido a tienda GuitarKinal</h2></strong></p>
@@ -89,7 +91,7 @@
         <main class="container mt-5">
             <div class="d-flex justify-content-between align-items-center mb-4">
                 <h1 class="mb-0">Administración de Usuarios</h1>
-                <a href="agregarUsuario.jsp" class="btn btn-success">Agregar Usuario</a>
+                <a href="${pageContext.request.contextPath}/pages/agregarUsuario.jsp" class="btn btn-success">Agregar Usuario</a>
             </div>
 
             <div class="table-responsive">
@@ -109,38 +111,32 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <%
+                            List<Usuario> lista = (List<Usuario>) request.getAttribute("listaUsuario");
+                            if (lista != null && !lista.isEmpty()) {
+                                for (Usuario u : lista) {
+                        %>
                         <%-- colspan ajustado para incluir la nueva columna de Fecha Registro --%>
                         <%-- Aquí se mostrarán los usuarios de la base de datos (cuando se conecte)Estos son ejemplos. --%>
                         <tr>
-                            <td>1</td>
-                            <td>Juan</td>
-                            <td>Pérez</td>
-                            <td>juan.perez@example.com</td>
-                            <td>555-1234</td>
-                            <td>Calle Falsa 123, Ciudad</td>
-                            <td>2024-07-28 10:00:00</td>
-                            <td>Cliente</td>
-                            <td>65154115</td>
+                            <td><%= u.getIdUsuario()%></td>
+                            <td><%= u.getNombre()%></td>
+                            <td><%= u.getApellido()%></td>
+                            <td><%= u.getCorreo()%></td>
+                            <td><%= u.getTelefono()%></td>
+                            <td><%= u.getDireccion()%></td>
+                            <td><%= u.getFechaRegistro()%></td>
+                            <td><%= u.getRol()%></td>
+                            <td><%= u.getNit()%></td>
                             <td>
-                                <a href="editarUsuario.jsp?id=1" class="btn btn-warning btn-sm">Editar</a>
-                                <a href="ServletUsuarios?accion=eliminar&id=1" class="btn btn-danger btn-sm" onclick="return confirm('¿Desea eliminar a este usuario?')">Eliminar</a>
+                                <a href="ServletUsuario?accion=editar&id=<%= u.getIdUsuario()%>" class="btn btn-warning btn-sm">Editar</a>
+                                <a href="ServletUsuario?accion=eliminar&id=<%= u.getIdUsuario()%>" class="btn btn-danger btn-sm" onclick="return confirm('¿Desea eliminar a este usuario?')">Eliminar</a>
                             </td>
                         </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>María</td>
-                            <td>González</td>
-                            <td>maria.gonzalez@example.com</td>
-                            <td>555-5678</td>
-                            <td>Avenida Siempre Viva 456, Pueblo</td>
-                            <td>2024-07-27 15:30:00</td>
-                            <td>Cliente</td>
-                            <td>17616520</td>
-                            <td>
-                                <a href="editarUsuario.jsp?id=2" class="btn btn-warning btn-sm">Editar</a>
-                                <a href="ServletUsuarios?accion=eliminar&id=2" class="btn btn-danger btn-sm" onclick="return confirm('¿Desea eliminar a este usuario?')">Eliminar</a>
-                            </td>
-                        </tr>
+                        <%
+                                }
+                            }
+                        %>
                         <tr>
                             <td colspan="8" class="text-center text-muted">Aquí se mostrarán los usuarios de la base de datos. Estos son ejemplos.</td>
                         </tr>
