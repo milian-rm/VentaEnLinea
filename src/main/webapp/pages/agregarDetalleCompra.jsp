@@ -89,9 +89,9 @@
             <div class="row justify-content-center">
                 <div class="col-md-6 col-lg-5">
                     <h1 class="mb-4 text-center">Agregar Nuevo Detalle de Compra</h1>
-                    <%-- El formulario enviará los datos al ServletDetalleCompra para guardar el detalle --%>
-                    <form action="ServletDetalleCompra" method="post">
-                        <input type="hidden" name="accion" value="insertar">
+                    <%-- El formulario enviará los datos al DetalleServlet para guardar el detalle --%>
+                    <form action="<%= request.getContextPath() %>/DetalleServlet" method="post">
+                        <input type="hidden" name="accion" value="agregar">
 
                         <div class="mb-3">
                             <label for="idOrden" class="form-label">ID Orden:</label>
@@ -113,7 +113,7 @@
                         <%-- Botones de acción --%>
                         <div class="d-grid gap-2">
                             <button type="submit" class="btn btn-success btn-lg">Guardar Detalle</button>
-                            <a href="administracionDetalleCompra.jsp" class="btn btn-secondary btn-lg">Cancelar</a>
+                            <a href="<%= request.getContextPath() %>/DetalleServlet?accion=listar" class="btn btn-secondary btn-lg">Cancelar</a>
                         </div>
                     </form>
                 </div>

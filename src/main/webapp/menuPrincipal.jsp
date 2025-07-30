@@ -106,7 +106,7 @@
                         <a href="pages/administracionUsuarios.jsp" class="text-danger text-decoration-none">
                             <strong class="text-danger">Administración de Usuarios</strong>
                         </a>
-                        <a href="pages/administracionDetalleCompra.jsp" class="text-danger text-decoration-none">
+                        <a href="DetalleServlet?accion=listar" class="text-danger text-decoration-none">
                             <strong class="text-danger">Administración de Detalles de Compra</strong>
                         </a>
                     </li>

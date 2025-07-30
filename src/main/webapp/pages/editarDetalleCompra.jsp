@@ -4,6 +4,7 @@
     Author     : Marcos
 --%>
 
+<%@page import="model.DetalleCompra"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%-- <%@page import="model.DetalleCompra" %> --%>
 
@@ -91,32 +92,35 @@
             <div class="row justify-content-center">
                 <div class="col-md-6 col-lg-5">
                     <h1 class="mb-4 text-center">Editar Detalle de Compra</h1>
-                    <%-- El formulario enviará los datos al ServletDetalleCompra para actualizar el detalle --%>
-                    <form action="ServletDetalleCompra" method="post">
+                    <%-- El formulario enviará los datos al DetalleServlet para actualizar el detalle --%>
+                    <%
+                    DetalleCompra d = (DetalleCompra) request.getAttribute("listaDetalle");
+                    %>
+                    <form action="<%= request.getContextPath() %>/DetalleServlet" method="post">
                         <input type="hidden" name="accion" value="actualizar">
-                        <input type="hidden" name="idDetalleOrden" value="101">
+                        <input type="hidden" name="id" value="<%= d.getIdDetalleOrden()%>">
 
                         <div class="mb-3">
                             <label for="idOrden" class="form-label">ID Orden:</label>
-                            <input type="number" id="idOrden" name="idOrden" class="form-control" value="1" min="1" required>
+                            <input type="number" id="idOrden" name="idOrden" class="form-control" value="<%= d.getCompra()%>">
                         </div>
                         <div class="mb-3">
                             <label for="idProducto" class="form-label">ID Producto:</label>
-                            <input type="number" id="idProducto" name="idProducto" class="form-control" value="1001" min="1" required>
+                            <input type="number" id="idProducto" name="idProducto" class="form-control" value="<%= d.getProducto()%>">
                         </div>
                         <div class="mb-3">
                             <label for="cantidad" class="form-label">Cantidad:</label>
-                            <input type="number" id="cantidad" name="cantidad" class="form-control" value="2" min="1" required>
+                            <input type="number" id="cantidad" name="cantidad" class="form-control" value="<%= d.getCantidad()%>">
                         </div>
                         <div class="mb-3">
                             <label for="precioUnitario" class="form-label">Precio Unitario:</label>
-                            <input type="number" id="precioUnitario" name="precioUnitario" class="form-control" step="0.01" min="0" value="299.99" required>
+                            <input type="number" id="precioUnitario" name="precioUnitario" class="form-control" step="0.01" min="0" value="<%= d.getPrecioUnitario()%>">
                         </div>
 
                         <%-- Botones de acción --%>
                         <div class="d-grid gap-2">
                             <button type="submit" class="btn btn-success btn-lg">Guardar Cambios</button>
-                            <a href="administracionDetalleCompra.jsp" class="btn btn-secondary btn-lg">Cancelar</a>
+                            <a href="<%= request.getContextPath() %>/DetalleServlet?accion=listar" class="btn btn-secondary btn-lg">Cancelar</a>
                         </div>
                     </form>
                 </div>

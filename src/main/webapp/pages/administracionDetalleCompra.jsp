@@ -4,6 +4,8 @@
     Author     : Marcos
 --%>
 
+<%@page import="model.DetalleCompra"%>
+<%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%-- <%@page import="java.util.List, model.DetalleCompra" %> --%>
 <!DOCTYPE html>
@@ -95,7 +97,7 @@
         <main class="container mt-5">
             <div class="d-flex justify-content-between align-items-center mb-4">
                 <h1 class="mb-0">Administración de Detalles de Compra</h1>
-                <a href="agregarDetalleCompra.jsp" class="btn btn-success">Agregar Detalle de Compra</a>
+                <a href="<%= request.getContextPath() %>/pages/agregarDetalleCompra.jsp" class="btn btn-success">Agregar Detalle de Compra</a>
             </div>
 
             <div class="table-responsive">
@@ -111,43 +113,29 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <%-- Aquí se mostrarán los detalles de compra de la base de datos (cuando se conecte)Estos son ejemplos. --%>
+                        <%
+                            List<DetalleCompra> lista = (List<DetalleCompra>) request.getAttribute("listaDetalle");
+                            if (lista != null && !lista.isEmpty()) {
+                                for (DetalleCompra d : lista) {
+                                System.out.println(lista);
+                        %>
                         <tr>
-                            <td>101</td>
-                            <td>1</td>
-                            <td>1001</td>
-                            <td>2</td>
-                            <td>$299.99</td>
+                            <td><%= d.getIdDetalleOrden() %></td>
+                            <td><%= d.getCompra() %></td>
+                            <td><%= d.getProducto() %></td>
+                            <td><%= d.getCantidad() %></td>
+                            <td><%= d.getPrecioUnitario() %></td>
                             <td>
-                                <a href="editarDetalleCompra.jsp?id=101" class="btn btn-warning btn-sm">Editar</a>
-                                <a href="ServletDetalleCompra?accion=eliminar&id=101" class="btn btn-danger btn-sm" onclick="return confirm('¿Desea eliminar este detalle de compra?')">Eliminar</a>
+                                <a href="DetalleServlet?accion=editar&id=<%= d.getIdDetalleOrden()%>" class="btn btn-warning btn-sm">Editar</a>
+                                <a href="DetalleServlet?accion=eliminar&id=<%= d.getIdDetalleOrden()%>" class="btn btn-danger btn-sm" onclick="return confirm('¿Estás seguro de eliminar este usuario?');">Eliminar</a>
                             </td>
                         </tr>
-                        <tr>
-                            <td>102</td>
-                            <td>1</td>
-                            <td>1002</td>
-                            <td>1</td>
-                            <td>$129.50</td>
-                            <td>
-                                <a href="editarDetalleCompra.jsp?id=102" class="btn btn-warning btn-sm">Editar</a>
-                                <a href="ServletDetalleCompra?accion=eliminar&id=102" class="btn btn-danger btn-sm" onclick="return confirm('¿Desea eliminar este detalle de compra?')">Eliminar</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>103</td>
-                            <td>2</td>
-                            <td>1003</td>
-                            <td>3</td>
-                            <td>$50.00</td>
-                            <td>
-                                <a href="editarDetalleCompra.jsp?id=103" class="btn btn-warning btn-sm">Editar</a>
-                                <a href="ServletDetalleCompra?accion=eliminar&id=103" class="btn btn-danger btn-sm" onclick="return confirm('¿Desea eliminar este detalle de compra?')">Eliminar</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="6" class="text-center text-muted">Aquí se mostrarán los detalles de compra de la base de datos. Estos son ejemplos.</td>
-                        </tr>
+                        <%
+                                }
+                            } else {
+                        %>
+                        <tr><td colspan="7">No hay usuarios registrados.</td></tr>
+                        <% } %>
                     </tbody>
                 </table>
             </div>
