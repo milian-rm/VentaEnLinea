@@ -42,21 +42,27 @@
                                 <input type="email" class="form-control rounded-5 ps-4" id="floatingInput" placeholder="nombre@example.com" name="email" style="background-color: #f1f1f1;" required>
                                 <label class="ps-4" for="floatingInput">Correo Electrónico</label>
                             </div>
-                            <div class="form-floating mb-3">
-                                <input type="text" class="form-control rounded-5 ps-4" id="floatingPhoneNum" placeholder="12345678" name="telefono" style="background-color: #f1f1f1;" required>
-                                <label class="ps-4" for="floatingPhoneNum">Teléfono</label>
+                            <div class="row mb-3">
+                                <div class="col form-floating pe-1">
+                                    <input type="text" class="form-control rounded-end rounded-5 ps-4" id="floatingPhoneNum" placeholder="12345678" name="telefono" style="background-color: #f1f1f1;" required>
+                                    <label class="ms-3 ps-4" for="floatingPhoneNum">Teléfono</label>
+                                </div>
+                                <div class="col form-floating ps-1">
+                                    <input type="text" class="form-control rounded-start rounded-5 ps-4" id="floatingNit" placeholder="12345678-9" name="nit" style="background-color: #f1f1f1;" required>
+                                    <label class="ms-3" for="floatingNit">NIT</label>
+                                </div>
                             </div>
                             <div class="form-floating mb-3">
                                 <input type="text" class="form-control rounded-5 ps-4" id="floatingAddres" placeholder="Guatemala" name="direccion" style="background-color: #f1f1f1;" required>
                                 <label class="ps-4" for="floatingAddres">Dirección</label>
                             </div>
-                            <div class="form-floating">
+                            <div class="form-floating mb-3">
                                 <input type="password" class="form-control rounded-5 ps-4" id="floatingPassword" placeholder="Password" name="contrasena" style="background-color: #f1f1f1 !important;" required>
                                 <label class="ps-4" for="floatingPassword">Contraseña</label>
-                            </div>
+                            </div>                        
                             <div class="d-grid gap-2 col-6 mx-auto">
                                 <button type="submit" class="btn btn-outline-success mt-4 mb-4 rounded-5">
-                                    INGRESAR
+                                    REGISTRARSE
                                 </button>
                             </div>
                         </form>
@@ -76,32 +82,40 @@
                         </div>
                         <form action="${pageContext.request.contextPath}/registro" method="post">
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control rounded-5 ps-4" id="floatingName" placeholder="Nombre" name="nombre" style="background-color: #f1f1f1;" required>
-                                <label class="ps-4" for="floatingName">Nombre</label>
+                                <input type="text" class="form-control rounded-5 ps-4" id="floatingNameMobile" placeholder="Nombre" name="nombre" style="background-color: #f1f1f1;" required>
+                                <label class="ps-4" for="floatingNameMobile">Nombre</label>
                             </div>
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control rounded-5 ps-4" id="floatingLastName" placeholder="Apellido" name="apellido" style="background-color: #f1f1f1;" required>
-                                <label class=" ps-4" for="floatingLastName">Apellido</label>
+                                <input type="text" class="form-control rounded-5 ps-4" id="floatingLastNameMobile" placeholder="Apellido" name="apellido" style="background-color: #f1f1f1;" required>
+                                <label class=" ps-4" for="floatingLastNameMobile">Apellido</label>
                             </div>
                             <div class="form-floating mb-3">
-                                <input type="email" class="form-control rounded-5 ps-4" id="floatingInput" placeholder="nombre@example.com" name="email" style="background-color: #f1f1f1;" required>
-                                <label class="ps-4" for="floatingInput">Correo Electrónico</label>
+                                <input type="email" class="form-control rounded-5 ps-4" id="floatingInputMobile" placeholder="nombre@example.com" name="email" style="background-color: #f1f1f1;" required>
+                                <label class="ps-4" for="floatingInputMobile">Correo Electrónico</label>
                             </div>
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control rounded-5 ps-4" id="floatingPhoneNum" placeholder="12345678" name="telefono" style="background-color: #f1f1f1;" required>
-                                <label class="ps-4" for="floatingPhoneNum">Teléfono</label>
+                                <input type="text" class="form-control rounded-5 ps-4" id="floatingPhoneNumMobile" placeholder="12345678" name="telefono" style="background-color: #f1f1f1;" required>
+                                <label class="ps-4" for="floatingPhoneNumMobile">Teléfono</label>
                             </div>
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control rounded-5 ps-4" id="floatingAddres" placeholder="Guatemala" name="direccion" style="background-color: #f1f1f1;" required>
-                                <label class="ps-4" for="floatingAddres">Dirección</label>
+                                <input type="text" class="form-control rounded-5 ps-4" id="floatingNitMobile" placeholder="12345678-9" name="nit" style="background-color: #f1f1f1;" required>
+                                <label class="ps-4" for="floatingNitMobile">NIT</label>
                             </div>
-                            <div class="form-floating">
-                                <input type="password" class="form-control rounded-5 ps-4" id="floatingPassword" placeholder="Password" name="contrasena" style="background-color: #f1f1f1 !important;" required>
-                                <label class="ps-4" for="floatingPassword">Contraseña</label>
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control rounded-5 ps-4" id="floatingAddresMobile" placeholder="Guatemala" name="direccion" style="background-color: #f1f1f1;" required>
+                                <label class="ps-4" for="floatingAddresMobile">Dirección</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="password" class="form-control rounded-5 ps-4" id="floatingPasswordMobile" placeholder="Password" name="contrasena" style="background-color: #f1f1f1 !important;" required>
+                                <label class="ps-4" for="floatingPasswordMobile">Contraseña</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="password" class="form-control rounded-5 ps-4" id="floatingConfirmPasswordMobile" placeholder="Confirmar Password" name="confirmarContrasena" style="background-color: #f1f1f1 !important;" required>
+                                <label class="ps-4" for="floatingConfirmPasswordMobile">Confirmar Contraseña</label>
                             </div>
                             <div class="d-grid gap-2 col-8 mx-auto">
                                 <button type="submit" class="btn btn-outline-success mt-4 mb-4 rounded-5">
-                                    INGRESAR
+                                    REGISTRARSE
                                 </button>
                             </div>
                         </form>
@@ -110,6 +124,6 @@
             </div>
         </div>
 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
     </body>
 </html>
