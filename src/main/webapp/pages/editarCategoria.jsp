@@ -1,18 +1,18 @@
 <%--
-    Document   : editarProducto
-    Created on : 28 jul 2025, 16:04:00
-    Author     : Bradley Oliva
+    Document   : editarCategoria
+    Created on : 29 jul 2025, 11:30:22
+    Author     : informatica
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%-- Importa tu clase Producto si ya la tienes definida, para pre-llenar los campos --%>
-<%-- Ejemplo: <%@page import="model.Producto" %> --%>
+<%-- Importa tu clase Categoria si ya la tienes definida, para pre-llenar los campos --%>
+<%-- Ejemplo: <%@page import="model.Categoria" %> --%>
 
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Editar Producto - GuitarKinal</title>
+        <title>Editar Categoría - GuitarKinal</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
         <style>
             .navbar-brand img {
@@ -24,8 +24,9 @@
         <%-- Barra de Navegación Superior --%>
         <nav class="navbar navbar-dark bg-danger px-3">
             <div class="container-fluid">
-                <a class="navbar-brand" href="<%= request.getContextPath() %>/index.jsp"><img src="<%= request.getContextPath() %>/image/logo.png" alt="Logo" height="90"></a>
-
+                <a class="navbar-brand" href="<%= request.getContextPath() %>/index.jsp">
+                    <img src="<%= request.getContextPath() %>/image/logo.png" alt="Logo GuitarKinal" height="90">
+                </a>
                 <div class="container mt-1 text-center text-light text-start" style="margin-left: 6rem;">
                     <p class="fs-4"><strong><h2>Bienvenido a tienda GuitarKinal</h2></strong></p>
                 </div>
@@ -69,6 +70,7 @@
                             <li><a href="#" class="text-danger text-decoration-none">Valores</a></li>
                         </ul>
                     </li>
+                    
                     <li class="list-group-item">
                         <strong class="text-danger">Administración</strong>
                         <ul class="list-unstyled ps-3 mt-2">
@@ -85,68 +87,42 @@
             </div>
         </div>
 
-        <%-- Contenido Principal: Formulario de Editar Producto --%>
+        <%-- Contenido Principal: Formulario de Editar Categoría --%>
         <main class="container mt-5">
             <div class="row justify-content-center">
                 <div class="col-md-6 col-lg-5">
-                    <h1 class="mb-4 text-center">Editar Producto</h1>
-                    <%-- El formulario enviará los datos al ServletEditarProducto para actualizar el producto --%>
-                    <form action="ServletEditarProducto" method="post">
+                    <h1 class="mb-4 text-center">Editar Categoría</h1>
+                    <%-- El formulario enviará los datos al ServletCategoria para actualizar la categoría --%>
+                    <form action="ServletCategoria" method="post">
                         <%-- Campo oculto para indicar al servlet la acción a realizar (actualizar) --%>
                         <input type="hidden" name="accion" value="actualizar">
-                        <%-- Campo oculto para enviar el ID del producto que se está editando.
-                             Este ID será necesario en el servlet para saber qué producto actualizar. --%>
-                        <input type="hidden" name="idProducto" value="<%= request.getParameter("id") != null ? request.getParameter("id") : "" %>">
-                        <%-- Nota: En un caso real, el 'value' del idProducto vendría de un objeto Producto cargado del DB. --%>
+                        <%-- Campo oculto para enviar el ID de la categoría que se está editando.
+                             Este ID será necesario en el servlet para saber qué categoría actualizar. --%>
+                        <input type="hidden" name="idCategoria" value="<%= request.getParameter("id") != null ? request.getParameter("id") : "" %>">
+                        <%-- Nota: En un caso real, el 'value' del idCategoria vendría de un objeto Categoria cargado de la DB. --%>
 
                         <div class="mb-3">
-                            <label for="nombreProducto" class="form-label">Nombre del Producto:</label>
-                            <input type="text" id="nombreProducto" name="nombreProducto" class="form-control" value="Nombre Actual del Producto" required>
+                            <label for="nombreCategoria" class="form-label">Nombre de la Categoría:</label>
+                            <input type="text" id="nombreCategoria" name="nombreCategoria" class="form-control" value="Nombre Actual de la Categoría" required>
                         </div>
                         <div class="mb-3">
-                            <label for="descripcionProducto" class="form-label">Descripción:</label>
-                            <textarea id="descripcionProducto" name="descripcionProducto" class="form-control" rows="3">Descripción actual del producto.</textarea>
+                            <label for="descripcion" class="form-label">Descripción:</label>
+                            <textarea id="descripcion" name="descripcion" class="form-control" rows="3">Descripción actual de la categoría.</textarea>
                         </div>
                         <div class="mb-3">
-                            <label for="precio" class="form-label">Precio:</label>
-                            <input type="number" id="precio" name="precio" class="form-control" step="0.01" min="0" value="199.99" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="stock" class="form-label">Stock:</label>
-                            <input type="number" id="stock" name="stock" class="form-control" min="0" value="30" required>
-                        </div>
-                        
-                        <%-- Nuevos campos basados en la tabla Productos --%>
-                        <div class="mb-3">
-                            <label for="idCategoria" class="form-label">ID Categoría:</label>
-                            <input type="number" id="idCategoria" name="idCategoria" class="form-control" min="1" value="1" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="idProveedor" class="form-label">ID Proveedor:</label>
-                            <input type="number" id="idProveedor" name="idProveedor" class="form-control" min="1" value="5" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="fechaCreacion" class="form-label">Fecha de Creación:</label>
-                            <%-- Usamos type="datetime-local" para una mejor UX si el navegador lo soporta,
-                                 o type="text" si necesitas un formato específico sin selector.
-                                 El valor debe ser en formato YYYY-MM-DDTHH:MM:SS para datetime-local. --%>
-                            <input type="datetime-local" id="fechaCreacion" name="fechaCreacion" class="form-control" value="2024-07-29T10:00:00" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="marca" class="form-label">Marca:</label>
-                            <input type="text" id="marca" name="marca" class="form-control" value="Marca Actual">
-                        </div>
-                        <div class="mb-3">
-                            <label for="imagen" class="form-label">URL de la Imagen:</label>
-                            <input type="text" id="imagen" name="imagen" class="form-control" value="image/Guitarra Acustica.jpg">
-                            <img src="<%= request.getContextPath() %>/image/Guitarra Acustica.jpg" alt="Vista previa" style="width: 100px; height: auto; margin-top: 10px;">
+                            <label for="estado" class="form-label">Estado:</label>
+                            <select id="estado" name="estado" class="form-select" required>
+                                <option value="Activo" selected>Activo</option>
+                                <option value="Inactivo">Inactivo</option>
+                                <%-- En un caso real, la opción seleccionada dependería del valor actual de la categoría --%>
+                            </select>
                         </div>
 
                         <%-- Botones de acción --%>
                         <div class="d-grid gap-2">
                             <button type="submit" class="btn btn-success btn-lg">Guardar Cambios</button>
-                            <%-- El botón Cancelar regresa a la página de administración de productos --%>
-                            <a href="<%= request.getContextPath() %>/pages/administracionProductos.jsp" class="btn btn-secondary btn-lg">Cancelar</a>
+                            <%-- El botón Cancelar regresa a la página de administración de categorías --%>
+                            <a href="<%= request.getContextPath() %>/pages/administracionCategoria.jsp" class="btn btn-secondary btn-lg">Cancelar</a>
                         </div>
                     </form>
                 </div>

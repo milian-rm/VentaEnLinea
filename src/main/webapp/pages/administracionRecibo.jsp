@@ -1,19 +1,27 @@
 <%--
-    Document   : agregarUsuario
-    Created on : 28 jul 2025, 17:45:33
-    Author     : Marcos
+    Document   : administracionRecibo
+    Created on : 29/07/2025, 09:07:13
+    Author     : informatica
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%-- <%@page import="java.util.List, model.Recibo" %> --%>
+
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Agregar Usuario - GuitarKinal</title>
+        <title>Administración de Recibos - GuitarKinal</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
         <style>
+            .table-responsive {
+                margin-top: 20px;
+            }
             .navbar-brand img {
                 border-radius: 8px;
+            }
+            .btn-sm {
+                margin-right: 5px;
             }
         </style>
     </head>
@@ -81,51 +89,58 @@
             </div>
         </div>
 
-        <%-- Contenido Principal: Formulario de Agregar Usuario --%>
+        <%-- Contenido Principal: Tabla de Recibos --%>
         <main class="container mt-5">
-            <div class="row justify-content-center">
-                <div class="col-md-6 col-lg-5">
-                    <h1 class="mb-4 text-center">Agregar Nuevo Usuario</h1>
-                    <%-- El formulario enviará los datos al ServletUsuarios para guardar el usuario --%>
-                    <form action="ServletUsuarios" method="post">
-                        <%-- Campo oculto para indicar al servlet la acción a realizar --%>
-                        <input type="hidden" name="accion" value="insertar">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h1 class="mb-0">Administración de Recibos</h1>
+                <a href="agregarRecibo.jsp" class="btn btn-success">Agregar Recibo</a>
+            </div>
 
-                        <div class="mb-3">
-                            <label for="nombreUsuario" class="form-label">Nombre:</label>
-                            <input type="text" id="nombreUsuario" name="nombreUsuario" class="form-control" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="apellidoUsuario" class="form-label">Apellido:</label>
-                            <input type="text" id="apellidoUsuario" name="apellidoUsuario" class="form-control" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="emailUsuario" class="form-label">Email:</label>
-                            <input type="email" id="emailUsuario" name="emailUsuario" class="form-control" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="telefonoUsuario" class="form-label">Teléfono:</label>
-                            <input type="text" id="telefonoUsuario" name="telefonoUsuario" class="form-control">
-                        </div>
-                        <div class="mb-3">
-                            <label for="direccionUsuario" class="form-label">Dirección:</label>
-                            <textarea id="direccionUsuario" name="direccionUsuario" class="form-control" rows="3"></textarea>
-                        </div>
-                        <div class="mb-3">
-                            <label for="contrasena" class="form-label">Contraseña:</label>
-                            <input type="password" id="contrasena" name="contrasena" class="form-control" required>
-                        </div>
-
-                        <div class="d-grid gap-2">
-                            <button type="submit" class="btn btn-success btn-lg">Guardar Usuario</button>
-                            <a href="<%= request.getContextPath() %>/pages/administracionUsuarios.jsp" class="btn btn-secondary btn-lg">Cancelar</a>
-                        </div>
-                    </form>
-                </div>
+            <div class="table-responsive">
+                <table class="table table-striped table-bordered table-hover">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>ID Recibo</th>
+                            <th>ID Orden</th>
+                            <th>Fecha Recibo</th>
+                            <th>Total</th>
+                            <th>Método de Pago</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <%-- Aquí se mostrarán los recibos de la base de datos (cuando se conecte)Estos son ejemplos. --%>
+                        <tr>
+                            <td>1</td>
+                            <td>101</td>
+                            <td>2024-07-28 11:00:00</td>
+                            <td>$599.98</td>
+                            <td>Tarjeta</td>
+                            <td>
+                                <a href="editarRecibo.jsp?id=1" class="btn btn-warning btn-sm">Editar</a>
+                                <a href="ServletRecibo?accion=eliminar&id=1" class="btn btn-danger btn-sm" onclick="return confirm('¿Desea eliminar este recibo?')">Eliminar</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>102</td>
+                            <td>2024-07-27 16:30:00</td>
+                            <td>$129.50</td>
+                            <td>Efectivo</td>
+                            <td>
+                                <a href="editarRecibo.jsp?id=2" class="btn btn-warning btn-sm">Editar</a>
+                                <a href="ServletRecibo?accion=eliminar&id=2" class="btn btn-danger btn-sm" onclick="return confirm('¿Desea eliminar este recibo?')">Eliminar</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="6" class="text-center text-muted">Aquí se mostrarán los recibos de la base de datos. Estos son ejemplos.</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </main>
 
-        <footer class="bg-dark text-white text-center py-3 mt-5">
+        <footer class="bg-dark text-white text-center py-3 mt-auto">
             Tienda de Guitarras. Todos los derechos reservados.
         </footer>
 

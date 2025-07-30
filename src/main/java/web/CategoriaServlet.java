@@ -53,7 +53,22 @@ public class CategoriaServlet extends HttpServlet {
         String descripcion = solicitud.getParameter("descripcion");
         String estado = solicitud.getParameter("estado");
         
+        CategoriaDAO dao = new CategoriaDAO();
+        Categoria categoria = new Categoria(nombreCategoria, descripcion, estado);
+        dao.saveCategoria(categoria);
         
+        respuesta.sendRedirect("CategoriaServlet?accion=listar");      
+    }
+    
+    //Metodo para enviar formulario de edicion de Categorias
+    protected void formularioEditar(HttpServletRequest solicitud, HttpServletResponse respuesta) throws ServletException, IOException {
+        CategoriaDAO dao = new CategoriaDAO();
+        int idEditar = Integer.parseInt(solicitud.getParameter("id"));
+        //Este metodo en el dao no existe añadalo
+        Categoria categoria = dao.getCategoriaById(idEditar);
+        
+        solicitud.setAttribute("listaCategoria", categoria);
+        solicitud.getRequestDispatcher("/pages/editarCategoria.jsp").forward(solicitud, respuesta);
     }
     
     

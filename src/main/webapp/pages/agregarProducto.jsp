@@ -5,6 +5,14 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="java.time.LocalDateTime" %>
+<%@page import="java.time.format.DateTimeFormatter" %>
+<%
+    // Obtener la fecha y hora actual de Guatemala
+    LocalDateTime now = LocalDateTime.now();
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
+    String currentDateTime = now.format(formatter);
+%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -16,8 +24,7 @@
         <%-- Barra de Navegación Superior --%>
         <nav class="navbar navbar-dark bg-danger px-3">
             <div class="container-fluid">
-<a class="navbar-brand" href="<%= request.getContextPath() %>/index.jsp"><img src="<%= request.getContextPath() %>/image/logo.png" alt="Logo" height="90"></a>
-                </a>
+                <a class="navbar-brand" href="<%= request.getContextPath() %>/index.jsp"><img src="<%= request.getContextPath() %>/image/logo.png" alt="Logo" height="90"></a>
                 <div class="container mt-1 text-center text-light text-start" style="margin-left: 6rem;">
                     <p class="fs-4"><strong><h2>Bienvenido a tienda GuitarKinal</h2></strong></p>
                 </div>
@@ -62,9 +69,16 @@
                         </ul>
                     </li>
                     <li class="list-group-item">
-                        <a href="administracion.jsp" class="text-danger text-decoration-none">
-                            <strong class="text-danger">Administración de Productos</strong>
-                        </a>
+                        <strong class="text-danger">Administración</strong>
+                        <ul class="list-unstyled ps-3 mt-2">
+                            <li><a href="<%= request.getContextPath() %>/pages/administracionProductos.jsp" class="text-danger text-decoration-none">Productos</a></li>
+                            <li><a href="<%= request.getContextPath() %>/pages/administracionCompras.jsp" class="text-danger text-decoration-none">Compras</a></li>
+                            <li><a href="<%= request.getContextPath() %>/pages/administracionDetalleCompra.jsp" class="text-danger text-decoration-none">Detalle Compras</a></li>
+                            <li><a href="<%= request.getContextPath() %>/pages/administracionProveedor.jsp" class="text-danger text-decoration-none">Proveedores</a></li>
+                            <li><a href="<%= request.getContextPath() %>/pages/administracionUsuarios.jsp" class="text-danger text-decoration-none">Usuarios</a></li>
+                            <li><a href="<%= request.getContextPath() %>/pages/administracionCategoria.jsp" class="text-danger text-decoration-none">Categorias</a></li>
+                            <li><a href="<%= request.getContextPath() %>/pages/administracionRecibo.jsp" class="text-danger text-decoration-none">Recibo</a></li>
+                        </ul>
                     </li>
                 </ul>
             </div>
@@ -81,36 +95,53 @@
                         <input type="hidden" name="accion" value="insertar">
 
                         <div class="mb-3">
-                            <label for="nombreProducto" class="form-label">Nombre del Producto: </label>
+                            <label for="nombreProducto" class="form-label">Nombre del Producto:</label>
                             <input type="text" id="nombreProducto" name="nombreProducto" class="form-control" required>
                         </div>
                         <div class="mb-3">
-                            <label for="descripcionProducto" class="form-label">Descripción: </label>
+                            <label for="descripcionProducto" class="form-label">Descripción:</label>
                             <textarea id="descripcionProducto" name="descripcionProducto" class="form-control" rows="3"></textarea>
                         </div>
                         <div class="mb-3">
-                            <label for="precio" class="form-label">Precio: </label>
-                            <%-- Campo para el precio, permite decimales y valores positivos --%>
+                            <label for="precio" class="form-label">Precio:</label>
                             <input type="number" id="precio" name="precio" class="form-control" step="0.01" min="0" required>
                         </div>
                         <div class="mb-3">
-                            <label for="stock" class="form-label">Stock: </label>
-                            <%-- Campo para el stock, solo números enteros positivos --%>
+                            <label for="stock" class="form-label">Stock:</label>
                             <input type="number" id="stock" name="stock" class="form-control" min="0" required>
                         </div>
+                        
+                        <%-- Nuevos campos basados en la tabla Productos --%>
                         <div class="mb-3">
-                            <label for="categoria" class="form-label">Categoría: </label>
-                            <input type="text" id="categoria" name="categoria" class="form-control">
+                            <label for="idCategoria" class="form-label">ID Categoría:</label>
+                            <%-- Podrías considerar un <select> aquí para seleccionar de categorías existentes --%>
+                            <input type="number" id="idCategoria" name="idCategoria" class="form-control" min="1" required>
                         </div>
                         <div class="mb-3">
-                            <label for="marca" class="form-label">Marca: </label>
+                            <label for="idProveedor" class="form-label">ID Proveedor:</label>
+                            <%-- Podrías considerar un <select> aquí para seleccionar de proveedores existentes --%>
+                            <input type="number" id="idProveedor" name="idProveedor" class="form-control" min="1" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="fechaCreacion" class="form-label">Fecha de Creación:</label>
+                            <%-- Usamos type="datetime-local" para una mejor UX si el navegador lo soporta.
+                                 El valor por defecto será la fecha y hora actual de Guatemala. --%>
+                            <input type="datetime-local" id="fechaCreacion" name="fechaCreacion" class="form-control" value="<%= currentDateTime %>" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="marca" class="form-label">Marca:</label>
                             <input type="text" id="marca" name="marca" class="form-control">
                         </div>
+                        <div class="mb-3">
+                            <label for="imagen" class="form-label">URL de la Imagen:</label>
+                            <input type="text" id="imagen" name="imagen" class="form-control">
+                        </div>
+
                         <%-- Botones de acción --%>
                         <div class="d-grid gap-2">
                             <button type="submit" class="btn btn-success btn-lg">Guardar Producto</button>
                             <%-- El botón Cancelar ahora regresa a la página de administración de productos --%>
-                            <a href="administracionProductos.jsp" class="btn btn-secondary btn-lg">Cancelar</a>
+                            <a href="<%= request.getContextPath() %>/pages/administracionProductos.jsp" class="btn btn-secondary btn-lg">Cancelar</a>
                         </div>
                     </form>
                 </div>
@@ -118,7 +149,6 @@
         </main>
 
         <%-- Pie de Página (Footer) --%>
-        <%-- Se añadió la clase 'mt-5' para dar más espacio arriba del footer --%>
         <footer class="bg-dark text-white text-center py-3 mt-5">
             Tienda de Guitarras. Todos los derechos reservados.
         </footer>
