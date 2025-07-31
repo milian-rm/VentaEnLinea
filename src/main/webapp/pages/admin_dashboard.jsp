@@ -63,7 +63,7 @@
                         <a href="categorias.jsp" class="list-group-item list-group-item-action">
                             <i class="bi bi-tags"></i> Categorías
                         </a>
-                        <a href="proveedores.jsp" class="list-group-item list-group-item-action">
+                        <a href="../ProveedorServlet?accion=listar" class="list-group-item list-group-item-action">
                             <i class="bi bi-building"></i> Proveedores
                         </a>
                         <a href="compras.jsp" class="list-group-item list-group-item-action">

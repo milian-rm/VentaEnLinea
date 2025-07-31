@@ -17,7 +17,7 @@
         <style>
             body {
                 font-family: 'Open Sans', sans-serif;
-                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                background: linear-gradient(135deg, #b60000 0%, black 100%);
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
@@ -117,7 +117,7 @@
             }
 
             input[type="submit"] {
-                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                background: #b60000;
                 color: white;
                 padding: 16px;
                 border: none;
@@ -151,7 +151,7 @@
             }
 
             .logo-small {
-                width: 80px;
+                width: 200px;
                 height: auto;
                 margin-bottom: 20px;
                 opacity: 0.8;
@@ -165,12 +165,10 @@
         </a>
 
         <div class="admin-container">
-            <!-- Logo pequeño -->
-            <img src="https://i.imgur.com/GUP9CG7.png" alt="Logo GuitarKinal" class="logo-small"/>
-            
+
             <!-- Icono de administrador -->
             <div class="admin-icon">
-                <i class="bi bi-shield-lock"></i>
+                <i><img src="https://i.imgur.com/GUP9CG7.png" alt="Logo GuitarKinal" class="logo-small"/></i>
             </div>
 
             <h2>Panel de Administración</h2>
