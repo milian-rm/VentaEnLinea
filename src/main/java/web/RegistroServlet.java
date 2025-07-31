@@ -13,6 +13,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import model.RolUsuario;
 
 @WebServlet("/registro")
 public class RegistroServlet extends HttpServlet {
@@ -33,6 +35,22 @@ public class RegistroServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        // REGISTRO PÚBLICO HABILITADO - Cualquiera puede registrarse
+        // (Comenta estas líneas si quieres bloquear el registro público)
+        /*
+        HttpSession session = request.getSession(false);
+        if (session == null || session.getAttribute("idUsuario") == null) {
+            response.sendRedirect("pages/login.jsp?error=registro_bloqueado");
+            return;
+        }
+        
+        String rolUsuario = (String) session.getAttribute("rol");
+        if (!"Admin".equals(rolUsuario)) {
+            response.sendRedirect("pages/login.jsp?error=no_autorizado");
+            return;
+        }
+        */
 
         EntityManager entityManager = null;
         EntityTransaction transaction = null;
@@ -45,21 +63,20 @@ public class RegistroServlet extends HttpServlet {
             String telefono = request.getParameter("telefono");
             String direccion = request.getParameter("direccion");
             String contrasena = request.getParameter("contrasena");
-
+            String nit = request.getParameter("nit");
+            
+            // Para registro público, todos son clientes por defecto
+            RolUsuario rol = RolUsuario.Cliente;
+            
             // Validación básica de campos obligatorios
-            if (nombre == null || nombre.isEmpty() ||
-                apellido == null || apellido.isEmpty() ||
-                emailUsuario == null || emailUsuario.isEmpty() ||
-                contrasena == null || contrasena.isEmpty()) {
+            if (nombre == null || nombre.trim().isEmpty() ||
+                apellido == null || apellido.trim().isEmpty() ||
+                emailUsuario == null || emailUsuario.trim().isEmpty() ||
+                contrasena == null || contrasena.trim().isEmpty() ||
+                nit == null || nit.trim().isEmpty()) {
                 response.sendRedirect("pages/register.jsp?error=campos_incompletos");
                 return;
             }
-
-            // Validación del formato de correo electrónico
-//            if (!email.matches("^[A-Za-z0-9+_.-]+@(.+)$")) {
-//                response.sendRedirect("pages/register.jsp?error=email_invalido");
-//                return;
-//            }
 
             entityManager = entityManagerFactory.createEntityManager();
             transaction = entityManager.getTransaction();
@@ -77,13 +94,17 @@ public class RegistroServlet extends HttpServlet {
 
             // Crear nuevo usuario
             Usuario usuario = new Usuario();
-            usuario.setNombre(nombre);
-            usuario.setApellido(apellido);
-            usuario.setCorreo(emailUsuario);
-            usuario.setTelefono(telefono);
-            usuario.setDireccion(direccion);
+            
+            
+            usuario.setNombre(nombre);                
+            usuario.setApellido(apellido);             
+            usuario.setCorreo(emailUsuario);          
+            usuario.setTelefono(telefono);            
+            usuario.setDireccion(direccion);          
+            usuario.setContrasena(contrasena);        
+            usuario.setNit(nit);                    
+            usuario.setRol(rol);                      
             usuario.setFechaRegistro(Timestamp.valueOf(LocalDateTime.now()));
-            usuario.setContrasena(contrasena); // ¡En producción deberías cifrarla!
 
             // Persistir usuario
             entityManager.persist(usuario);
@@ -93,7 +114,7 @@ public class RegistroServlet extends HttpServlet {
             response.sendRedirect("pages/login.jsp?register=exitoso");
 
         } catch (Exception e) {
-            e.printStackTrace(); // Mantenerlo para logs del servidor
+            e.printStackTrace();
             System.out.println("ERROR EN SERVLET: " + e.getMessage()); 
             if (transaction != null && transaction.isActive()) {
                 transaction.rollback();
@@ -105,7 +126,6 @@ public class RegistroServlet extends HttpServlet {
             }
         }
     }
-   
 
     @Override
     public void destroy() {

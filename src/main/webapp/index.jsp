@@ -4,6 +4,7 @@
     Author     : Kevin
 --%>
 
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="es">
@@ -32,7 +33,7 @@
             <a href="pages/login.jsp">Iniciar Sesión</a>
             <a href="pages/register.jsp">Registrarse</a>
             <a href="pages/acercaDe.jsp">Acerca de</a>
-            <a href=""></a>
+            <a href="pages/admin-login.jsp">Administracion</a>
         </nav>
     </header>
 

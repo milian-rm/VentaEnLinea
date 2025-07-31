@@ -4,68 +4,35 @@
  */
 package dao;
 
-import model.Usuario;
+/**
+ *
+ * @author informatica
+ */
+import model.Recibo;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.NoResultException;
 import javax.persistence.Persistence;
 import java.util.List;
+import javax.persistence.NoResultException;
 
-public class UsuarioDAO {
+public class ReciboDAO {
 
     private static final EntityManagerFactory EMF = Persistence.createEntityManagerFactory("libreriaPU");
 
-    public void saveUsuario(Usuario usuario) {
+    public void saveRecibo(Recibo recibo) {
         EntityManager em = null;
         try {
             em = EMF.createEntityManager();
             em.getTransaction().begin();
-            em.persist(usuario); 
-            em.getTransaction().commit();
-        } catch (Exception e) {
-            if (em != null && em.getTransaction().isActive()) {
-                em.getTransaction().rollback(); 
-            }
-            System.err.println("Error al guardar usuario: " + e.getMessage());
-            e.printStackTrace();
-            throw new RuntimeException("No se pudo guardar el usuario", e);
-        } finally {
-            if (em != null && em.isOpen()) {
-                em.close(); 
-            }
-        }
-    }
-
-    public Usuario getUsuarioById(Integer id) {
-        EntityManager em = null;
-        try {
-            em = EMF.createEntityManager();
-            return em.find(Usuario.class, id); 
-        } catch (Exception e) {
-            System.err.println("Error al buscar usuario por ID: " + e.getMessage());
-            e.printStackTrace();
-            throw new RuntimeException("Error buscando usuario por ID", e);
-        } finally {
-            if (em != null && em.isOpen()) {
-                em.close();
-            }
-        }
-    }
-
-    public void updateUsuario(Usuario usuario) {
-        EntityManager em = null;
-        try {
-            em = EMF.createEntityManager();
-            em.getTransaction().begin();
-            em.merge(usuario);
+            em.persist(recibo);
             em.getTransaction().commit();
         } catch (Exception e) {
             if (em != null && em.getTransaction().isActive()) {
                 em.getTransaction().rollback();
             }
-            System.err.println("Error al actualizar usuario: " + e.getMessage());
+            System.err.println("Error al guardar recibo: " + e.getMessage());
             e.printStackTrace();
-            throw new RuntimeException("No se pudo actualizar el usuario", e);
+            throw new RuntimeException("No se pudo guardar el recibo", e);
         } finally {
             if (em != null && em.isOpen()) {
                 em.close();
@@ -73,23 +40,60 @@ public class UsuarioDAO {
         }
     }
 
-    public void deleteUsuario(Integer id) {
+    public Recibo getReciboById(Integer id) {
+        EntityManager em = null;
+        try {
+            em = EMF.createEntityManager();
+            return em.find(Recibo.class, id);
+        } catch (Exception e) {
+            System.err.println("Error al buscar recibo por ID: " + e.getMessage());
+            e.printStackTrace();
+            throw new RuntimeException("Error buscando recibo por ID", e);
+        } finally {
+            if (em != null && em.isOpen()) {
+                em.close();
+            }
+        }
+    }
+
+    public void updateRecibo(Recibo recibo) {
         EntityManager em = null;
         try {
             em = EMF.createEntityManager();
             em.getTransaction().begin();
-            Usuario usuario = em.find(Usuario.class, id); 
-            if (usuario != null) {
-                em.remove(usuario); 
+            em.merge(recibo);
+            em.getTransaction().commit();
+        } catch (Exception e) {
+            if (em != null && em.getTransaction().isActive()) {
+                em.getTransaction().rollback();
+            }
+            System.err.println("Error al actualizar recibo: " + e.getMessage());
+            e.printStackTrace();
+            throw new RuntimeException("No se pudo actualizar el recibo", e);
+        } finally {
+            if (em != null && em.isOpen()) {
+                em.close();
+            }
+        }
+    }
+
+    public void deleteRecibo(Integer id) {
+        EntityManager em = null;
+        try {
+            em = EMF.createEntityManager();
+            em.getTransaction().begin();
+            Recibo recibo = em.find(Recibo.class, id);
+            if (recibo != null) {
+                em.remove(recibo);
             }
             em.getTransaction().commit();
         } catch (Exception e) {
             if (em != null && em.getTransaction().isActive()) {
                 em.getTransaction().rollback();
             }
-            System.err.println("Error al eliminar usuario: " + e.getMessage());
+            System.err.println("Error al eliminar recibo: " + e.getMessage());
             e.printStackTrace();
-            throw new RuntimeException("No se pudo eliminar el usuario", e);
+            throw new RuntimeException("No se pudo eliminar el recibo", e);
         } finally {
             if (em != null && em.isOpen()) {
                 em.close();
@@ -97,37 +101,16 @@ public class UsuarioDAO {
         }
     }
 
-    // Busca un usuario por su email
-    public Usuario findByEmail(String email) {
+    // Obtiene TODOS los recibos de la base de datos
+    public List<Recibo> getAllRecibos() {
         EntityManager em = null;
         try {
             em = EMF.createEntityManager();
-            return em.createQuery("SELECT u FROM Usuario u WHERE u.emailUsuario = :email", Usuario.class)
-                     .setParameter("email", email)
-                     .getSingleResult(); 
-        } catch (NoResultException e) { 
-            return null;
+            return em.createQuery("SELECT r FROM Recibo r", Recibo.class).getResultList();
         } catch (Exception e) {
-            System.err.println("Error al buscar usuario por email: " + e.getMessage());
+            System.err.println("Error al obtener todos los recibos: " + e.getMessage());
             e.printStackTrace();
-            throw new RuntimeException("Error buscando usuario por email", e);
-        } finally {
-            if (em != null && em.isOpen()) {
-                em.close();
-            }
-        }
-    }
-
-    // Obtiene una lista de TODOS los usuarios
-    public List<Usuario> getAllUsuarios() {
-        EntityManager em = null;
-        try {
-            em = EMF.createEntityManager();
-            return em.createQuery("SELECT u FROM Usuario u", Usuario.class).getResultList();
-        } catch (Exception e) {
-            System.err.println("Error al obtener todos los usuarios: " + e.getMessage());
-            e.printStackTrace();
-            throw new RuntimeException("Error obteniendo usuarios", e);
+            throw new RuntimeException("Error obteniendo recibos", e);
         } finally {
             if (em != null && em.isOpen()) {
                 em.close();
