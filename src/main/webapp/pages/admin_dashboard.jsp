@@ -66,7 +66,7 @@
                             <a href="../ProveedorServlet?accion=listar" class="list-group-item list-group-item-action">
                                 <i class="bi bi-building"></i> Proveedores
                             </a>
-                            <a href="compras.jsp" class="list-group-item list-group-item-action">
+                            <a href="../ServletCompra?accion=listar" class="list-group-item list-group-item-action">
                                 <i class="bi bi-cart"></i> Compras
                             </a>
                         </div>
@@ -206,7 +206,7 @@
                                             </a>
                                         </div>
                                         <div class="col-md-4 mb-3">
-                                            <a href="agregarCompra.jsp" class="btn btn-dark w-100">
+                                            <a href="agregarCompra.jsp?action=create" class="btn btn-dark w-100">
                                                 <i class="bi bi-cart"></i><br>
                                                 Nueva Compra
                                             </a>
@@ -217,19 +217,6 @@
                         </div>
                     </div>
 
-
-                    <div class="row mt-4">
-                        <div class="col-12">
-                            <div class="card">
-                                <div class="card-header">
-                                    <h5 class="mb-0"><i class="bi bi-clock-history"></i> Actividad Reciente</h5>
-                                </div>
-                                <div class="card-body">
-                                    <p class="text-muted">Las últimas acciones se mostrarán aquí...</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
