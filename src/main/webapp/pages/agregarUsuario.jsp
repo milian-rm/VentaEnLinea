@@ -114,7 +114,8 @@
                             <input type="password" id="contrasena" name="contrasena" class="form-control" required>
                         </div>
                         <div class="mb-3">
-                            <label for="contrasena" class="form-label">Rol:</label>
+                            <label for="rolUsuario" class="form-label">Rol</label>
+                            <label>Opciones: Admin : Cliente</label>
                             <input type="text" id="rolUsuario" name="rol" class="form-control">
                         </div>
                         <div class="mb-3">

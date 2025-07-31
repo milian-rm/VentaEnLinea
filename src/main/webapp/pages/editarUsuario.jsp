@@ -118,7 +118,8 @@
                             <input type="password" id="contrasena" name="contrasena" class="form-control"value="<%=usu.getContrasena()%>" >
                         </div>
                         <div class="mb-3">
-                            <label for="rolUsuario" class="form-label">Rol:</label>
+                            <label for="rolUsuario" class="form-label">Rol</label>
+                            <label>Opciones: Admin : Cliente</label>
                             <input type="text" id="rol" name="rol" class="form-control" value="<%=usu.getRol()%>" required>
                         </div>
                         <div class="mb-3">

@@ -72,8 +72,9 @@
                         </div>
                     </div>
                 </div>
-
+                
                 <div class="col-md-9 col-lg-10">
+                <!-- comment 
                     <div class="row">
                         <div class="col-md-3 mb-4">
                             <div class="card text-white bg-primary">
@@ -159,6 +160,7 @@
                             </div>
                         </div>
                     </div>
+                -->
 
 
                     <div class="row">
@@ -169,44 +171,44 @@
                                 </div>
                                 <div class="card-body">
                                     <div class="row">
-                                        <div class="col-md-4 mb-3">
-                                            <a href="agregarUsuario.jsp?action=create" class="btn btn-primary w-100">
+                                        <div class="col-12 mb-3 me-5">
+                                            <a href="agregarUsuario.jsp?action=create" class="btn btn-primary w-100 py-2 fs-6">
                                                 <i class="bi bi-person-plus"></i><br>
                                                 Crear Nuevo Usuario
                                             </a>
                                         </div>
-                                        <div class="col-md-4 mb-3">
-                                            <a href="agregarProducto.jsp?action=create" class="btn btn-success w-100">
+                                        <div class="col-12 mb-3 me-5">
+                                            <a href="agregarProducto.jsp?action=create" class="btn btn-success w-100 py-2 fs-6">
                                                 <i class="bi bi-plus-square"></i><br>
                                                 Agregar Producto
                                             </a>
                                         </div>
-                                        <div class="col-md-4 mb-3">
-                                            <a href="agregarCategoria.jsp?action=create" class="btn btn-warning w-100">
+                                       <div class="col-12 mb-3 me-5">
+                                            <a href="agregarCategoria.jsp?action=create" class="btn btn-warning w-100 py-2 fs-6">
                                                 <i class="bi bi-tag"></i><br>
                                                 Nueva Categoría
                                             </a>
                                         </div>
-                                        <div class="col-md-4 mb-3">
-                                            <a href="agregarDetalleCompra.jsp?action=create" class="btn btn-secondary w-100">
+                                        <div class="col-12 mb-3 me-5">
+                                            <a href="agregarDetalleCompra.jsp?action=create" class="btn btn-secondary w-100 py-2 fs-6">
                                                 <i class="bi bi-clipboard-check"></i><br>
                                                 Nuevo Detalle Compra
                                             </a>
                                         </div>
-                                        <div class="col-md-4 mb-3">
-                                            <a href="agregarRecibo.jsp?action=create" class="btn btn-danger w-100">
+                                        <div class="col-12 mb-3 me-5">
+                                            <a href="agregarRecibo.jsp?action=create" class="btn btn-danger w-100 py-2 fs-6">
                                                 <i class="bi bi-receipt"></i><br>
                                                 Nuevo Recibo
                                             </a>
                                         </div>
-                                        <div class="col-md-4 mb-3">
-                                            <a href="agregarProveedor.jsp?action=create" class="btn btn-info w-100">
+                                        <div class="col-12 mb-3 me-5">
+                                            <a href="agregarProveedor.jsp?action=create" class="btn btn-info w-100 py-2 fs-6">
                                                 <i class="bi bi-truck"></i><br>
                                                 Nuevo Proveedor
                                             </a>
                                         </div>
-                                        <div class="col-md-4 mb-3">
-                                            <a href="agregarCompra.jsp?action=create" class="btn btn-dark w-100">
+                                        <div class="col-12 mb-3 me-5">
+                                            <a href="agregarCompra.jsp?action=create" class="btn btn-dark w-100 py-2 fs-6">
                                                 <i class="bi bi-cart"></i><br>
                                                 Nueva Compra
                                             </a>

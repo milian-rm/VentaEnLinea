@@ -118,10 +118,10 @@
                         <%-- Botones de acción --%>
                         <div class="d-grid gap-2">
                             <button type="submit" class="btn btn-success btn-lg">Guardar Compra</button>
+                            <a href="<%= request.getContextPath() %>/ServletCompra?accion=listar" class="btn btn-secondary btn-lg">Cancelar</a>
                             <%-- El botón Cancelar regresa a la página de administración de compras --%>
                         </div>
                     </form>
-                            <a href="ServletCompra?accion=listar" class="btn btn-secondary btn-lg">Cancelar</a>
                 </div>
             </div>
         </main>
