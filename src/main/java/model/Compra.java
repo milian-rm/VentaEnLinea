@@ -93,4 +93,11 @@ public class Compra {
     public void setEstadoOrden(String estadoOrden) {
         this.estadoOrden = estadoOrden;
     }
+
+    @Override
+    public String toString() {
+        return "" + idOrden + "";
+    }
+    
+    
 }

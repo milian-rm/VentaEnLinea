@@ -91,6 +91,13 @@ public class Recibo {
     public void setMetodoPago(String metodoPago) {
         this.metodoPago = metodoPago;
     }
+
+    @Override
+    public String toString() {
+        return "" + idRecibo + "";
+    }
+    
+    
     
     
 }

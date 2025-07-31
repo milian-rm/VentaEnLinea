@@ -95,4 +95,11 @@ public class DetalleCompra {
     public void setPrecioUnitario(double precioUnitario) {
         this.precioUnitario = precioUnitario;
     }
+
+    @Override
+    public String toString() {
+        return "" + idDetalleOrden + "";
+    }
+    
+    
 }
