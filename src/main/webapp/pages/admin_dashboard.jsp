@@ -48,7 +48,7 @@
                             <h6 class="mb-0"><i class="bi bi-gear"></i> Mantenimientos</h6>
                         </div>
                         <div class="list-group list-group-flush">
-                            <a href="administracionUsuarios.jsp" class="list-group-item list-group-item-action">
+                            <a href="../ServletUsuario?accion=listar" class="list-group-item list-group-item-action">
                                 <i class="bi bi-people"></i> Administración de Usuarios
                             </a>
                             <a href="../ProductoServlet?accion=listar" class="list-group-item list-group-item-action">

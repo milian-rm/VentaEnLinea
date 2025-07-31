@@ -6,7 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html lang="es">
     <head>
         <meta charset="UTF-8">
         <title>Agregar Usuario - GuitarKinal</title>
@@ -85,17 +85,17 @@
                 <div class="col-md-6 col-lg-5">
                     <h1 class="mb-4 text-center">Agregar Nuevo Usuario</h1>
                     <%-- El formulario enviará los datos al ServletUsuarios para guardar el usuario --%>
-                    <form action="ServletUsuarios" method="post">
+                    <form action="${pageContext.request.contextPath}/ServletUsuario" method="post">
                         <%-- Campo oculto para indicar al servlet la acción a realizar --%>
-                        <input type="hidden" name="accion" value="insertar">
+                        <input type="hidden" name="accion" value="agregar">
 
                         <div class="mb-3">
                             <label for="nombreUsuario" class="form-label">Nombre:</label>
-                            <input type="text" id="nombreUsuario" name="nombreUsuario" class="form-control" required>
+                            <input type="text" id="nombreUsuario" name="nombre" class="form-control" required>
                         </div>
                         <div class="mb-3">
                             <label for="apellidoUsuario" class="form-label">Apellido:</label>
-                            <input type="text" id="apellidoUsuario" name="apellidoUsuario" class="form-control" required>
+                            <input type="text" id="apellidoUsuario" name="apellido" class="form-control" required>
                         </div>
                         <div class="mb-3">
                             <label for="emailUsuario" class="form-label">Email:</label>
@@ -103,28 +103,28 @@
                         </div>
                         <div class="mb-3">
                             <label for="telefonoUsuario" class="form-label">Teléfono:</label>
-                            <input type="text" id="telefonoUsuario" name="telefonoUsuario" class="form-control">
+                            <input type="text" id="telefonoUsuario" name="telefono" class="form-control">
                         </div>
                         <div class="mb-3">
                             <label for="direccionUsuario" class="form-label">Dirección:</label>
-                            <textarea id="direccionUsuario" name="direccionUsuario" class="form-control" rows="3"></textarea>
+                            <textarea id="direccionUsuario" name="direccion" class="form-control" rows="3"></textarea>
                         </div>
                         <div class="mb-3">
                             <label for="contrasena" class="form-label">Contraseña:</label>
                             <input type="password" id="contrasena" name="contrasena" class="form-control" required>
                         </div>
                         <div class="mb-3">
-                            <label for="rol" class="form-label">ROL</label>
-                            <input type="text" id="rol" name="rol" class="form-control" required>
+                            <label for="contrasena" class="form-label">Rol:</label>
+                            <input type="text" id="rolUsuario" name="rol" class="form-control">
                         </div>
                         <div class="mb-3">
-                            <label for="nit" class="form-label">NIT</label>
-                            <input type="text" id="nit" name="nit" class="form-control" required>
+                            <label for="contrasena" class="form-label">NIT:</label>
+                            <input type="text" id="nitUsuario" name="nit" class="form-control">
                         </div>
 
                         <div class="d-grid gap-2">
                             <button type="submit" class="btn btn-success btn-lg">Guardar Usuario</button>
-                            <a href="administracionUsuarios.jsp" class="btn btn-secondary btn-lg">Cancelar</a>
+                            <a href="${pageContext.request.contextPath}/ServletUsuario?accion=listar" class="btn btn-secondary btn-lg">Cancelar</a>
                         </div>
                     </form>
                 </div>

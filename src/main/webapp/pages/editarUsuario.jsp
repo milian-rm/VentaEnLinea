@@ -4,10 +4,11 @@
     Author     : Marcos
 --%>
 
+<%@page import="model.Usuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%-- <%@page import="model.Usuario" %> --%>
 <!DOCTYPE html>
-<html>
+<html lang="es">
     <head>
         <meta charset="UTF-8">
         <title>Editar Usuario - GuitarKinal</title>
@@ -21,8 +22,8 @@
     <body>
         <nav class="navbar navbar-dark bg-danger px-3">
             <div class="container-fluid">
-                <a class="navbar-brand" href="<%= request.getContextPath() %>/index.jsp">
-                    <img src="<%= request.getContextPath() %>/image/logo.png" alt="Logo GuitarKinal" height="90">
+                <a class="navbar-brand" href="<%= request.getContextPath()%>/index.jsp">
+                    <img src="<%= request.getContextPath()%>/image/logo.png" alt="Logo GuitarKinal" height="90">
                 </a>
                 <div class="container mt-1 text-center text-light text-start" style="margin-left: 6rem;">
                     <p class="fs-4"><strong><h2>Bienvenido a tienda GuitarKinal</h2></strong></p>
@@ -85,44 +86,50 @@
             <div class="row justify-content-center">
                 <div class="col-md-6 col-lg-5">
                     <h1 class="mb-4 text-center">Editar Usuario</h1>
-                    <form action="ServletUsuarios" method="post">
+                    <%
+                        Usuario usu = (Usuario) request.getAttribute("usuarioEditar");
+                    %>
+                    <form action="ServletUsuario" method="post">
                         <input type="hidden" name="accion" value="actualizar">
-                        <input type="hidden" name="idUsuario" value="1">
+                        <input type="hidden" name="id" value="<%= usu.getIdUsuario()%>">
 
                         <div class="mb-3">
                             <label for="nombreUsuario" class="form-label">Nombre:</label>
-                            <input type="text" id="nombreUsuario" name="nombreUsuario" class="form-control" value="Nombre Actual del Usuario" required>
+                            <input type="text" id="nombre" name="nombre" class="form-control" value="<%=usu.getNombre()%>" required>
                         </div>
                         <div class="mb-3">
                             <label for="apellidoUsuario" class="form-label">Apellido:</label>
-                            <input type="text" id="apellidoUsuario" name="apellidoUsuario" class="form-control" value="Apellido Actual del Usuario" required>
+                            <input type="text" id="apellido" name="apellido" class="form-control" value="<%=usu.getApellido()%>" required>
                         </div>
                         <div class="mb-3">
                             <label for="emailUsuario" class="form-label">Email:</label>
-                            <input type="email" id="emailUsuario" name="emailUsuario" class="form-control" value="email.actual@example.com" required>
+                            <input type="email" id="emailUsuario" name="emailUsuario" class="form-control" value="<%=usu.getCorreo()%>" required>
                         </div>
                         <div class="mb-3">
                             <label for="telefonoUsuario" class="form-label">Teléfono:</label>
-                            <input type="text" id="telefonoUsuario" name="telefonoUsuario" class="form-control" value="555-1234">
+                            <input type="text" id="telefono" name="telefono" class="form-control" value="<%=usu.getTelefono()%>">
                         </div>
                         <div class="mb-3">
                             <label for="direccionUsuario" class="form-label">Dirección:</label>
-                            <textarea id="direccionUsuario" name="direccionUsuario" class="form-control" rows="3">Dirección actual del usuario.</textarea>
+                            <textarea id="direccionUsuario" name="direccion" class="form-control" rows="3"><%=usu.getDireccion()%></textarea>
                         </div>
-                        <%--
-                            Por seguridad no se pre-llena la contraseña.
-                            Se puede añadir un campo para cambiarla si el usuario lo desea,
-                            pero no es recomendable mostrar la contraseña actual.
-                        --%>
                         <div class="mb-3">
-                            <label for="nuevaContrasena" class="form-label">Nueva Contraseña (Dejar vacío para no cambiar):</label>
-                            <input type="password" id="nuevaContrasena" name="nuevaContrasena" class="form-control">
+                            <label for="nuevaContrasena" class="form-label">Nueva Contraseña:</label>
+                            <input type="password" id="contrasena" name="contrasena" class="form-control"value="<%=usu.getContrasena()%>" >
+                        </div>
+                        <div class="mb-3">
+                            <label for="rolUsuario" class="form-label">Rol:</label>
+                            <input type="text" id="rol" name="rol" class="form-control" value="<%=usu.getRol()%>" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="nitUsuario" class="form-label">Nit:</label>
+                            <input type="text" id="nit" name="nit" class="form-control" value="<%= usu.getNit()%>" required>
                         </div>
 
                         <%-- Botones de acción --%>
                         <div class="d-grid gap-2">
                             <button type="submit" class="btn btn-success btn-lg">Guardar Cambios</button>
-                            <a href="administracionUsuarios.jsp" class="btn btn-secondary btn-lg">Cancelar</a>
+                            <a href="ServletUsuario?accion=listar" class="btn btn-secondary btn-lg">Cancelar</a>
                         </div>
                     </form>
                 </div>
