@@ -9,6 +9,7 @@ import dao.UsuarioDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Timestamp;
+import java.time.Instant;
 import java.time.LocalDateTime;
 import java.util.List;
 import javax.servlet.ServletException;
@@ -93,6 +94,8 @@ public class ServletUsuario extends HttpServlet {
             usu.setRol(RolUsuario.Admin);
         }else
             usu.setRol(RolUsuario.Cliente);
+        usu.setNit(nit);
+        usu.setFechaRegistro(Timestamp.from(Instant.now()));
 
         dao.saveUsuario(usu);
 
