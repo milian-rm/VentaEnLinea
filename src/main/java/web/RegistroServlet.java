@@ -103,7 +103,7 @@ public class RegistroServlet extends HttpServlet {
             usuario.setDireccion(direccion);           // Correcto según tu entidad
             usuario.setContrasena(contrasena);         // Este parece estar correcto
             usuario.setNit(nit);                       // Nuevo campo
-            usuario.setRol(rol);                       // Cliente por defecto
+            usuario.setRol(String.valueOf(rol));                       // Cliente por defecto
             usuario.setFechaRegistro(Timestamp.valueOf(LocalDateTime.now()));
 
             // Persistir usuario

@@ -102,7 +102,7 @@ public class UsuarioDAO {
         EntityManager em = null;
         try {
             em = EMF.createEntityManager();
-            return em.createQuery("SELECT u FROM Usuarios u WHERE u.emailUsuario = :email", Usuario.class)
+            return em.createQuery("SELECT u FROM Usuario u WHERE u.emailUsuario = :email", Usuario.class)
                      .setParameter("email", email)
                      .getSingleResult(); 
         } catch (NoResultException e) { 
@@ -123,7 +123,7 @@ public class UsuarioDAO {
         EntityManager em = null;
         try {
             em = EMF.createEntityManager();
-            return em.createQuery("SELECT u FROM Usuarios u", Usuario.class).getResultList();
+            return em.createQuery("SELECT u FROM Usuario u", Usuario.class).getResultList();
         } catch (Exception e) {
             System.err.println("Error al obtener todos los usuarios: " + e.getMessage());
             e.printStackTrace();
