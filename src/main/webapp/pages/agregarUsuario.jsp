@@ -113,6 +113,14 @@
                             <label for="contrasena" class="form-label">Contraseña:</label>
                             <input type="password" id="contrasena" name="contrasena" class="form-control" required>
                         </div>
+                        <div class="mb-3">
+                            <label for="rol" class="form-label">ROL</label>
+                            <input type="text" id="rol" name="rol" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="nit" class="form-label">NIT</label>
+                            <input type="text" id="nit" name="nit" class="form-control" required>
+                        </div>
 
                         <div class="d-grid gap-2">
                             <button type="submit" class="btn btn-success btn-lg">Guardar Usuario</button>

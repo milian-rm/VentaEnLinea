@@ -95,15 +95,15 @@ public class RegistroServlet extends HttpServlet {
             // Crear nuevo usuario
             Usuario usuario = new Usuario();
             
-            // USAR LOS NOMBRES CORRECTOS DE LOS SETTERS SEGÚN TU ENTIDAD
-            usuario.setNombre(nombre);                 // Correcto según tu entidad
-            usuario.setApellido(apellido);             // Correcto según tu entidad
-            usuario.setCorreo(emailUsuario);           // Correcto según tu entidad
-            usuario.setTelefono(telefono);             // Correcto según tu entidad
-            usuario.setDireccion(direccion);           // Correcto según tu entidad
-            usuario.setContrasena(contrasena);         // Este parece estar correcto
-            usuario.setNit(nit);                       // Nuevo campo
-            usuario.setRol(String.valueOf(rol));                       // Cliente por defecto
+            
+            usuario.setNombre(nombre);                
+            usuario.setApellido(apellido);             
+            usuario.setCorreo(emailUsuario);          
+            usuario.setTelefono(telefono);            
+            usuario.setDireccion(direccion);          
+            usuario.setContrasena(contrasena);        
+            usuario.setNit(nit);                    
+            usuario.setRol(rol);                      
             usuario.setFechaRegistro(Timestamp.valueOf(LocalDateTime.now()));
 
             // Persistir usuario
