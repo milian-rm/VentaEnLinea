@@ -1,6 +1,6 @@
 <%-- 
-    Document   : orangeCrush20rt
-    Created on : 3 ago 2025, 7:54:01
+    Document   : marshallDSL40CR
+    Created on : 3 ago 2025, 8:07:09
     Author     : Marcos
 --%>
 
@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Orange Crush 20RT | Tienda en Línea</title>
+        <title>Marshall DSL40CR | Tienda en Línea</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
               integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
         <style>
@@ -217,22 +217,22 @@
 
         <section class="producto-container">
             <div class="producto-imagen">
-                <img src="../image/Orange Crush 20RT.png" alt="Amplificador 30W">
+                <img src="../image/Marshall DSL40CR.jpg" alt="Amplificador 30W">
             </div>
             <div class="producto-detalles">
                 <div>
-                    <h1>Orange Crush 20RT</h1>
-                    <p class="descripcion">Reverb y afinador integrado</p>
-                    <p class="proveedor">Proveedor: Orange</p>
+                    <h1>Marshall DSL40CR</h1>
+                    <p class="descripcion">Amplificador de válvulas de 40W</p>
+                    <p class="proveedor">Proveedor: Marshall</p>
                     <p class="categoria">Categoría: Amplificadores</p>
-                    <p class="precio">Q.1,800.00</p>
-                    <p class="stock">Stock disponible: 6 unidades</p>
+                    <p class="precio">Q.5,900.00</p>
+                    <p class="stock">Stock disponible: 4 unidades</p>
                 </div>
 
                 <form class="compra-form">
                     <label for="cantidad">Cantidad:</label>
                     <!-- Aqui pueden cambiar el rango del input dependiendo el stock que tengan sus productos :) -->
-                    <input type="number" id="cantidad" name="cantidad" min="1" max="6" value="1">
+                    <input type="number" id="cantidad" name="cantidad" min="1" max="4" value="1">
                     <button type="submit">Agregar al carrito</button>
                 </form>
             </div>
