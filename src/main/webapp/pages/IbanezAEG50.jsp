@@ -1,6 +1,6 @@
 <%-- 
-    Document   : TakamineGD11MCE
-    Created on : 4/08/2025, 8:58:58 a. m.
+    Document   : IbanezAEG50
+    Created on : 4/08/2025, 9:15:26 a. m.
     Author     : Angel Rodriguez
 --%>
 
@@ -9,10 +9,11 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Takamine GD11MCE | Tienda en Línea</title>
+    <title>Ibanez AEG50 | Tienda en Línea</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
     <style>
+        /* Aquí va el mismo CSS que en las vistas anteriores */
         * {
             box-sizing: border-box;
             margin: 0;
@@ -217,21 +218,21 @@
 
     <section class="producto-container">
         <div class="producto-imagen">
-            <img src="../image/Takamine GD11MCE.png" alt="Takamine GD11MCE">
+            <img src="../image/Ibanez AEG50.png" alt="Ibanez AEG50">
         </div>
         <div class="producto-detalles">
             <div>
-                <h1>Takamine GD11MCE</h1>
-                <p class="descripcion">Guitarra acústica de tapa de abeto</p>
-                <p class="proveedor">Proveedor: Takamine</p>
+                <h1>Ibanez AEG50</h1>
+                <p class="descripcion">Guitarra acústica de cuerpo delgado</p>
+                <p class="proveedor">Proveedor: Ibanez</p>
                 <p class="categoria">Categoría: Guitarras Acústicas</p>
-                <p class="precio">Q.2,500.00</p>
-                <p class="stock">Stock disponible: 15 unidades</p>
+                <p class="precio">Q.3,995.00</p>
+                <p class="stock">Stock disponible: 12 unidades</p>
             </div>
 
             <form class="compra-form">
                 <label for="cantidad">Cantidad:</label>
-                <input type="number" id="cantidad" name="cantidad" min="1" max="15" value="1">
+                <input type="number" id="cantidad" name="cantidad" min="1" max="12" value="1">
                 <button type="submit">Agregar al carrito</button>
             </form>
         </div>
