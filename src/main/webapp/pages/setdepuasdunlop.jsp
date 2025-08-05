@@ -32,6 +32,7 @@
             text-align: center;
             font-size: 1.5rem;
         }
+        
 
         .producto-container {
             display: flex;
