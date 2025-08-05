@@ -4,6 +4,8 @@
     Author     : Kevin
 --%>
 
+<%@page import="model.Producto"%>
+<%@page import="dao.ProductoDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -155,22 +157,22 @@
 </head>
 <body>
 
-    <nav class="navbar navbar-dark bg-danger px-3">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="../index.jsp">
-                <img src="../image/logo.png" alt="Logo" height="90">
-            </a>
+    <nav class="navbar navbar-dark bg-danger px-3"> 
+        <div class="container-fluid"> 
+            <a class="navbar-brand" href="index.jsp"> 
+                <img src="../image/logo.png" alt="Logo" height="90"> 
+            </a> 
             <div class="container mt-1 text-center text-light text-start" style="margin-left: 6rem;">
-                <p class="fs-4"><strong>
-                        <h2>Bienvenido a tienda GuitarKinal</h2>
-                    </strong></p>
-            </div>
-            <button class="btn btn-outline-light" type="button" data-bs-toggle="offcanvas"
-                data-bs-target="#menuPrincipal" aria-controls="menuPrincipal">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-        </div>
-    </nav>
+                <p class="fs-4"><strong><h2>Guitarras Acústicas</h2></strong></p> 
+            </div> 
+            <a class="navbar-brand" href=""> 
+                <img src="../image/carro-de-la-compra(1).png" alt="Logo" height="60"> 
+            </a> 
+            <button class="btn btn-outline-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuPrincipal" aria-controls="menuPrincipal"> 
+                <span class="navbar-toggler-icon"></span> 
+            </button> 
+        </div> 
+    </nav> 
 
     <div class="offcanvas offcanvas-end" tabindex="-1" id="menuPrincipal" aria-labelledby="menuLabel">
         <div class="offcanvas-header">
@@ -178,41 +180,30 @@
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Cerrar"></button>
         </div>
 
-        <div class="offcanvas-body">
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item">
-                    <strong class="text-danger">Guitarras</strong>
-                    <ul class="list-unstyled ps-3 mt-2">
-                        <li><a href="#" class="text-danger text-decoration-none">Acústicas</a></li>
-                        <li><a href="#" class="text-danger text-decoration-none">Eléctricas</a></li>
-                        <li><a href="#" class="text-danger text-decoration-none">Electroacústicas</a></li>
-                        <li><a href="#" class="text-danger text-decoration-none">Clásicas</a></li>
-                    </ul>
-                </li>
-                <li class="list-group-item">
-                    <strong class="text-danger">Accesorios</strong>
-                    <ul class="list-unstyled ps-3 mt-2">
-                        <li><a href="#" class="text-danger text-decoration-none">Cuerdas</a></li>
-                        <li><a href="#" class="text-danger text-decoration-none">Afinadores</a></li>
-                        <li><a href="#" class="text-danger text-decoration-none">Estuches</a></li>
-                        <li><a href="#" class="text-danger text-decoration-none">Pedales</a></li>
-                    </ul>
-                </li>
-
-                <li class="list-group-item">
-                    <strong class="text-danger">Nosotros</strong>
-                    <ul class="list-unstyled ps-3 mt-2">
-                        <li><a href="#" class="text-danger text-decoration-none">Visión</a></li>
-                        <li><a href="#" class="text-danger text-decoration-none">Misión</a></li>
-                        <li><a href="#" class="text-danger text-decoration-none">Valores</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
+       <div class="offcanvas-body">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        <strong><a href="" class="text-danger text-decoration-none">Guitarras</a></strong>
+                        <ul class="list-unstyled ps-3 mt-2">
+                            <li><a href="#" class="text-danger text-decoration-none">Acústicas</a></li>
+                            <li><a href="#" class="text-danger text-decoration-none">Eléctricas</a></li>
+                            <li><a href="#" class="text-danger text-decoration-none">Electroacústicas</a></li>
+                            <li><a href="#" class="text-danger text-decoration-none">Clásicas</a></li>
+                        </ul>
+                    </li>
+                    <li class="list-group-item">
+                        <strong><a href="" class="text-danger text-decoration-none">Accesorios</a></strong>
+                    </li>
+                     
+                    <li class="list-group-item">
+                        <strong><a href="acercaDe.jsp" class="text-danger text-decoration-none">Nosotros</a></strong>
+                    </li>
+                </ul>
+            </div>
     </div>
 
     <div class="container mt-4">
-        <a href="../menuPrincipal.jsp"><button class="btn btn-regresar">Regresar al menú</button></a>
+        <a href="../pages/guitarrasAcusticas.jsp"><button class="btn btn-regresar">Regresar al menú</button></a>
     </div>
 
     <section class="producto-container">
@@ -221,12 +212,18 @@
         </div>
         <div class="producto-detalles">
             <div>
+                <%
+                            ProductoDAO productoDAO = new ProductoDAO();
+                            Producto producto = productoDAO.getProductoById(3);
+                            int stock = 0;
+                            stock = producto.getStock();
+                %>
                 <h1>Taylor Academy 10</h1>
                 <p class="descripcion">Guitarra acústica con diseño ergonómico y gran sonido</p>
                 <p class="proveedor">Proveedor: Taylor</p>
                 <p class="categoria">Categoría: Guitarras Acústicas</p>
                 <p class="precio">Q.3200.00</p>
-                <p class="stock">Stock disponible: 8 unidades</p>
+                <p class="stock">Stock disponible: <%=stock%> unidades</p>
             </div>
 
             <form class="compra-form">

@@ -3,7 +3,7 @@
 <html> 
     <head> 
         <meta charset="UTF-8"> 
-        <title>Tienda de Guitarras</title> 
+        <title>Guitarras Acústicas</title> 
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous"> 
         <style>
             .card-img-top {
@@ -47,10 +47,10 @@
         <nav class="navbar navbar-dark bg-danger px-3"> 
             <div class="container-fluid"> 
                 <a class="navbar-brand" href="index.jsp"> 
-                    <img src="image/logo.png" alt="Logo" height="90"> 
+                    <img src="../image/logo.png" alt="Logo" height="90"> 
                 </a> 
                 <div class="container mt-1 text-center text-light text-start" style="margin-left: 6rem;">
-                    <p class="fs-4"><strong><h2>Bienvenido a tienda GuitarKinal</h2></strong></p> 
+                    <p class="fs-4"><strong><h2>Guitarras Acústicas</h2></strong></p> 
                 </div> 
                 <a class="navbar-brand" href=""> 
                     <img src="../image/carro-de-la-compra(1).png" alt="Logo" height="60"> 
@@ -70,7 +70,7 @@
             <div class="offcanvas-body">
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">
-                        <strong class="text-danger">Guitarras</strong>
+                        <strong><a href="" class="text-danger text-decoration-none">Guitarras</a></strong>
                         <ul class="list-unstyled ps-3 mt-2">
                             <li><a href="#" class="text-danger text-decoration-none">Acústicas</a></li>
                             <li><a href="#" class="text-danger text-decoration-none">Eléctricas</a></li>
@@ -79,22 +79,11 @@
                         </ul>
                     </li>
                     <li class="list-group-item">
-                        <strong class="text-danger">Accesorios</strong>
-                        <ul class="list-unstyled ps-3 mt-2">
-                            <li><a href="#" class="text-danger text-decoration-none">Cuerdas</a></li>
-                            <li><a href="#" class="text-danger text-decoration-none">Afinadores</a></li>
-                            <li><a href="#" class="text-danger text-decoration-none">Estuches</a></li>
-                            <li><a href="#" class="text-danger text-decoration-none">Pedales</a></li>
-                        </ul>
+                        <strong><a href="" class="text-danger text-decoration-none">Accesorios</a></strong>
                     </li>
                      
                     <li class="list-group-item">
-                        <strong class="text-danger">Nosotros</strong>
-                        <ul class="list-unstyled ps-3 mt-2">
-                            <li><a href="#" class="text-danger text-decoration-none">Visión</a></li>
-                            <li><a href="#" class="text-danger text-decoration-none">Misión</a></li>
-                            <li><a href="#" class="text-danger text-decoration-none">Valores</a></li>
-                        </ul>
+                        <strong><a href="acercaDe.jsp" class="text-danger text-decoration-none">Nosotros</a></strong>
                     </li>
                 </ul>
             </div>
@@ -107,71 +96,63 @@
                 <div class="row justify-content-center"> 
                     <div class="col-md-4 mb-4"> 
                         <div class="card h-100"> 
-                            <img src="image/Guitarra Acústica.jpg" class="card-img-top" alt="Guitarra Acústica"> 
+                            <img src="../image/takamine_GD30.jpg" class="mt-3" style="height: 250px; object-fit: cover;" alt="Takamine GD30">
                             <div class="card-body"> 
-                                <h5 class="card-title">Guitarra Acústica</h5> 
-                                <p class="card-text">Sonido cálido y natural para los amantes del folk y lo clásico.</p> 
-                                <a href="pages/guitarrasAcusticas.jsp" class="btn btn-danger">Ver más</a> 
+                                <h5 class="card-title">Takamine GD30</h5> 
+                                <p class="card-text">Guitarra acústica dreadnought con tapa sólida de abeto</p> 
+                                <a href="takamine_GD30.jsp" class="btn btn-danger">Ver más</a> 
+                            </div> 
+                        </div> 
+                    </div> 
+                    
+                    <div class="col-md-4 mb-4"> 
+                        <div class="card h-100"> 
+                            <img src="../image/ibanez_AW54.jpg" class="mt-3" style="height: 250px; object-fit: cover;" alt="ibanez_AW54">
+                            <div class="card-body"> 
+                                <h5 class="card-title">Ibanez AW54</h5> 
+                                <p class="card-text">Guitarra acústica con acabado Open Pore Natural</p> 
+                                <a href="ibanez_AW54.jsp" class="btn btn-danger">Ver más</a> 
+                            </div> 
+                        </div> 
+                    </div> 
+                    
+                    <div class="col-md-4 mb-4"> 
+                        <div class="card h-100"> 
+                            <img src="../image/taylor_academy10.jpg" class="mt-3" style="height: 250px; object-fit: cover;" alt="Taylor Academy 10">
+                            <div class="card-body"> 
+                                <h5 class="card-title">Taylor Academy 10</h5> 
+                                <p class="card-text">Guitarra acústica con diseño ergonómico y gran sonido</p> 
+                                <a href="taylor_Academy10.jsp" class="btn btn-danger">Ver más</a> 
                             </div> 
                         </div> 
                     </div> 
 
-                    <div class="col-md-4 mb-4"> 
-                        <div class="card h-100"> 
-                            <img src="image/Guitarra Eléctrica.jpg" class="card-img-top" alt="Guitarra Eléctrica"> 
-                            <div class="card-body"> 
-                                <h5 class="card-title">Guitarra Eléctrica</h5> 
-                                <p class="card-text">Ideal para rock, metal o jazz con un diseño moderno y potente.</p> 
-                                <a href="#" class="btn btn-danger">Ver más</a> 
-                            </div> 
-                        </div> 
-                    </div> 
-
-                    <div class="col-md-4 mb-4"> 
-                        <div class="card h-100"> 
-                            <img src="image/Pedal de Efectos.jpg" class="card-img-top" alt="Pedal de efectos"> 
-                            <div class="card-body"> 
-                                <h5 class="card-title">Pedal de Efectos</h5> 
-                                <p class="card-text">Explora nuevos sonidos y efectos para tu guitarra eléctrica.</p> 
-                                <a href="#" class="btn btn-danger">Ver más</a> 
-                            </div> 
-                        </div> 
-                    </div> 
-                </div> 
+                    
 
                 <div class="row justify-content-center"> 
+                    
                     <div class="col-md-4 mb-4"> 
                         <div class="card h-100"> 
-                            <img src="image/Amplificador Compacto.jpg" class="card-img-top" alt="Amplificador"> 
+                            <img src="../image/takamine_GN93.jpg" class="mt-3" style="height: 250px; object-fit: cover;" alt="Takamine GN93">
                             <div class="card-body"> 
-                                <h5 class="card-title">Amplificador Compacto</h5> 
-                                <p class="card-text">Portátil pero potente, ideal para ensayos o uso en casa.</p> 
-                                <a href="#" class="btn btn-danger">Ver más</a> 
+                                <h5 class="card-title">Takamine GN93</h5> 
+                                <p class="card-text">Guitarra acústica con fondo de nogal y aros de arce</p> 
+                                <a href="takamine_GN93.jsp" class="btn btn-danger">Ver más</a> 
                             </div> 
                         </div> 
                     </div> 
-
+                    
                     <div class="col-md-4 mb-4"> 
                         <div class="card h-100"> 
-                            <img src="image/Juego de Cuerdas.jpg" class="card-img-top" alt="Cuerdas"> 
+                            <img src="../image/ibanez_PF15.jpg" class="mt-3" style="height: 250px; object-fit: cover;" alt="Ibanez PF15">
                             <div class="card-body"> 
-                                <h5 class="card-title">Juego de Cuerdas</h5> 
-                                <p class="card-text">Cuerdas de alta calidad para un sonido limpio y duradero.</p> 
-                                <a href="#" class="btn btn-danger">Ver más</a> 
+                                <h5 class="card-title">Ibanez PF15</h5> 
+                                <p class="card-text">Guitarra acústica con diseño ergonómico y gran sonido</p> 
+                                <a href="ibanez_PF15.jsp" class="btn btn-danger">Ver más</a> 
                             </div> 
                         </div> 
                     </div> 
-
-                    <div class="col-md-4 mb-4"> 
-                        <div class="card h-100"> 
-                            <img src="image/Afinador Digital.png" class="card-img-top" alt="Afinador"> 
-                            <div class="card-body"> 
-                                <h5 class="card-title">Afinador</h5> 
-                                <p class="card-text">Asegura una afinación precisa en segundos con pantalla LED.</p> 
-                                <a href="#" class="btn btn-danger">Ver más</a> 
-                            </div> 
-                        </div> 
-                    </div> 
+                    
                 </div> 
             </div> 
         </main> 
