@@ -4,6 +4,8 @@
     Author     : Marcos
 --%>
 
+<%@page import="model.Producto"%>
+<%@page import="dao.ProductoDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -155,22 +157,22 @@
     </head>
     <body>
 
-        <nav class="navbar navbar-dark bg-danger px-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="index.jsp">
-                    <img src="../image/logo.png" alt="Logo" height="90">
-                </a>
+        <nav class="navbar navbar-dark bg-danger px-3"> 
+            <div class="container-fluid"> 
+                <a class="navbar-brand" href="index.jsp"> 
+                    <img src="../image/logo.png" alt="Logo" height="90"> 
+                </a> 
                 <div class="container mt-1 text-center text-light text-start" style="margin-left: 6rem;">
-                    <p class="fs-4"><strong>
-                            <h2>Bienvenido a tienda GuitarKinal</h2>
-                        </strong></p>
-                </div>
-                <button class="btn btn-outline-light" type="button" data-bs-toggle="offcanvas"
-                        data-bs-target="#menuPrincipal" aria-controls="menuPrincipal">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-            </div>
-        </nav>
+                    <p class="fs-4"><strong><h2>Amplificadores</h2></strong></p> 
+                </div> 
+                <a class="navbar-brand" href=""> 
+                    <img src="../image/carro-de-la-compra(1).png" alt="Logo" height="60"> 
+                </a> 
+                <button class="btn btn-outline-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuPrincipal" aria-controls="menuPrincipal"> 
+                    <span class="navbar-toggler-icon"></span> 
+                </button> 
+            </div> 
+        </nav> 
 
         <div class="offcanvas offcanvas-end" tabindex="-1" id="menuPrincipal" aria-labelledby="menuLabel">
             <div class="offcanvas-header">
@@ -181,7 +183,7 @@
             <div class="offcanvas-body">
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">
-                        <strong class="text-danger">Guitarras</strong>
+                        <strong><a href="" class="text-danger text-decoration-none">Guitarras</a></strong>
                         <ul class="list-unstyled ps-3 mt-2">
                             <li><a href="#" class="text-danger text-decoration-none">Acústicas</a></li>
                             <li><a href="#" class="text-danger text-decoration-none">Eléctricas</a></li>
@@ -190,29 +192,18 @@
                         </ul>
                     </li>
                     <li class="list-group-item">
-                        <strong class="text-danger">Accesorios</strong>
-                        <ul class="list-unstyled ps-3 mt-2">
-                            <li><a href="#" class="text-danger text-decoration-none">Cuerdas</a></li>
-                            <li><a href="#" class="text-danger text-decoration-none">Afinadores</a></li>
-                            <li><a href="#" class="text-danger text-decoration-none">Estuches</a></li>
-                            <li><a href="#" class="text-danger text-decoration-none">Pedales</a></li>
-                        </ul>
+                        <strong><a href="" class="text-danger text-decoration-none">Accesorios</a></strong>
                     </li>
 
                     <li class="list-group-item">
-                        <strong class="text-danger">Nosotros</strong>
-                        <ul class="list-unstyled ps-3 mt-2">
-                            <li><a href="#" class="text-danger text-decoration-none">Visión</a></li>
-                            <li><a href="#" class="text-danger text-decoration-none">Misión</a></li>
-                            <li><a href="#" class="text-danger text-decoration-none">Valores</a></li>
-                        </ul>
+                        <strong><a href="acercaDe.jsp" class="text-danger text-decoration-none">Nosotros</a></strong>
                     </li>
                 </ul>
             </div>
         </div>
 
         <div class="container mt-4">
-            <a href="../menuPrincipal.jsp"><button class="btn btn-regresar">Regresar al menú</button></a>
+            <a href="../pages/amplificadores.jsp"><button class="btn btn-regresar">Regresar al menú</button></a>
         </div>
 
         <section class="producto-container">
@@ -221,18 +212,24 @@
             </div>
             <div class="producto-detalles">
                 <div>
+                    <%
+                        ProductoDAO productoDAO = new ProductoDAO();
+                        Producto producto = productoDAO.getProductoById(20);
+                        int stock = 0;
+                        stock = producto.getStock();
+                    %>
                     <h1>Marshall MG30FX</h1>
                     <p class="descripcion">Transistores con efectos digitales</p>
                     <p class="proveedor">Proveedor: Marshall</p>
                     <p class="categoria">Categoría: Amplificadores</p>
                     <p class="precio">Q.2,600.00</p>
-                    <p class="stock">Stock disponible: 7 unidades</p>
+                    <p class="stock">Stock disponible: <%=stock%> unidades</p>
                 </div>
 
                 <form class="compra-form">
                     <label for="cantidad">Cantidad:</label>
                     <!-- Aqui pueden cambiar el rango del input dependiendo el stock que tengan sus productos :) -->
-                    <input type="number" id="cantidad" name="cantidad" min="1" max="7" value="1">
+                    <input type="number" id="cantidad" name="cantidad" min="1" max="6" value="1">
                     <button type="submit">Agregar al carrito</button>
                 </form>
             </div>
