@@ -11,7 +11,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>IbanezAEG50 | Tienda en Línea</title>
+        <title>Ibanez TCY10E | Tienda en Línea</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
               integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
         <style>
@@ -208,21 +208,21 @@
 
         <section class="producto-container">
             <div class="producto-imagen">
-                <img src="../image/Ibanez AEG50.png" alt="IbanezAEG50">
+                <img src="../image/Ibanez TCY10E.jpg" alt="Ibanez TCY10E">
             </div>
             <div class="producto-detalles">
                 <div>
                     <%
                             ProductoDAO productoDAO = new ProductoDAO();
-                            Producto producto = productoDAO.getProductoById(13);
+                            Producto producto = productoDAO.getProductoById(15);
                             int stock = 0;
                             stock = producto.getStock();
                     %>
-                    <h1>Ibanez AEG50</h1>
-                    <p class="descripcion">Cuerpo delgado con preamp Ibanez AEQ-TTS</p>
+                    <h1>Ibanez TCY10E</h1>
+                    <p class="descripcion">Modelo Talman, compacto y cómodo</p>
                     <p class="proveedor">Proveedor: Ibanez</p>
                     <p class="categoria">Categoría: Electroacústicas</p>
-                     <p class="precio">Q.2600.00 </p>
+                     <p class="precio">Q.2700.00 </p>
                     <p class="stock">Stock disponible: <%=stock%> unidades</p>
                 </div>
 
