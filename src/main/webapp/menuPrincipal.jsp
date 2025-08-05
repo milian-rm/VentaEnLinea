@@ -53,7 +53,7 @@
                     <p class="fs-4"><strong><h2>Bienvenido a tienda GuitarKinal</h2></strong></p> 
                 </div> 
                 <a class="navbar-brand" href=""> 
-                    <img src="../image/carro-de-la-compra(1).png" alt="Logo" height="60"> 
+                    <img src="image/carro-de-la-compra(1).png" alt="Logo" height="60"> 
                 </a> 
                 <button class="btn btn-outline-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuPrincipal" aria-controls="menuPrincipal"> 
                     <span class="navbar-toggler-icon"></span> 
@@ -103,9 +103,10 @@
 
         <main class="flex-grow-1"> 
 
-            <div class="container mt-4"> 
+            <div class="container-fluid mt-4">
+
                 <div class="row justify-content-center"> 
-                    <div class="col-md-4 mb-4"> 
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-3"> 
                         <div class="card h-100"> 
                             <img src="image/Guitarra Acústica.jpg" class="card-img-top" alt="Guitarra Acústica"> 
                             <div class="card-body"> 
@@ -116,18 +117,18 @@
                         </div> 
                     </div> 
 
-                    <div class="col-md-4 mb-4"> 
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-3"> 
                         <div class="card h-100"> 
                             <img src="image/Guitarra Eléctrica.jpg" class="card-img-top" alt="Guitarra Eléctrica"> 
                             <div class="card-body"> 
                                 <h5 class="card-title">Guitarra Eléctrica</h5> 
                                 <p class="card-text">Ideal para rock, metal o jazz con un diseño moderno y potente.</p> 
-                                <a href="#" class="btn btn-danger">Ver más</a> 
+                                <a href="pages/guitarrasElectricas.jsp" class="btn btn-danger">Ver más</a> 
                             </div> 
                         </div> 
                     </div> 
 
-                    <div class="col-md-4 mb-4"> 
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-3"> 
                         <div class="card h-100"> 
                             <img src="image/Pedal de Efectos.jpg" class="card-img-top" alt="Pedal de efectos"> 
                             <div class="card-body"> 
@@ -137,10 +138,8 @@
                             </div> 
                         </div> 
                     </div> 
-                </div> 
 
-                <div class="row justify-content-center"> 
-                    <div class="col-md-4 mb-4"> 
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-3"> 
                         <div class="card h-100"> 
                             <img src="image/Amplificador Compacto.jpg" class="card-img-top" alt="Amplificador"> 
                             <div class="card-body"> 
@@ -150,29 +149,8 @@
                             </div> 
                         </div> 
                     </div> 
-
-                    <div class="col-md-4 mb-4"> 
-                        <div class="card h-100"> 
-                            <img src="image/Juego de Cuerdas.jpg" class="card-img-top" alt="Cuerdas"> 
-                            <div class="card-body"> 
-                                <h5 class="card-title">Juego de Cuerdas</h5> 
-                                <p class="card-text">Cuerdas de alta calidad para un sonido limpio y duradero.</p> 
-                                <a href="#" class="btn btn-danger">Ver más</a> 
-                            </div> 
-                        </div> 
-                    </div> 
-
-                    <div class="col-md-4 mb-4"> 
-                        <div class="card h-100"> 
-                            <img src="image/Afinador Digital.png" class="card-img-top" alt="Afinador"> 
-                            <div class="card-body"> 
-                                <h5 class="card-title">Afinador</h5> 
-                                <p class="card-text">Asegura una afinación precisa en segundos con pantalla LED.</p> 
-                                <a href="#" class="btn btn-danger">Ver más</a> 
-                            </div> 
-                        </div> 
-                    </div> 
                 </div> 
+
             </div> 
         </main> 
 
