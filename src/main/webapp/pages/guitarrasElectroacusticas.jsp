@@ -46,7 +46,7 @@
 
         <nav class="navbar navbar-dark bg-danger px-3"> 
             <div class="container-fluid"> 
-                <a class="navbar-brand" href="index.jsp"> 
+                <a class="navbar-brand" href="../menuPrincipal.jsp"> 
                     <img src="../image/logo.png" alt="Logo" height="90"> 
                 </a> 
                 <div class="container mt-1 text-center text-light text-start" style="margin-left: 6rem;">
@@ -100,6 +100,7 @@
                             <div class="card-body"> 
                                 <h5 class="card-title">Takamine EF341SC</h5> 
                                 <p class="card-text">Electroacústica profesional con acabado negro brillante</p> 
+                                <p style="font-size: 15px; color: #d63384; margin-bottom: 10px;">Q.850.00</p>
                                 <a href="TakamineEF341SC.jsp" class="btn btn-danger">Ver más</a> 
                             </div> 
                         </div> 
@@ -111,6 +112,7 @@
                             <div class="card-body"> 
                                 <h5 class="card-title">Taylor 214ce</h5> 
                                 <p class="card-text">Tapa sólida y electrónica ES2</p> 
+                                <p style="font-size: 15px; color: #d63384; margin-bottom: 10px;">Q.4900.00</p>
                                 <a href="Taylor214ce.jsp" class="btn btn-danger">Ver más</a> 
                             </div> 
                         </div> 
@@ -122,6 +124,7 @@
                             <div class="card-body"> 
                                 <h5 class="card-title">Ibanez AEG50</h5> 
                                 <p class="card-text">Cuerpo delgado con preamp Ibanez AEQ-TTS</p> 
+                                <p style="font-size: 15px; color: #d63384; margin-bottom: 10px;">Q.2600.00</p>
                                 <a href="IbanezAEG50.jsp" class="btn btn-danger">Ver más</a> 
                             </div> 
                         </div> 
@@ -137,7 +140,8 @@
                             <img src="../image/Takamine GN75CE.jpg" class="mt-3" style="height: 250px; object-fit: cover;" alt=">Fender Jazzmaster">
                             <div class="card-body"> 
                                 <h5 class="card-title">Takamine GN75CE</h5> 
-                                <p class="card-text">Cuerpo NEX con acabado rubí</p> 
+                                <p class="card-text">Cuerpo NEX con acabado rubí</p>  
+                                <p style="font-size: 15px; color: #d63384; margin-bottom: 10px;">Q.3500.00</p>
                                 <a href="TakamineGN75CE.jsp" class="btn btn-danger">Ver más</a> 
                             </div> 
                         </div> 
@@ -148,7 +152,8 @@
                             <img src="../image/Ibanez TCY10E.jpg" class="mt-3" style="height: 250px; object-fit: cover;" alt="Ibanez ART120">
                             <div class="card-body"> 
                                 <h5 class="card-title">Ibanez TCY10E</h5> 
-                                <p class="card-text">Modelo Talman, compacto y cómodo</p> 
+                                <p class="card-text">Modelo Talman, compacto y cómodo</p>  
+                                <p style="font-size: 15px; color: #d63384; margin-bottom: 10px;">Q.2700.00</p>
                                 <a href="Ibanez TCY10E.jsp" class="btn btn-danger">Ver más</a> 
                             </div> 
                         </div> 

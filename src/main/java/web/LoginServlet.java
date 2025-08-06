@@ -82,6 +82,7 @@ public class LoginServlet extends HttpServlet {
                 transaction.commit();
 
                 // Redirigir al inicio
+                //idUsuario = usuario.getIdUsuario();
                 response.sendRedirect("menuPrincipal.jsp");
             } else {
                 // Si las credenciales son incorrectas (contraseña no coincide)

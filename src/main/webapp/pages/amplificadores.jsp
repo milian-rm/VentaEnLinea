@@ -46,9 +46,9 @@
 
         <nav class="navbar navbar-dark bg-danger px-3"> 
             <div class="container-fluid"> 
-                <a class="navbar-brand" href="index.jsp"> 
+                <a class="navbar-brand" href="../menuPrincipal.jsp"> 
                     <img src="../image/logo.png" alt="Logo" height="90"> 
-                </a> 
+                </a>  
                 <div class="container mt-1 text-center text-light text-start" style="margin-left: 6rem;">
                     <p class="fs-4"><strong><h2>Amplificadores</h2></strong></p> 
                 </div> 
@@ -99,7 +99,8 @@
                             <img src="../image/amplificador.jpg" class="mt-3" style="height: 250px; object-fit: cover;" alt="Fender Stratocaster">
                             <div class="card-body"> 
                                 <h5 class="card-title">Amplificador 30W</h5> 
-                                <p class="card-text">Compacto ideal para practicar'</p> 
+                                <p class="card-text">Compacto ideal para practicar</p> 
+                                <p style="font-size: 15px; color: #d63384; margin-bottom: 10px;">Q.1200.00</p>
                                 <a href="amplificador30w.jsp" class="btn btn-danger">Ver más</a> 
                             </div> 
                         </div> 
@@ -111,6 +112,7 @@
                             <div class="card-body"> 
                                 <h5 class="card-title">Orange Crush 20RT</h5> 
                                 <p class="card-text">Reverb y afinador integrado</p> 
+                                <p style="font-size: 15px; color: #d63384; margin-bottom: 10px;">Q.1800.00</p>
                                 <a href="orangeCrush20rt.jsp" class="btn btn-danger">Ver más</a> 
                             </div> 
                         </div> 
@@ -122,6 +124,7 @@
                             <div class="card-body"> 
                                 <h5 class="card-title">Marshall DSL40CR</h5> 
                                 <p class="card-text">Amplificador de válvulas de 40W</p> 
+                                <p style="font-size: 15px; color: #d63384; margin-bottom: 10px;">Q.5900.00</p>
                                 <a href="marshallDSL40CR.jsp" class="btn btn-danger">Ver más</a> 
                             </div> 
                         </div> 
@@ -138,6 +141,7 @@
                             <div class="card-body"> 
                                 <h5 class="card-title">Orange Rocker 15</h5> 
                                 <p class="card-text">Combo de 15W todo válvulas</p> 
+                                <p style="font-size: 15px; color: #d63384; margin-bottom: 10px;">Q.6200.00</p>
                                 <a href="orangeRocker15.jsp" class="btn btn-danger">Ver más</a> 
                             </div> 
                         </div> 
@@ -149,6 +153,7 @@
                             <div class="card-body"> 
                                 <h5 class="card-title">Marshall MG30FX</h5> 
                                 <p class="card-text">Transistores con efectos digitales</p> 
+                                <p style="font-size: 15px; color: #d63384; margin-bottom: 10px;">Q.2600.00</p>
                                 <a href="MarshallMG30FX.jsp" class="btn btn-danger">Ver más</a> 
                             </div> 
                         </div> 

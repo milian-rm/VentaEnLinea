@@ -213,22 +213,22 @@
             <div class="producto-detalles">
                 <div>
                     <%
-                            ProductoDAO productoDAO = new ProductoDAO();
-                            Producto producto = productoDAO.getProductoById(11);
-                            int stock = 0;
-                            stock = producto.getStock();
+                        ProductoDAO productoDAO = new ProductoDAO();
+                        Producto producto = productoDAO.getProductoById(11);
+                        int stock = 0;
+                        stock = producto.getStock();
                     %>
                     <h1>Takamine EF341SC</h1>
                     <p class="descripcion">Electroacústica profesional con acabado negro brillante</p>
                     <p class="proveedor">Proveedor: Takamine</p>
                     <p class="categoria">Categoría: Electroacústicas</p>
-                     <p class="precio">Q.4200.00 </p>
+                    <p class="precio">Q.4200.00 </p>
                     <p class="stock">Stock disponible: <%=stock%> unidades</p>
                 </div>
 
                 <form class="compra-form">
                     <label for="cantidad">Cantidad:</label>
-                    <input type="number" id="cantidad" name="cantidad" min="1" max="8" value="1">
+                    <input type="number" id="cantidad" name="cantidad" min="1" max="<%=stock%>" value="1">
                     <button type="submit">Agregar al carrito</button>
                 </form>
             </div>

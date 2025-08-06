@@ -213,10 +213,10 @@
             <div class="producto-detalles">
                 <div>
                     <%
-                            ProductoDAO productoDAO = new ProductoDAO();
-                            Producto producto = productoDAO.getProductoById(12);
-                            int stock = 0;
-                            stock = producto.getStock();
+                        ProductoDAO productoDAO = new ProductoDAO();
+                        Producto producto = productoDAO.getProductoById(12);
+                        int stock = 0;
+                        stock = producto.getStock();
                     %>
                     <h1>Taylor 214ce</h1>
                     <p class="descripcion">Tapa sólida y electrónica ES2</p>
@@ -228,7 +228,7 @@
 
                 <form class="compra-form">
                     <label for="cantidad">Cantidad:</label>
-                    <input type="number" id="cantidad" name="cantidad" min="1" max="8" value="1">
+                    <input type="number" id="cantidad" name="cantidad" min="1" max="<%=stock%>" value="1">
                     <button type="submit">Agregar al carrito</button>
                 </form>
             </div>

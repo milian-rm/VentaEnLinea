@@ -228,8 +228,7 @@
 
                 <form class="compra-form">
                     <label for="cantidad">Cantidad:</label>
-                    <!-- Aqui pueden cambiar el rango del input dependiendo el stock que tengan sus productos :) -->
-                    <input type="number" id="cantidad" name="cantidad" min="1" max="6" value="1">
+                    <input type="number" id="cantidad" name="cantidad" min="1" max="<%=stock%>" value="1">
                     <button type="submit">Agregar al carrito</button>
                 </form>
             </div>

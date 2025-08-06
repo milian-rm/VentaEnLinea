@@ -46,7 +46,7 @@
 
         <nav class="navbar navbar-dark bg-danger px-3"> 
             <div class="container-fluid"> 
-                <a class="navbar-brand" href="index.jsp"> 
+                <a class="navbar-brand" href="../menuPrincipal.jsp"> 
                     <img src="../image/logo.png" alt="Logo" height="90"> 
                 </a> 
                 <div class="container mt-1 text-center text-light text-start" style="margin-left: 6rem;">
@@ -99,7 +99,8 @@
                             <img src="../image/FenderStratocaster.png" class="mt-3" style="height: 250px; object-fit: cover;" alt="Fender Stratocaster">
                             <div class="card-body"> 
                                 <h5 class="card-title">Fender Stratocaster</h5> 
-                                <p class="card-text">Cuerpo de aliso y pastillas single coil</p> 
+                                <p class="card-text">Cuerpo de aliso y pastillas single coil</p>  
+                                <p style="font-size: 15px; color: #d63384; margin-bottom: 10px;">Q.4500.00</p>
                                 <a href="FenderStratocaster.jsp" class="btn btn-danger">Ver más</a> 
                             </div> 
                         </div> 
@@ -110,7 +111,8 @@
                             <img src="../image/FenderTelecaster.png" class="mt-3" style="height: 250px; object-fit: cover;" alt="Fender Telecaster">
                             <div class="card-body"> 
                                 <h5 class="card-title">Fender Telecaster</h5> 
-                                <p class="card-text">Cuerpo de fresno y pastillas single coil</p> 
+                                <p class="card-text">Cuerpo de fresno y pastillas single coil</p>  
+                                <p style="font-size: 15px; color: #d63384; margin-bottom: 10px;">Q.4700.00</p>
                                 <a href="FenderTelecaster.jsp" class="btn btn-danger">Ver más</a> 
                             </div> 
                         </div> 
@@ -121,7 +123,8 @@
                             <img src="../image/IbanezRG550.jpg" class="mt-3" style="height: 250px; object-fit: cover;" alt="Ibanez RG550">
                             <div class="card-body"> 
                                 <h5 class="card-title">Ibanez RG550</h5> 
-                                <p class="card-text">Guitarra eléctrica para shredding con trémolo flotante</p> 
+                                <p class="card-text">Guitarra eléctrica para shredding con trémolo flotante</p>  
+                                <p style="font-size: 15px; color: #d63384; margin-bottom: 10px;">Q.5200.00</p>
                                 <a href="IbanezRG550.jsp" class="btn btn-danger">Ver más</a> 
                             </div> 
                         </div> 
@@ -137,7 +140,8 @@
                             <img src="../image/FenderJazzmaster.jpg" class="mt-3" style="height: 250px; object-fit: cover;" alt=">Fender Jazzmaster">
                             <div class="card-body"> 
                                 <h5 class="card-title">Fender Jazzmaster</h5> 
-                                <p class="card-text">Diseño offset con tono versátil</p> 
+                                <p class="card-text">Diseño offset con tono versátil</p>  
+                                <p style="font-size: 15px; color: #d63384; margin-bottom: 10px;">Q.4600.00</p>
                                 <a href="FenderJazzmaster.jsp" class="btn btn-danger">Ver más</a> 
                             </div> 
                         </div> 
@@ -148,7 +152,8 @@
                             <img src="../image/IbanezART120.jpg" class="mt-3" style="height: 250px; object-fit: cover;" alt="Ibanez ART120">
                             <div class="card-body"> 
                                 <h5 class="card-title">Ibanez ART120</h5> 
-                                <p class="card-text">Estilo single cutaway con humbuckers</p> 
+                                <p class="card-text">Estilo single cutaway con humbuckers</p>  
+                                <p style="font-size: 15px; color: #d63384; margin-bottom: 10px;">Q.3500.00</p>
                                 <a href="IbanezART120.jsp" class="btn btn-danger">Ver más</a> 
                             </div> 
                         </div> 

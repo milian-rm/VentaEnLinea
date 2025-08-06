@@ -46,9 +46,9 @@
 
         <nav class="navbar navbar-dark bg-danger px-3"> 
             <div class="container-fluid"> 
-                <a class="navbar-brand" href="index.jsp"> 
+                <a class="navbar-brand" href="../menuPrincipal.jsp"> 
                     <img src="../image/logo.png" alt="Logo" height="90"> 
-                </a> 
+                </a>  
                 <div class="container mt-1 text-center text-light text-start" style="margin-left: 6rem;">
                     <p class="fs-4"><strong><h2>Guitarras Acústicas</h2></strong></p> 
                 </div> 
@@ -99,7 +99,8 @@
                             <img src="../image/takamine_GD30.jpg" class="mt-3" style="height: 250px; object-fit: cover;" alt="Takamine GD30">
                             <div class="card-body"> 
                                 <h5 class="card-title">Takamine GD30</h5> 
-                                <p class="card-text">Guitarra acústica dreadnought con tapa sólida de abeto</p> 
+                                <p class="card-text">Guitarra acústica dreadnought con tapa sólida de abeto</p>  
+                                <p style="font-size: 15px; color: #d63384; margin-bottom: 10px;">Q.2800.00</p>
                                 <a href="takamine_GD30.jsp" class="btn btn-danger">Ver más</a> 
                             </div> 
                         </div> 
@@ -110,7 +111,8 @@
                             <img src="../image/ibanez_AW54.jpg" class="mt-3" style="height: 250px; object-fit: cover;" alt="ibanez_AW54">
                             <div class="card-body"> 
                                 <h5 class="card-title">Ibanez AW54</h5> 
-                                <p class="card-text">Guitarra acústica con acabado Open Pore Natural</p> 
+                                <p class="card-text">Guitarra acústica con acabado Open Pore Natural</p>  
+                                <p style="font-size: 15px; color: #d63384; margin-bottom: 10px;">Q.2300.00</p>
                                 <a href="ibanez_AW54.jsp" class="btn btn-danger">Ver más</a> 
                             </div> 
                         </div> 
@@ -121,7 +123,8 @@
                             <img src="../image/taylor_academy10.jpg" class="mt-3" style="height: 250px; object-fit: cover;" alt="Taylor Academy 10">
                             <div class="card-body"> 
                                 <h5 class="card-title">Taylor Academy 10</h5> 
-                                <p class="card-text">Guitarra acústica con diseño ergonómico y gran sonido</p> 
+                                <p class="card-text">Guitarra acústica con diseño ergonómico y gran sonido</p>  
+                                <p style="font-size: 15px; color: #d63384; margin-bottom: 10px;">Q.3200.00</p>
                                 <a href="taylor_Academy10.jsp" class="btn btn-danger">Ver más</a> 
                             </div> 
                         </div> 
@@ -136,7 +139,8 @@
                             <img src="../image/takamine_GN93.jpg" class="mt-3" style="height: 250px; object-fit: cover;" alt="Takamine GN93">
                             <div class="card-body"> 
                                 <h5 class="card-title">Takamine GN93</h5> 
-                                <p class="card-text">Guitarra acústica con fondo de nogal y aros de arce</p> 
+                                <p class="card-text">Guitarra acústica con fondo de nogal y aros de arce</p>  
+                                <p style="font-size: 15px; color: #d63384; margin-bottom: 10px;">Q.3100.00</p>
                                 <a href="takamine_GN93.jsp" class="btn btn-danger">Ver más</a> 
                             </div> 
                         </div> 
@@ -147,7 +151,8 @@
                             <img src="../image/ibanez_PF15.jpg" class="mt-3" style="height: 250px; object-fit: cover;" alt="Ibanez PF15">
                             <div class="card-body"> 
                                 <h5 class="card-title">Ibanez PF15</h5> 
-                                <p class="card-text">Guitarra acústica con diseño ergonómico y gran sonido</p> 
+                                <p class="card-text">Guitarra acústica con diseño ergonómico y gran sonido</p>  
+                                <p style="font-size: 15px; color: #d63384; margin-bottom: 10px;">Q.1800.00</p>
                                 <a href="ibanez_PF15.jsp" class="btn btn-danger">Ver más</a> 
                             </div> 
                         </div> 
