@@ -30,6 +30,17 @@
             <input type="text" id="buscador" placeholder="Buscar guitarra...">
         </div>
         <nav class="nav-header" id="navHeader">
+            <!-- Se busca el atributo idUsuario proveniente del servlet de login para verificar si la sesion a sido iniciada o aun no -->
+            <%
+                Object usuarioEnSesion = session.getAttribute("idUsuario");
+                String destinoMenu;
+                if (usuarioEnSesion != null) {
+                    destinoMenu = "pages/menuPrincipal.jsp";
+                } else {
+                    destinoMenu = "pages/login.jsp";
+                }
+            %>
+            <a href="<%= destinoMenu %>">Menú Principal</a>
             <a href="pages/login.jsp">Iniciar Sesión</a>
             <a href="pages/register.jsp">Registrarse</a>
             <a href="pages/acercaDe.jsp">Acerca de</a>
@@ -61,28 +72,28 @@
         <h2 class="titulo-catalogo">PRODUCTOS DESTACADOS</h2>
         <div class="catalogo-grid">
             <div class="tarjeta-reloj">
-                <img src="style/1100NT.png" alt="Guitarra Acústica Yamaha">
-                <h3>Guitarra Acústica Yamaha</h3>
-                <p class="precio">Q2,500.00</p>
-                <a href="" class="btn-detalle">Comprar</a>
+                <img src="image/FenderStratocaster.png" alt="Guitarra Eléctrica Fender">
+                <h3>Guitarra Eléctrica Fender Stratocaster</h3>
+                <p class="precio">Q4,500.00</p>
+                <a href="pages/FenderStratocaster.jsp" class="btn-detalle">Comprar</a>
             </div>
             <div class="tarjeta-reloj">
-                <img src="style/fender-player-stratocaster-hss-pf-car.jpg" alt="Guitarra Eléctrica Fender">
-                <h3>Guitarra Eléctrica Fender</h3>
-                <p class="precio">Q8,000.00</p>
-                <a href="" class="btn-detalle">Comprar</a>
+                <img src="image/FenderTelecaster.png" alt="Guitarra Eléctrica Fender">
+                <h3>Guitarra Eléctrica Fender Telecaster</h3>
+                <p class="precio">Q4,700.00</p>
+                <a href="pages/FenderTelecaster.jsp" class="btn-detalle">Comprar</a>
             </div>
             <div class="tarjeta-reloj">
-                <img src="style/1100NT.png" alt="Guitarra Clásica Alhambra">
-                <h3>Guitarra Clásica Alhambra</h3>
-                <p class="precio">Q3,200.00</p>
-                <a href="" class="btn-detalle">Comprar</a>
+                <img src="image/IbanezRG550.jpg" alt="Guitarra Eléctrica Ibanez">
+                <h3>Guitarra Eléctrica Ibanez RG550</h3>
+                <p class="precio">Q5,200.00</p>
+                <a href="pages/IbanezRG550.jsp" class="btn-detalle">Comprar</a>
             </div>
             <div class="tarjeta-reloj">
-                <img src="style/613FdiNeTuL.jpg" alt="Guitarra Electroacústica Ibanez">
-                <h3>Guitarra Electroacústica Ibanez</h3>
-                <p class="precio">Q5,500.00</p>
-                <a href="" class="btn-detalle">Comprar</a>
+                <img src="image/IbanezART120.jpg" alt="Guitarra Eléctrica Ibanez">
+                <h3>Guitarra Eléctrica Ibanez ART120</h3>
+                <p class="precio">Q3,500.00</p>
+                <a href="pages/IbanezART120.jsp" class="btn-detalle">Comprar</a>
             </div>
         </div>
     </main>
