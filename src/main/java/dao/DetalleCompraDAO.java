@@ -115,4 +115,25 @@ public class DetalleCompraDAO {
             }
         }
     }
+    
+    public List<Object[]> getDetallesCompraPorOrden(int idOrden) {
+        EntityManager em = null;
+        try {
+            em = EMF.createEntityManager();
+            String jpql = "SELECT p.nombreProducto, p.precio, d.cantidad, d.precioUnitario "
+                    + "FROM DetalleCompra d "
+                    + "JOIN d.producto p "
+                    + "WHERE d.compra.idOrden = :idOrden";
+            return em.createQuery(jpql, Object[].class)
+                    .setParameter("idOrden", idOrden)
+                    .getResultList();
+        } finally {
+            if (em != null && em.isOpen()) {
+                em.close();
+            }
+        }
+    }
+
+    
+    
 }

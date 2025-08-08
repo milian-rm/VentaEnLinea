@@ -13,6 +13,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import java.util.List;
+import javax.persistence.NoResultException;
 
 public class CompraDAO {
 
@@ -109,6 +110,26 @@ public class CompraDAO {
             System.err.println("Error al obtener todas las compras: " + e.getMessage());
             e.printStackTrace();
             throw new RuntimeException("Error obteniendo compras", e);
+        } finally {
+            if (em != null && em.isOpen()) {
+                em.close();
+            }
+        }
+    }
+    
+    public Integer getUltimoIdCompra() {
+        EntityManager em = null;
+        try {
+            em = EMF.createEntityManager();
+            return em.createQuery(
+                    "SELECT c.idOrden FROM Compra c ORDER BY c.idOrden DESC", Integer.class)
+                    .setMaxResults(1)
+                    .getSingleResult();
+        } catch (NoResultException e) {
+            return null; // No hay registros en Compras
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
         } finally {
             if (em != null && em.isOpen()) {
                 em.close();

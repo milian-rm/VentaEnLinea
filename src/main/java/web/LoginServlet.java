@@ -23,7 +23,7 @@ public class LoginServlet extends HttpServlet {
 
     // El EntityManagerFactory es thread-safe y debe crearse una única vez.
     private EntityManagerFactory entityManagerFactory;
-
+    public int idUsuarioActivo;
     @Override
     public void init() throws ServletException {
         // Inicializar el EntityManagerFactory una sola vez cuando el servlet se inicia.
@@ -74,6 +74,7 @@ public class LoginServlet extends HttpServlet {
             if (usuario != null && usuario.getContrasena().equals(contrasena)) {
                 // Si las credenciales son correctas, se crea la sesión
                 HttpSession session = request.getSession();
+                idUsuarioActivo = usuario.getIdUsuario();
                 session.setAttribute("idUsuario", usuario.getIdUsuario());
                 session.setAttribute("nombre", usuario.getNombre());
 

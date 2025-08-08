@@ -166,7 +166,7 @@
                 <div class="container mt-1 text-center text-light text-start" style="margin-left: 6rem;">
                     <p class="fs-4"><strong><h2>Accesorios</h2></strong></p> 
                 </div> 
-                <a class="navbar-brand" href=""> 
+                <a class="navbar-brand" href="CarritoCompra.jsp"> 
                     <img src="../image/carro-de-la-compra(1).png" alt="Logo" height="60"> 
                 </a> 
                 <button class="btn btn-outline-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuPrincipal" aria-controls="menuPrincipal"> 

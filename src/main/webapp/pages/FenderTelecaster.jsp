@@ -167,7 +167,7 @@
                             <h2>Guitarras Eléctricas</h2>
                         </strong></p>
                 </div>
-                <a class="navbar-brand" href=""> 
+                <a class="navbar-brand" href="CarritoCompra.jsp"> 
                     <img src="../image/carro-de-la-compra(1).png" alt="Logo" height="60"> 
                 </a> 
                 <button class="btn btn-outline-light" type="button" data-bs-toggle="offcanvas"

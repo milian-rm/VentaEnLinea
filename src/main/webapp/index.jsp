@@ -35,7 +35,7 @@
                 Object usuarioEnSesion = session.getAttribute("idUsuario");
                 String destinoMenu;
                 if (usuarioEnSesion != null) {
-                    destinoMenu = "pages/menuPrincipal.jsp";
+                    destinoMenu = request.getContextPath() +"/menuPrincipal.jsp";
                 } else {
                     destinoMenu = "pages/login.jsp";
                 }
@@ -46,7 +46,8 @@
             <a href="pages/acercaDe.jsp">Acerca de</a>
             <a href="pages/admin-login.jsp">Administracion</a>
             <a href="pages/manejo_Cookies.jsp">Ver Cookies</a>  
-            <a href="pages/manejo_Contador.jsp">Ver Contador</a>  
+            <a href="pages/manejo_Contador.jsp">Ver Contador</a> 
+            <a href="pages/manejo_sesiones.jsp">Ver Sesiones</a> 
         </nav>
     </header>
 

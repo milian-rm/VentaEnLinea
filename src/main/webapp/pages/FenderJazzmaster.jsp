@@ -167,7 +167,7 @@
                             <h2>Guitarras Eléctricas</h2>
                         </strong></p>
                 </div>
-                <a class="navbar-brand" href=""> 
+                <a class="navbar-brand" href="CarritoCompra.jsp"> 
                     <img src="../image/carro-de-la-compra(1).png" alt="Logo" height="60"> 
                 </a> 
                 <button class="btn btn-outline-light" type="button" data-bs-toggle="offcanvas"
@@ -230,6 +230,7 @@
                 </div>
 
                 <form class="compra-form">
+                    <input type="hidden" name="id" value="1">
                     <label for="cantidad">Cantidad:</label>
                     <input type="number" id="cantidad" name="cantidad" min="1" max="<%=stock%>" value="1">
                     <button type="submit">Agregar al carrito</button>

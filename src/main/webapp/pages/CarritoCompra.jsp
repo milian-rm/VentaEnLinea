@@ -4,6 +4,9 @@
     Author     : josel
 --%>
 
+<%@page import="java.util.List"%>
+<%@page import="dao.CompraDAO"%>
+<%@page import="dao.DetalleCompraDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -78,22 +81,28 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        <%
+                                            DetalleCompraDAO dao = new DetalleCompraDAO();
+                                            CompraDAO compra = new CompraDAO();
+                                            int idOrden = compra.getUltimoIdCompra();
+                                            List<Object[]> carrito = dao.getDetallesCompraPorOrden(idOrden);
+                                            for (Object[] fila : carrito) {
+                                                String nombreProducto = (String) fila[0];
+                                                Double precio = (Double) fila[1];
+                                                Integer cantidad = (Integer) fila[2];
+                                                Double subtotal = (Double) fila[3];
+                                        %>
                                         <tr>
                                             <td><a href=""><img src="../image/Delete_icon.png" alt="ERROR" width="20" height="20"/></a></td>
                                             <td><img src="../image/takamine_GD30.jpg" alt="hola" width="70" height="70"/></td>
-                                            <td>Guitarra Acustica Takamine GD30</td>
-                                            <td>Q2800.00</td>
-                                            <td><input type="number" name="cantidad" value="1" style="width: 40%"></td>
-                                            <td>Q2800.00</td>
+                                            <td><%= nombreProducto%></td>
+                                            <td><%= precio%></td>
+                                            <td><%= cantidad%></td>
+                                            <td><%= subtotal%></td>
                                         </tr>
-                                        <tr>
-                                            <td><a href=""><img src="../image/Delete_icon.png" alt="ERROR" width="20" height="20"/></a></td>
-                                            <td><img src="../image/puasdunlop.jpg" alt="hola" width="70" height="70"/></td>
-                                            <td>Set de Púas Dunlop</td>
-                                            <td>Q100.00</td>
-                                            <td><input type="number" name="cantidad" value="1" style="width: 40%"></td>
-                                            <td>Q100.00</td>
-                                        </tr>
+                                        <%
+                                            } 
+                                        %>
                                     </tbody>
                                 </table>
                                 <input type="button" name="recargar" value="Actualizar Carrito" class="btn btn-outline-secondary">
