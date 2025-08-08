@@ -6,6 +6,8 @@
 
 <%@page import="model.Producto"%>
 <%@page import="dao.ProductoDAO"%>
+<%@page import="web.ServletCarrito"%>
+<%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -229,7 +231,9 @@
                     <p class="stock">Stock disponible: <%=stock%> unidades</p>
                 </div>
 
-                <form class="compra-form">
+                <form class="compra-form" action="${pageContext.request.contextPath}/ServletCarrito" method="post">
+                    <input type="hidden" name="idProducto" value="8">
+                    <input type="hidden" name="idCompra" value="${idCompraActiva}">
                     <label for="cantidad">Cantidad:</label>
                     <input type="number" id="cantidad" name="cantidad" min="1" max="<%=stock%>" value="1">
                     <button type="submit">Agregar al carrito</button>

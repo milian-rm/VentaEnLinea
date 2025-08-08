@@ -102,7 +102,7 @@
                                                         if (nombreProducto.equals("Takamine GD30")) {
                                                             rutaFoto = "../image/takamine_GD30.jpg";
                                                         } else if (nombreProducto.equals("Ibanez AW54")) {
-                                                            rutaFoto = "../image/ibanez_AW54";
+                                                            rutaFoto = "../image/ibanez_AW54.jpg";
                                                         } else if (nombreProducto.equals("Taylor Academy 10")) {
                                                             rutaFoto = "../image/taylor_academy10.jpg";
                                                         } else if (nombreProducto.equals("Takamine GN93")) {

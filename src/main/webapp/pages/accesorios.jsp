@@ -125,7 +125,7 @@
                                 <h5 class="card-title">Set de Púas Dunlop</h5> 
                                 <p class="card-text">12 púas de distintos grosores</p> 
                                 <p style="font-size: 15px; color: #d63384; margin-bottom: 10px;">Q.100.00</p>
-                                <a href="marshallDSL40CR.jsp" class="btn btn-danger">Ver más</a> 
+                                <a href="setdepuasdunlop.jsp" class="btn btn-danger">Ver más</a> 
                             </div> 
                         </div> 
                     </div> 
