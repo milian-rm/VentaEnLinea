@@ -117,5 +117,26 @@ public class ProductoDAO {
         }
     }
     
+    public Producto getProductoByNombre(String nombre) {
+        EntityManager em = null;
+        try {
+            em = EMF.createEntityManager();
+            return em.createQuery("SELECT p FROM Producto p WHERE p.nombreProducto = :nombre", Producto.class)
+                    .setParameter("nombre", nombre)
+                    .getSingleResult();
+        } catch (javax.persistence.NoResultException e) {
+            return null; // No encontró el producto
+        } catch (Exception e) {
+            System.err.println("Error al buscar producto por nombre: " + e.getMessage());
+            e.printStackTrace();
+            throw new RuntimeException("Error buscando producto", e);
+        } finally {
+            if (em != null && em.isOpen()) {
+                em.close();
+            }
+        }
+    }
+
+    
     
 }
