@@ -206,7 +206,7 @@
                                         <span>Q2900.00</span>
                                     </div>
                                     <div class="card-text d-grid gap-2 col-6 mx-auto text-center">
-                                        <a href="#" class="btn btn-danger">Realizar compra</a>
+                                        <a href="Factura.jsp" class="btn btn-danger">Realizar compra</a>
                                     </div>
                                 </div>
                             </div>
