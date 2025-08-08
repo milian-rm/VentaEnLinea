@@ -4,6 +4,11 @@
     Author     : Bradley Oliva
 --%>
 
+<%@page import="java.util.Random"%>
+<%@page import="model.Usuario"%>
+<%@page import="java.util.List"%>
+<%@page import="dao.CompraDAO"%>
+<%@page import="dao.DetalleCompraDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -81,9 +86,9 @@
 
             /* Estilo para el título de la factura */
             #titulo-factura {
-                position: absolute; 
-                left: 50%; 
-                transform: translateX(-50%); 
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
             }
         </style>
     </head>
@@ -102,7 +107,7 @@
                 </button>
             </div>
         </nav>
-        
+
         <div class="offcanvas offcanvas-end" tabindex="-1" id="menuPrincipal" aria-labelledby="menuLabel">
             <div class="offcanvas-header">
                 <h5 class="offcanvas-title" id="menuLabel">Menú</h5>
@@ -130,18 +135,28 @@
         </div>
 
         <main class="flex-grow-1">
+            <%
+                Random rnd = new Random();
+                
+                int numSD = 100000 + rnd.nextInt(900000);
+                int numSD2 = 100000 + rnd.nextInt(900000);
+                int numOD = 10000000 + rnd.nextInt(90000000);
+                
+                Usuario usu = (Usuario) request.getAttribute("usuario");
+                String nomComp = usu.getNombre() + " " +usu.getApellido();
+            %>
             <div class="factura-container">
                 <div class="factura-header">
                     <div class="emisor-info">
                         <h6>GUITARKINAL</h6>
-                        <p><strong>Nit Emisor:</strong> 14945428</p>
+                        <p><strong>Nit Emisor:</strong> <%= usu.getNit() %></p>
                     </div>
                     <div class="autorizacion-info text-end">
                         <h6>NÚMERO DE AUTORIZACIÓN:</h6>
-                        <p>TEXTO MUY LARGO DE AUTORIZACIÓN</p>
+                        <p><%= numSD + "-" +numSD2 %></p>
                         <h6>Serie: 9ADA8CEF Número de DTE:</h6>
-                        <p>TEXTO DE SERIE Y DTE</p>
-                        <p><strong>Fecha y hora de emisión:</strong> 22-mar-2025 19:45:35</p>
+                        <p>DTE-2025-<%=numOD%></p>
+                        <p><strong>Fecha y hora de emisión: </strong><%= new java.util.Date() %></p>
                     </div>
                 </div>
 
@@ -149,11 +164,11 @@
                     <div class="row">
                         <div class="col-6">
                             <h6>Nombre Receptor:</h6>
-                            <p>NOMBRE DEL COMPRADOR</p>
+                            <p><%= nomComp %></p>
                         </div>
                         <div class="col-6">
                             <h6>Dirección comprador:</h6>
-                            <p>CIUDAD, GUATEMALA, GUATEMALA</p>
+                            <p><%= usu.getDireccion() %></p>
                         </div>
                     </div>
                 </div>
@@ -170,24 +185,32 @@
                             </tr>
                         </thead>
                         <tbody>
+                            <%
+                                int num = 0;
+                                DetalleCompraDAO dao = new DetalleCompraDAO();
+                                CompraDAO compra = new CompraDAO();
+                                int idOrden = compra.getUltimoIdCompra();
+                                List<Object[]> carrito = dao.getDetallesCompraPorOrden(idOrden);
+                                for (Object[] fila : carrito) {
+                                    String nombreProducto = (String) fila[0];
+                                    Double precio = (Double) fila[1];
+                                    Integer cantidad = (Integer) fila[2];
+                                    Double subtotal = (Double) fila[3];
+                            %>
                             <tr>
-                                <td>1</td>
-                                <td>Guitarra Eléctrica (Ejemplo)</td>
-                                <td>1</td>
-                                <td>Q1500.00</td>
-                                <td>Q1500.00</td>
+                                <td><%=num++%></td>
+                                <td><%= nombreProducto%>)</td>
+                                <td><%= cantidad%></td>
+                                <td>Q<%= precio%></td>
+                                <td>Q<%= subtotal%></td>
                             </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Cuerdas de Guitarra (Ejemplo)</td>
-                                <td>2</td>
-                                <td>Q50.00</td>
-                                <td>Q100.00</td>
-                            </tr>
+                            <%
+                                }
+                            %>
                         </tbody>
                     </table>
                 </div>
-                
+
                 <div class="d-flex justify-content-end mt-4">
                     <div class="pe-5">
                         <p><strong>SUBTOTAL:</strong></p>
@@ -200,7 +223,7 @@
                 </div>
             </div>
         </main>
-        
+
         <footer class="bg-dark text-white text-center py-3">
             Tienda de Guitarras. Todos los derechos reservados.
         </footer>
