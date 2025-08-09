@@ -1,189 +1,44 @@
 <%-- 
-    Document   : FenderJazzmaster
-    Created on : 3/08/2025, 11:30:57
-    Author     : Emilio
+    Document   : CarritoCompra
+    Created on : 5/08/2025, 18:15:08
+    Author     : josel
 --%>
 
-<%@page import="model.Producto"%>
 <%@page import="dao.ProductoDAO"%>
-<%@page import="web.ServletCarrito"%>
 <%@page import="java.util.List"%>
+<%@page import="dao.CompraDAO"%>
+<%@page import="dao.DetalleCompraDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="UTF-8">
-        <title>Fender Jazzmaster | Tienda en Línea</title>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
-              integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>JSP Page</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous"> 
         <style>
-            * {
-                box-sizing: border-box;
-                margin: 0;
-                padding: 0;
-            }
-
-            body {
-                font-family: 'Segoe UI', sans-serif;
-                background-color: #f5f5f5;
-                color: #333;
-            }
-
-            header {
-                background-color: #1e1e2f;
-                color: white;
-                padding: 20px;
-                text-align: center;
-                font-size: 1.5rem;
-            }
-
-            .producto-container {
-                display: flex;
-                max-width: 1200px;
-                margin: 40px auto;
-                background-color: white;
-                border-radius: 10px;
-                box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
-                padding: 40px;
-                gap: 40px;
-            }
-
-            .producto-imagen {
-                flex: 1;
-            }
-
-            .producto-imagen img {
-                width: 100%;
-                max-height: 500px;
-                object-fit: contain;
-                border-radius: 10px;
-            }
-
-            .producto-detalles {
-                flex: 1;
-                display: flex;
-                flex-direction: column;
-                justify-content: space-between;
-            }
-
-            .producto-detalles h1 {
-                font-size: 55px;
-                margin-bottom: 10px;
-            }
-
-            .descripcion {
-                font-size: 30px;
-                color: #555;
-                margin-bottom: 20px;
-            }
-
-            .proveedor {
-                font-size: 25px;
-                color: #888;
-                margin-bottom: 15px;
-            }
-
-            .categoria {
-                font-size: 20px;
-                color: #999;
-                margin-bottom: 15px;
-            }
-
-            .precio {
-                font-size: 40px;
-                color: #d63384;
-                margin-bottom: 10px;
-            }
-
-            .stock {
-                font-size: 25px;
-                color: #666;
-                margin-bottom: 25px;
-            }
-
-            .compra-form {
-                display: flex;
-                align-items: center;
-                gap: 15px;
-            }
-
-            .compra-form input[type="number"] {
-                width: 70px;
-                padding: 8px;
-                font-size: 1rem;
-            }
-
-            .compra-form button {
-                padding: 10px 20px;
-                font-size: 1rem;
-                background-color: #28a745;
-                color: white;
-                border: none;
-                border-radius: 5px;
-                cursor: pointer;
-            }
-
-            .compra-form button:hover {
-                background-color: #218838;
-            }
-
-            footer {
-                text-align: center;
-                padding: 30px;
-                color: #777;
-                background-color: #f0f0f0;
-                margin-top: 60px;
-            }
-
-            @media (max-width: 768px) {
-                .producto-container {
-                    flex-direction: column;
-                    padding: 20px;
-                }
-            }
-
-            .btn-regresar {
-                background-color: #dc3545;
-                /* Rojo Bootstrap */
-                color: white;
-                border: 2px solid #dc3545;
-                transition: all 0.3s ease;
-            }
-
-            .btn-regresar:hover {
-                background-color: white;
-                color: #dc3545;
-                border-color: #dc3545;
-            }
         </style>
-    </head>
-    <body>
+    </head> 
+    <body class="d-flex flex-column min-vh-100"> 
 
-        <nav class="navbar navbar-dark bg-danger px-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="../menuPrincipal.jsp">
-                    <img src="../image/logo.png" alt="Logo" height="90">
-                </a>
-                <div class="container mt-1 text-center text-light text-start" style="margin-left: 6rem;">
-                    <p class="fs-4"><strong>
-                            <h2>Guitarras Eléctricas</h2>
-                        </strong></p>
-                </div>
-                <a class="navbar-brand" href="CarritoCompra.jsp"> 
-                    <img src="../image/carro-de-la-compra(1).png" alt="Logo" height="60"> 
+        <nav class="navbar navbar-dark bg-danger px-3"> 
+            <div class="container-fluid"> 
+                <a class="navbar-brand" href="../menuPrincipal.jsp"> 
+                    <img src="../image/logo.png" alt="Logo" height="90"> 
                 </a> 
-                <button class="btn btn-outline-light" type="button" data-bs-toggle="offcanvas"
-                        data-bs-target="#menuPrincipal" aria-controls="menuPrincipal">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-            </div>
-        </nav>
+                <div class="container mt-1 text-center text-light text-start" style="margin-left: 6rem;">
+                    <p class="fs-4"><strong><h2>Carrito de Compra</h2></strong></p> 
+                </div> 
+                <button class="btn btn-outline-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuPrincipal" aria-controls="menuPrincipal"> 
+                    <span class="navbar-toggler-icon"></span> 
+                </button> 
+            </div> 
+        </nav> 
 
-        <div class="offcanvas offcanvas-end" tabindex="-1" id="menuPrincipal" aria-labelledby="menuLabel">
-            <div class="offcanvas-header">
-                <h5 class="offcanvas-title" id="menuLabel">Menú</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Cerrar"></button>
-            </div>
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="menuPrincipal" aria-labelledby="menuLabel"> 
+            <div class="offcanvas-header"> 
+                <h5 class="offcanvas-title" id="menuLabel">Menú</h5> 
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Cerrar"></button> 
+            </div> 
 
             <div class="offcanvas-body">
                 <ul class="list-group list-group-flush">
@@ -196,14 +51,14 @@
 
                         </ul>
                     </li>
-                    
+
                     <li class="list-group-item">
                         <strong class="text-danger">Amplificadores</strong>
                         <ul class="list-unstyled ps-3 mt-2">
                             <li><a href="../pages/amplificadores.jsp" class="text-danger text-decoration-none">Amplificadores</a></li>
                         </ul>
                     </li>
-                    
+
                     <li class="list-group-item">
                         <strong class="text-danger">Accesorios</strong>
                         <ul class="list-unstyled ps-3 mt-2">
@@ -218,51 +73,195 @@
                             <li><a href="../pages/acercaDe.jsp" class="text-danger text-decoration-none">Acerca De</a></li>
                         </ul>
                     </li>
-                    
+
                 </ul>
             </div>
         </div>
 
-        <div class="container mt-4">
-            <a href="../pages/guitarrasElectricas.jsp"><button class="btn btn-regresar">Regresar al menú</button></a>
-        </div>
 
-        <section class="producto-container">
-            <div class="producto-imagen">
-                <img src="../image/FenderJazzmaster.jpg" alt="Fender Jazzmaster">
-            </div>
-            <div class="producto-detalles">
-                <div>
-                    <%
-                        ProductoDAO productoDAO = new ProductoDAO();
-                        Producto producto = productoDAO.getProductoById(1);
-                        int stock = 0;
-                        stock = producto.getStock();
-                    %>
-                    <h1>Fender Jazzmaster</h1>
-                    <p class="descripcion">Diseño offset con tono versátil</p>
-                    <p class="proveedor">Proveedor: Fender</p>
-                    <p class="categoria">Categoría: Guitarras</p>
-                    <p class="precio">Q. 4,600.00</p>
-                    <p class="stock">Stock disponible: <%=stock%> unidades</p>
+        <main class="flex-grow-1"> 
+
+            <div class="container-fluid mt-4"> 
+                <div class="row gx-3">
+                    <div class="col-sm-6">
+                        <div class="card rounded-4 flex-grow-1" style="width: 1150px">
+                            <div class="card-body">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th></th>
+                                            <th></th>
+                                            <th>Producto</th>
+                                            <th>Precio</th>
+                                            <th>Cantidad</th>
+                                            <th>Subtotal</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <%
+                                            Double subT2 = 0.00;
+
+                                            DetalleCompraDAO dao = new DetalleCompraDAO();
+                                            CompraDAO compra = new CompraDAO();
+                                            int idOrden = compra.getUltimoIdCompra();
+                                            List<Object[]> carrito = dao.getDetallesCompraPorOrden(idOrden);
+                                            for (Object[] fila : carrito) {
+                                                String nombreProducto = (String) fila[0];
+                                                Double precio = (Double) fila[1];
+                                                Integer cantidad = (Integer) fila[2];
+                                                Double subtotal = (Double) fila[3];
+                                                Integer idDetalle = (Integer) fila[4];
+                                        %>
+                                        <tr>
+                                            <td>
+                                                <form action="../ServletCarrito" method="post" style="display:inline;">
+                                                    <input type="hidden" name="accion" value="eliminar">
+                                                    <input type="hidden" name="idDetalle" value="<%=idDetalle%>">
+                                                    <button type="submit" style="border:none; background:none;">
+                                                        <img src="../image/Delete_icon.png" alt="Eliminar" width="20" height="20"/>
+                                                    </button>
+                                                </form>
+                                            </td>
+                                            <%
+                                                ProductoDAO producto = new ProductoDAO();
+                                                producto.getProductoByNombre(nombreProducto);
+                                                String rutaFoto = "";
+                                                if (nombreProducto.equals("Takamine GD30")) {
+                                                    rutaFoto = "../image/takamine_GD30.jpg";
+                                                } else if (nombreProducto.equals("Ibanez AW54")) {
+                                                    rutaFoto = "../image/ibanez_AW54.jpg";
+                                                } else if (nombreProducto.equals("Taylor Academy 10")) {
+                                                    rutaFoto = "../image/taylor_academy10.jpg";
+                                                } else if (nombreProducto.equals("Takamine GN93")) {
+                                                    rutaFoto = "../image/takamine_GN93.jpg";
+                                                } else if (nombreProducto.equals("Ibanez PF15")) {
+                                                    rutaFoto = "../image/ibanez_PF15.jpg";
+                                                } // Guitarras Eléctricas
+                                                else if (nombreProducto.equals("Fender Stratocaster")) {
+                                                    rutaFoto = "../image/FenderStratocaster.png";
+                                                } else if (nombreProducto.equals("Fender Telecaster")) {
+                                                    rutaFoto = "../image/FenderTelecaster.png";
+                                                } else if (nombreProducto.equals("Ibanez RG550")) {
+                                                    rutaFoto = "../image/IbanezRG550.jpg";
+                                                } else if (nombreProducto.equals("Fender Jazzmaster")) {
+                                                    rutaFoto = "../image/FenderJazzmaster.jpg";
+                                                } else if (nombreProducto.equals("Ibanez ART120")) {
+                                                    rutaFoto = "../image/IbanezART120.jpg";
+                                                } // Guitarras Electroacústicas
+                                                else if (nombreProducto.equals("Takamine EF341SC")) {
+                                                    rutaFoto = "../image/takamineEF341sc.jpg";
+                                                } else if (nombreProducto.equals("Taylor 214ce")) {
+                                                    rutaFoto = "../image/Taylor 214ce.png";
+                                                } else if (nombreProducto.equals("Ibanez AEG50")) {
+                                                    rutaFoto = "../image/Ibanez AEG50.png";
+                                                } else if (nombreProducto.equals("Takamine GN75CE")) {
+                                                    rutaFoto = "../image/Takamine GN75CE.jpg";
+                                                } else if (nombreProducto.equals("Ibanez TCY10E")) {
+                                                    rutaFoto = "../image/Ibanez TCY10E.jpg";
+                                                } // Amplificadores
+                                                else if (nombreProducto.equals("Amplificador 30W")) {
+                                                    rutaFoto = "../image/amplificador.jpg";
+                                                } else if (nombreProducto.equals("Orange Crush 20RT")) {
+                                                    rutaFoto = "../image/Orange Crush 20RT.png";
+                                                } else if (nombreProducto.equals("Marshall DSL40CR")) {
+                                                    rutaFoto = "../image/Marshall DSL40CR.jpg";
+                                                } else if (nombreProducto.equals("Orange Rocker 15")) {
+                                                    rutaFoto = "../image/Orange Rocker 15.png";
+                                                } else if (nombreProducto.equals("Marshall MG30FX")) {
+                                                    rutaFoto = "../image/Marshall MG30FX.jpg";
+                                                } // Accesorios
+                                                else if (nombreProducto.equals("Pedal de distorsión")) {
+                                                    rutaFoto = "../image/pedaldistorsion.jpg";
+                                                } else if (nombreProducto.equals("Pedal Cry Baby Wah")) {
+                                                    rutaFoto = "../image/crybeibi.jpg";
+                                                } else if (nombreProducto.equals("Set de Púas Dunlop")) {
+                                                    rutaFoto = "../image/puasdunlop.jpg";
+                                                } else if (nombreProducto.equals("Cincho Ernie Ball Jacquard")) {
+                                                    rutaFoto = "../image/ernieballcincho.jpg";
+                                                } else if (nombreProducto.equals("Estuche rígido para eléctrica")) {
+                                                    rutaFoto = "../image/fundafender.jpg";
+                                                }
+
+                                            %>
+                                            <td><img src="<%= rutaFoto%>" alt="hola" width="70" height="70"/></td>
+                                            <td><%= nombreProducto%></td>
+                                            <td>Q<%= precio%></td>
+                                            <td><%= cantidad%></td>
+                                            <td>Q<%= subtotal%></td>
+                                        </tr>
+                                        <%
+                                                subT2 += subtotal;
+                                            }
+                                        %>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <form action="../ServletCarrito" method="get">
+                            <div class="card ms-auto rounded-4 w-75">
+                                <div class="card-body px-4 py-3">
+                                    <p class="card-title fs-5">Total Carrito</p>
+                                    <br>
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between mb-2">
+                                            <span><strong>Subtotal:</strong></span>
+                                            <span>Q<%= subT2%></span>
+                                        </div>
+                                        <br>
+                                        <div class="mb-3">
+                                            <strong>Envío:</strong>
+                                            <div class="form-check mt-2">
+                                                <input class="form-check-input" type="radio" name="envio" id="radioEnvio" value="30" checked>
+                                                <label class="form-check-label" for="radioEnvio">
+                                                    Costo de Envío: Q30.00
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="envio" id="radioTienda" value="0">
+                                                <label class="form-check-label" for="radioTienda">
+                                                    Recoger en tienda
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div class="mb-3">
+                                        <strong>Metodo de Pago:</strong>
+                                        <div class="form-check mt-2">
+                                            <input class="form-check-input" type="radio" name="metodo" id="radiotarjeta" value="Tarjeta" checked>
+                                            <label class="form-check-label" for="radiotarjeta">
+                                                Tarjeta
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="metodo" id="radioefectivo" value="Efectivo">
+                                            <label class="form-check-label" for="radioefectivo">
+                                                Efectivo
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div class="row">
+                                        <input type="hidden" name="subtotal" value="<%= subT2%>">
+                                        <div class="card-text d-grid gap-2 col-6 mx-auto text-center">
+                                            <button type="submit" class="btn btn-danger">Realizar compra</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
+            </div> 
+        </main> 
 
-                <form class="compra-form" action="${pageContext.request.contextPath}/ServletCarrito" method="post">
-                    <input type="hidden" name="accion" value="agregar">  
-                    <input type="hidden" name="idProducto" value="9">
-                    <input type="hidden" name="idCompra" value="${idCompraActiva}">
-                    <input type="hidden" name="id" value="1">
-                    <label for="cantidad">Cantidad:</label>
-                    <input type="number" id="cantidad" name="cantidad" min="1" max="<%=stock%>" value="1">
-                    <button type="submit">Agregar al carrito</button>
-                </form>
-            </div>
-        </section>
 
-        <footer class="bg-dark text-white text-center py-3">
-            Tienda de Guitarras. Todos los derechos reservados.
-        </footer>
+        <footer class="bg-dark text-white text-center py-3"> 
+            Tienda de Guitarras. Todos los derechos reservados. 
+        </footer> 
 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    </body>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script> 
+    </body> 
 </html>
