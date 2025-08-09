@@ -32,12 +32,23 @@ public class ServletFactura extends HttpServlet {
         UsuarioDAO usuDao = new UsuarioDAO();
         Usuario usu = usuDao.getUsuarioById(idUsuario);
 
+        double subtotal = Double.parseDouble(request.getParameter("subtotal"));
+        double envio = Double.parseDouble(request.getParameter("envio"));
+        String metodoPago = request.getParameter("metodo");
+
+        double total = subtotal + envio;
+        
+        request.setAttribute("total", total);
         request.setAttribute("usuario", usu);
 
         request.getRequestDispatcher("/pages/Factura.jsp").forward(request, response);
     }
 
-    private void actualizarCompra() {
+    private void actualizarCompra(HttpServletRequest request) {
+        int idCompra = Integer.parseInt((String) request.getAttribute("idCompra"));
+    }
+
+    private void crearRecibo() {
 
     }
 

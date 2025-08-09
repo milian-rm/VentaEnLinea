@@ -83,6 +83,8 @@
                                     </thead>
                                     <tbody>
                                         <%
+                                            Double subT2 = 0.00;
+
                                             DetalleCompraDAO dao = new DetalleCompraDAO();
                                             CompraDAO compra = new CompraDAO();
                                             int idOrden = compra.getUltimoIdCompra();
@@ -163,6 +165,7 @@
                                             <td>Q<%= subtotal%></td>
                                         </tr>
                                         <%
+                                                subT2 += subtotal;
                                             }
                                         %>
                                     </tbody>
@@ -171,46 +174,60 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="col-sm-6">
-                        <div class="card ms-auto rounded-4 w-75">
-                            <div class="card-body px-4 py-3">
-                                <p class="card-title fs-5">Total Carrito</p>
-                                <br>
-                                <div class="card-body">
-                                    <div class="d-flex justify-content-between mb-2">
-                                        <span><strong>Subtotal:</strong></span>
-                                        <span>Q895.00</span>
+                        <form action="../ServletFactura" method="post">
+                            <div class="card ms-auto rounded-4 w-75">
+                                <div class="card-body px-4 py-3">
+                                    <p class="card-title fs-5">Total Carrito</p>
+                                    <br>
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between mb-2">
+                                            <span><strong>Subtotal:</strong></span>
+                                            <span>Q<%= subT2%></span>
+                                        </div>
+                                        <br>
+                                        <div class="mb-3">
+                                            <strong>Envío:</strong>
+                                            <div class="form-check mt-2">
+                                                <input class="form-check-input" type="radio" name="envio" id="radioEnvio" value="30" checked>
+                                                <label class="form-check-label" for="radioEnvio">
+                                                    Costo de Envío: Q30.00
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="envio" id="radioTienda" value="0">
+                                                <label class="form-check-label" for="radioTienda">
+                                                    Recoger en tienda
+                                                </label>
+                                            </div>
+                                        </div>
                                     </div>
                                     <br>
                                     <div class="mb-3">
-                                        <strong>Envío:</strong>
+                                        <strong>Metodo de Pago:</strong>
                                         <div class="form-check mt-2">
-                                            <input class="form-check-input" type="radio" name="envio" id="radioEnvio" value="30"checked>
-                                            <label class="form-check-label" for="radioEnvio">
-                                                Costo de Envío: Q30.00
+                                            <input class="form-check-input" type="radio" name="metodo" id="radiotarjeta" value="Tarjeta" checked>
+                                            <label class="form-check-label" for="radiotarjeta">
+                                                Tarjeta
                                             </label>
                                         </div>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="envio" id="radioTienda" value="0">
-                                            <label class="form-check-label" for="radioTienda">
-                                                Recoger en tienda
+                                            <input class="form-check-input" type="radio" name="metodo" id="radioefectivo" value="Efectivo">
+                                            <label class="form-check-label" for="radioefectivo">
+                                                Efectivo
                                             </label>
                                         </div>
                                     </div>
-                                </div>
-                                <br>
-                                <div class="row">
-                                    <div class="d-flex justify-content-between mb-2">
-                                        <span><strong>Total:</strong></span>
-                                        <span>Q2900.00</span>
-                                    </div>
-                                    <div class="card-text d-grid gap-2 col-6 mx-auto text-center">
-                                        <a href="../ServletFactura" class="btn btn-danger">Realizar compra</a>
+                                    <br>
+                                    <div class="row">
+                                        <input type="hidden" name="subtotal" value="<%= subT2%>">
+                                        <div class="card-text d-grid gap-2 col-6 mx-auto text-center">
+                                            <button type="submit" class="btn btn-danger">Realizar compra</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div> 

@@ -137,26 +137,28 @@
         <main class="flex-grow-1">
             <%
                 Random rnd = new Random();
-                
+
                 int numSD = 100000 + rnd.nextInt(900000);
                 int numSD2 = 100000 + rnd.nextInt(900000);
                 int numOD = 10000000 + rnd.nextInt(90000000);
-                
+
                 Usuario usu = (Usuario) request.getAttribute("usuario");
-                String nomComp = usu.getNombre() + " " +usu.getApellido();
+                String subtotal2 = (String) request.getParameter("subtotal");
+                Double total = (Double) request.getAttribute("total");
+                String nomComp = usu.getNombre() + " " + usu.getApellido();
             %>
             <div class="factura-container">
                 <div class="factura-header">
                     <div class="emisor-info">
                         <h6>GUITARKINAL</h6>
-                        <p><strong>Nit Emisor:</strong> <%= usu.getNit() %></p>
+                        <p><strong>Nit Emisor:</strong> <%= usu.getNit()%></p>
                     </div>
                     <div class="autorizacion-info text-end">
                         <h6>NÚMERO DE AUTORIZACIÓN:</h6>
-                        <p><%= numSD + "-" +numSD2 %></p>
+                        <p><%= numSD + "-" + numSD2%></p>
                         <h6>Serie: 9ADA8CEF Número de DTE:</h6>
                         <p>DTE-2025-<%=numOD%></p>
-                        <p><strong>Fecha y hora de emisión: </strong><%= new java.util.Date() %></p>
+                        <p><strong>Fecha y hora de emisión: </strong><%= new java.util.Date()%></p>
                     </div>
                 </div>
 
@@ -164,11 +166,11 @@
                     <div class="row">
                         <div class="col-6">
                             <h6>Nombre Receptor:</h6>
-                            <p><%= nomComp %></p>
+                            <p><%= nomComp%></p>
                         </div>
                         <div class="col-6">
                             <h6>Dirección comprador:</h6>
-                            <p><%= usu.getDireccion() %></p>
+                            <p><%= usu.getDireccion()%></p>
                         </div>
                     </div>
                 </div>
@@ -217,8 +219,8 @@
                         <p><strong>TOTAL:</strong></p>
                     </div>
                     <div class="pe-5">
-                        <p>Q1600.00</p>
-                        <p><strong>Q1600.00</strong></p>
+                        <p>Q<%= subtotal2%></p>
+                        <p><strong>Q<%= total%></strong></p>
                     </div>
                 </div>
             </div>
