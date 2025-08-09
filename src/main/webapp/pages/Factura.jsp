@@ -188,7 +188,7 @@
                         </thead>
                         <tbody>
                             <%
-                                int num = 0;
+                                int num = 1;
                                 DetalleCompraDAO dao = new DetalleCompraDAO();
                                 CompraDAO compra = new CompraDAO();
                                 int idOrden = compra.getUltimoIdCompra();

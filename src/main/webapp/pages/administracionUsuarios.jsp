@@ -34,60 +34,8 @@
                 <div class="container mt-1 text-center text-light text-start" style="margin-left: 6rem;">
                     <p class="fs-4"><strong><h2>Bienvenido a tienda GuitarKinal</h2></strong></p>
                 </div>
-                <button class="btn btn-outline-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuPrincipal" aria-controls="menuPrincipal">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
             </div>
         </nav>
-
-        <div class="offcanvas offcanvas-end" tabindex="-1" id="menuPrincipal" aria-labelledby="menuLabel">
-            <div class="offcanvas-header">
-                <h5 class="offcanvas-title" id="menuLabel">Menú</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Cerrar"></button>
-            </div>
-            <div class="offcanvas-body">
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item">
-                        <strong class="text-danger">Guitarras</strong>
-                        <ul class="list-unstyled ps-3 mt-2">
-                            <li><a href="#" class="text-danger text-decoration-none">Acústicas</a></li>
-                            <li><a href="#" class="text-danger text-decoration-none">Eléctricas</a></li>
-                            <li><a href="#" class="text-danger text-decoration-none">Electroacústicas</a></li>
-                            <li><a href="#" class="text-danger text-decoration-none">Clásicas</a></li>
-                        </ul>
-                    </li>
-                    <li class="list-group-item">
-                        <strong class="text-danger">Accesorios</strong>
-                        <ul class="list-unstyled ps-3 mt-2">
-                            <li><a href="#" class="text-danger text-decoration-none">Cuerdas</a></li>
-                            <li><a href="#" class="text-danger text-decoration-none">Afinadores</a></li>
-                            <li><a href="#" class="text-danger text-decoration-none">Estuches</a></li>
-                            <li><a href="#" class="text-danger text-decoration-none">Pedales</a></li>
-                        </ul>
-                    </li>
-                    <li class="list-group-item">
-                        <strong class="text-danger">Nosotros</strong>
-                        <ul class="list-unstyled ps-3 mt-2">
-                            <li><a href="#" class="text-danger text-decoration-none">Visión</a></li>
-                            <li><a href="#" class="text-danger text-decoration-none">Misión</a></li>
-                            <li><a href="#" class="text-danger text-decoration-none">Valores</a></li>
-                        </ul>
-                    </li>
-                    <li class="list-group-item">
-                        <a href="administracionProductos.jsp" class="text-danger text-decoration-none">
-                            <strong class="text-danger">Administración de Productos</strong>
-                        </a>
-                    </li>
-                    <li class="list-group-item">
-                        <%-- Aquí se recomienda usar el Servlet para listar usuarios, no el JSP directamente --%>
-                        <a href="../ServletUsuario?accion=listar" class="text-danger text-decoration-none">
-                            <strong class="text-danger">Administración de Usuarios</strong>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-
         <main class="container mt-5">
             <div class="d-flex justify-content-between align-items-center mb-4">
                 <%-- Botón "Volver al Panel" --%>

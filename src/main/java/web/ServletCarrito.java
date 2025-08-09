@@ -38,19 +38,38 @@ public class ServletCarrito extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        int idProducto = Integer.parseInt(request.getParameter("idProducto"));
-        int cantidad = Integer.parseInt(request.getParameter("cantidad"));
+        String accion = request.getParameter("accion");
+        if(accion.equals("eliminar")){
+            int idDetalle = Integer.parseInt(request.getParameter("idDetalle"));
+            eliminarDetalleAgregado(idDetalle);
+        } else if(accion.equals("agregar")){
+            int idProducto = Integer.parseInt(request.getParameter("idProducto"));
+            int cantidad = Integer.parseInt(request.getParameter("cantidad"));
 
-        // Si no hay compra activa, se crea
-        if (carritoVacio) {
-            agregarCompra(1);
+            // Si no hay compra activa, se crea
+            if (carritoVacio) {
+                agregarCompra(1);
+            }
+                request.setAttribute("compraActiva", carritoVacio);
+
+            agregarDetalleCompra(idCompraActiva, idProducto, cantidad);
+
         }
-            request.setAttribute("compraActiva", carritoVacio);
-
-        agregarDetalleCompra(idCompraActiva, idProducto, cantidad);
-
-        response.sendRedirect("pages/CarritoCompra.jsp");
+            response.sendRedirect("pages/CarritoCompra.jsp");
         
+        
+    }
+    
+    private void eliminarDetalleAgregado(int id){
+        DetalleCompraDAO dao = new DetalleCompraDAO();
+        dao.deleteDetalleCompra(id);
+    }
+    
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        carritoVacio = true;       
+        request.getRequestDispatcher("/ServletFactura").forward(request, response);
     }
     
     private void agregarDetalleCompra(int idCompra, int idProduct, int cuantity){
@@ -79,6 +98,7 @@ public class ServletCarrito extends HttpServlet {
             }
         }
     }
+    
     
     private void agregarCompra (int idUser){
         //Si no hay una compra la voy a crear
@@ -131,5 +151,6 @@ public class ServletCarrito extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-    
+    //ESO TILIN
+    //BAILA TILIN
 }

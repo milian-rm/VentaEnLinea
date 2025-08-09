@@ -120,7 +120,7 @@ public class DetalleCompraDAO {
         EntityManager em = null;
         try {
             em = EMF.createEntityManager();
-            String jpql = "SELECT p.nombreProducto, p.precio, d.cantidad, d.precioUnitario "
+            String jpql = "SELECT p.nombreProducto, p.precio, d.cantidad, d.precioUnitario, d.idDetalleOrden "
                     + "FROM DetalleCompra d "
                     + "JOIN d.producto p "
                     + "WHERE d.compra.idOrden = :idOrden";

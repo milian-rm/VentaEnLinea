@@ -72,19 +72,35 @@
                     <li class="list-group-item">
                         <strong class="text-danger">Guitarras</strong>
                         <ul class="list-unstyled ps-3 mt-2">
-                            <li><a href="#" class="text-danger text-decoration-none">Acústicas</a></li>
-                            <li><a href="#" class="text-danger text-decoration-none">Eléctricas</a></li>
-                            <li><a href="#" class="text-danger text-decoration-none">Electroacústicas</a></li>
-                            <li><a href="#" class="text-danger text-decoration-none">Clásicas</a></li>
+                            <li><a href="pages/guitarrasAcusticas.jsp" class="text-danger text-decoration-none">Acústicas</a></li>
+                            <li><a href="pages/guitarrasElectricas.jsp" class="text-danger text-decoration-none">Eléctricas</a></li>
+                            <li><a href="pages/guitarrasElectroacusticas.jsp" class="text-danger text-decoration-none">Electroacústicas</a></li>
+
                         </ul>
                     </li>
+                    
+                    <li class="list-group-item">
+                        <strong class="text-danger">Amplificadores</strong>
+                        <ul class="list-unstyled ps-3 mt-2">
+                            <li><a href="pages/amplificadores.jsp" class="text-danger text-decoration-none">Amplificadores</a></li>
+                        </ul>
+                    </li>
+                    
                     <li class="list-group-item">
                         <strong class="text-danger">Accesorios</strong>
+                        <ul class="list-unstyled ps-3 mt-2">
+                            <li><a href="pages/accesorios.jsp" class="text-danger text-decoration-none">Accesorios</a></li>
+                        </ul>
+
                     </li>
-                     
+
                     <li class="list-group-item">
                         <strong class="text-danger">Nosotros</strong>
+                        <ul class="list-unstyled ps-3 mt-2">
+                            <li><a href="pages/acercaDe.jsp" class="text-danger text-decoration-none">Acerca De</a></li>
+                        </ul>
                     </li>
+                    
                 </ul>
             </div>
         </div>
@@ -140,7 +156,7 @@
                             </div> 
                         </div> 
                     </div> 
-                    
+
                     <div class="col-12 col-sm-6 col-md-4 col-lg-3"> 
                         <div class="card h-100"> 
                             <img src="image/Pedal de Efectos.jpg" class="card-img-top" alt="Amplificador"> 

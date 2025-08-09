@@ -70,21 +70,37 @@
             <div class="offcanvas-body">
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">
-                        <strong><a href="" class="text-danger text-decoration-none">Guitarras</a></strong>
+                        <strong class="text-danger">Guitarras</strong>
                         <ul class="list-unstyled ps-3 mt-2">
-                            <li><a href="#" class="text-danger text-decoration-none">Acústicas</a></li>
-                            <li><a href="#" class="text-danger text-decoration-none">Eléctricas</a></li>
-                            <li><a href="#" class="text-danger text-decoration-none">Electroacústicas</a></li>
-                            <li><a href="#" class="text-danger text-decoration-none">Clásicas</a></li>
+                            <li><a href="../pages/guitarrasAcusticas.jsp" class="text-danger text-decoration-none">Acústicas</a></li>
+                            <li><a href="../pages/guitarrasElectricas.jsp" class="text-danger text-decoration-none">Eléctricas</a></li>
+                            <li><a href="../pages/guitarrasElectroacusticas.jsp" class="text-danger text-decoration-none">Electroacústicas</a></li>
+
                         </ul>
                     </li>
+                    
                     <li class="list-group-item">
-                        <strong><a href="" class="text-danger text-decoration-none">Accesorios</a></strong>
+                        <strong class="text-danger">Amplificadores</strong>
+                        <ul class="list-unstyled ps-3 mt-2">
+                            <li><a href="../pages/amplificadores.jsp" class="text-danger text-decoration-none">Amplificadores</a></li>
+                        </ul>
                     </li>
-                     
+                    
                     <li class="list-group-item">
-                        <strong><a href="acercaDe.jsp" class="text-danger text-decoration-none">Nosotros</a></strong>
+                        <strong class="text-danger">Accesorios</strong>
+                        <ul class="list-unstyled ps-3 mt-2">
+                            <li><a href="../pages/accesorios.jsp" class="text-danger text-decoration-none">Accesorios</a></li>
+                        </ul>
+
                     </li>
+
+                    <li class="list-group-item">
+                        <strong class="text-danger">Nosotros</strong>
+                        <ul class="list-unstyled ps-3 mt-2">
+                            <li><a href="../pages/acercaDe.jsp" class="text-danger text-decoration-none">Acerca De</a></li>
+                        </ul>
+                    </li>
+                    
                 </ul>
             </div>
         </div>
@@ -100,7 +116,7 @@
                             <div class="card-body"> 
                                 <h5 class="card-title">Takamine EF341SC</h5> 
                                 <p class="card-text">Electroacústica profesional con acabado negro brillante</p> 
-                                <p style="font-size: 15px; color: #d63384; margin-bottom: 10px;">Q.850.00</p>
+                                <p style="font-size: 15px; color: #d63384; margin-bottom: 10px;">Q.4200.00</p>
                                 <a href="TakamineEF341SC.jsp" class="btn btn-danger">Ver más</a> 
                             </div> 
                         </div> 
