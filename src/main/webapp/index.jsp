@@ -45,9 +45,6 @@
             <a href="pages/register.jsp">Registrarse</a>
             <a href="pages/acercaDe.jsp">Acerca de</a>
             <a href="pages/admin-login.jsp">Administracion</a>
-            <a href="pages/manejo_Cookies.jsp">Ver Cookies</a>  
-            <a href="pages/manejo_Contador.jsp">Ver Contador</a> 
-            <a href="pages/manejo_sesiones.jsp">Ver Sesiones</a> 
         </nav>
     </header>
 

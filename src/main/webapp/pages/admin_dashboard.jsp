@@ -36,6 +36,9 @@
                     <a href="../logout" class="btn btn-outline-light btn-sm">
                         <i class="bi bi-box-arrow-right"></i> Cerrar Sesión
                     </a>
+                    <a href="../pages/manejo_Cookies.jsp" class="btn btn-outline-light btn-sm">Ver Cookies</a>  
+                    <a href="../pages/manejo_Contador.jsp" class="btn btn-outline-light btn-sm">Ver Contador</a> 
+                    <a href="../pages/manejo_sesiones.jsp" class="btn btn-outline-light btn-sm">Ver Sesiones</a> 
                 </div>
             </div>
         </nav>
@@ -72,95 +75,95 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="col-md-9 col-lg-10">
-                <!-- comment 
-                    <div class="row">
-                        <div class="col-md-3 mb-4">
-                            <div class="card text-white bg-primary">
-                                <div class="card-body d-flex justify-content-between align-items-center">
-                                    <div>
-                                        <h6 class="card-title">Usuarios</h6>
-                                        <h4 id="totalUsuarios">-</h4>
+                    <!-- comment 
+                        <div class="row">
+                            <div class="col-md-3 mb-4">
+                                <div class="card text-white bg-primary">
+                                    <div class="card-body d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <h6 class="card-title">Usuarios</h6>
+                                            <h4 id="totalUsuarios">-</h4>
+                                        </div>
+                                        <i class="bi bi-people fs-1"></i>
                                     </div>
-                                    <i class="bi bi-people fs-1"></i>
+                                </div>
+                            </div>
+    
+                            <div class="col-md-3 mb-4">
+                                <div class="card text-white bg-success">
+                                    <div class="card-body d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <h6 class="card-title">Productos</h6>
+                                            <h4 id="totalProductos">-</h4>
+                                        </div>
+                                        <i class="bi bi-box-seam fs-1"></i>
+                                    </div>
+                                </div>
+                            </div>
+    
+                            <div class="col-md-3 mb-4">
+                                <div class="card text-white bg-secondary">
+                                    <div class="card-body d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <h6 class="card-title">Detalles de Compra</h6>
+                                            <h4 id="totalDetalleCompra">-</h4>
+                                        </div>
+                                        <i class="bi bi-clipboard-data fs-1"></i>
+                                    </div>
+                                </div>
+                            </div>
+    
+                            <div class="col-md-3 mb-4">
+                                <div class="card text-white bg-danger">
+                                    <div class="card-body d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <h6 class="card-title">Recibos</h6>
+                                            <h4 id="totalRecibos">-</h4>
+                                        </div>
+                                        <i class="bi bi-receipt-cutoff fs-1"></i>
+                                    </div>
+                                </div>
+                            </div>
+    
+                            <div class="col-md-3 mb-4">
+                                <div class="card text-white bg-warning">
+                                    <div class="card-body d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <h6 class="card-title">Categorías</h6>
+                                            <h4 id="totalCategorias">-</h4>
+                                        </div>
+                                        <i class="bi bi-tags fs-1"></i>
+                                    </div>
+                                </div>
+                            </div>
+    
+                            <div class="col-md-3 mb-4">
+                                <div class="card text-white bg-info">
+                                    <div class="card-body d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <h6 class="card-title">Proveedores</h6>
+                                            <h4 id="totalProveedores">-</h4>
+                                        </div>
+                                        <i class="bi bi-truck fs-1"></i>
+                                    </div>
+                                </div>
+                            </div>
+    
+                            <div class="col-md-3 mb-4">
+                                <div class="card text-white bg-dark">
+                                    <div class="card-body d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <h6 class="card-title">Compras</h6>
+                                            <h4 id="totalCompras">-</h4>
+                                        </div>
+                                        <i class="bi bi-cart-check fs-1"></i>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-
-                        <div class="col-md-3 mb-4">
-                            <div class="card text-white bg-success">
-                                <div class="card-body d-flex justify-content-between align-items-center">
-                                    <div>
-                                        <h6 class="card-title">Productos</h6>
-                                        <h4 id="totalProductos">-</h4>
-                                    </div>
-                                    <i class="bi bi-box-seam fs-1"></i>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-3 mb-4">
-                            <div class="card text-white bg-secondary">
-                                <div class="card-body d-flex justify-content-between align-items-center">
-                                    <div>
-                                        <h6 class="card-title">Detalles de Compra</h6>
-                                        <h4 id="totalDetalleCompra">-</h4>
-                                    </div>
-                                    <i class="bi bi-clipboard-data fs-1"></i>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-3 mb-4">
-                            <div class="card text-white bg-danger">
-                                <div class="card-body d-flex justify-content-between align-items-center">
-                                    <div>
-                                        <h6 class="card-title">Recibos</h6>
-                                        <h4 id="totalRecibos">-</h4>
-                                    </div>
-                                    <i class="bi bi-receipt-cutoff fs-1"></i>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-3 mb-4">
-                            <div class="card text-white bg-warning">
-                                <div class="card-body d-flex justify-content-between align-items-center">
-                                    <div>
-                                        <h6 class="card-title">Categorías</h6>
-                                        <h4 id="totalCategorias">-</h4>
-                                    </div>
-                                    <i class="bi bi-tags fs-1"></i>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-3 mb-4">
-                            <div class="card text-white bg-info">
-                                <div class="card-body d-flex justify-content-between align-items-center">
-                                    <div>
-                                        <h6 class="card-title">Proveedores</h6>
-                                        <h4 id="totalProveedores">-</h4>
-                                    </div>
-                                    <i class="bi bi-truck fs-1"></i>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-3 mb-4">
-                            <div class="card text-white bg-dark">
-                                <div class="card-body d-flex justify-content-between align-items-center">
-                                    <div>
-                                        <h6 class="card-title">Compras</h6>
-                                        <h4 id="totalCompras">-</h4>
-                                    </div>
-                                    <i class="bi bi-cart-check fs-1"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                -->
+                    -->
 
 
                     <div class="row">
@@ -183,7 +186,7 @@
                                                 Agregar Producto
                                             </a>
                                         </div>
-                                       <div class="col-12 mb-3 me-5">
+                                        <div class="col-12 mb-3 me-5">
                                             <a href="agregarCategoria.jsp?action=create" class="btn btn-warning w-100 py-2 fs-6">
                                                 <i class="bi bi-tag"></i><br>
                                                 Nueva Categoría

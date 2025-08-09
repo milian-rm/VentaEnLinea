@@ -30,7 +30,7 @@ import model.Usuario;
  */
 @WebServlet(name = "ServletCarrito", urlPatterns = {"/ServletCarrito"})
 public class ServletCarrito extends HttpServlet {
-
+    
     private double totalin = 0;
     private int idCompraActiva = 0;
     private boolean carritoVacio = true;
@@ -43,17 +43,17 @@ public class ServletCarrito extends HttpServlet {
 
         // Si no hay compra activa, se crea
         if (carritoVacio) {
-            agregarCompra(1, request);
+            agregarCompra(1);
         }
-        request.setAttribute("compraActiva", carritoVacio);
+            request.setAttribute("compraActiva", carritoVacio);
 
         agregarDetalleCompra(idCompraActiva, idProducto, cantidad);
 
         response.sendRedirect("pages/CarritoCompra.jsp");
-
+        
     }
-
-    private void agregarDetalleCompra(int idCompra, int idProduct, int cuantity) {
+    
+    private void agregarDetalleCompra(int idCompra, int idProduct, int cuantity){
         int idOrden = idCompra;
         int idProducto = idProduct;
         int cantidad = cuantity;
@@ -64,25 +64,25 @@ public class ServletCarrito extends HttpServlet {
         ProductoDAO productoDao = new ProductoDAO();
         Producto producto = productoDao.getProductoById(idProducto);
         double precio = producto.getPrecio();
-        double subTotal = precio * cantidad;
+        double subTotal = precio*cantidad;
         totalin = totalin + subTotal;
 
         DetalleCompraDAO dao = new DetalleCompraDAO();
-
+        
         if (cantidad <= producto.getStock()) {
 
             try {
                 DetalleCompra dc = new DetalleCompra(compra, producto, cantidad, subTotal);
                 dao.saveDetalleCompra(dc);
             } catch (Exception e) {
-
+                
             }
         }
     }
-
-    private void agregarCompra(int idUser, HttpServletRequest request) {
+    
+    private void agregarCompra (int idUser){
         //Si no hay una compra la voy a crear
-        if (carritoVacio) {
+        if(carritoVacio){
             int idUsuario = idUser; //Con otro método voy a mandar a traer el id del Usuario Activo
             int totalOrden = 0;
             String estadoOrden = "Creada";
@@ -95,12 +95,10 @@ public class ServletCarrito extends HttpServlet {
             Compra comp = new Compra(usu, totalOrden, estadoOrden);
 
             dao.saveCompra(comp);
-
+            
             //Cree el método que manda a traer la última compra que se registro
             idCompraActiva = dao.getUltimoIdCompra();
             carritoVacio = false;
-            HttpSession session = request.getSession();
-            session.setAttribute("idCompra", comp.getIdOrden());
         } else {
             CompraDAO dao = new CompraDAO();
             //Con el id que se registro cuando se creo la compra, entonces se irá editando
@@ -121,7 +119,7 @@ public class ServletCarrito extends HttpServlet {
 
             dao.updateCompra(comp);
         }
-
+        
     }
 
     /**
@@ -133,5 +131,5 @@ public class ServletCarrito extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
+    
 }

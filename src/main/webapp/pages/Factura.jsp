@@ -96,8 +96,8 @@
 
         <nav class="navbar navbar-dark bg-danger px-3">
             <div class="d-flex align-items-center w-100 position-relative">
-                <a class="navbar-brand" href="../menuPrincipal.jsp">
-                    <img src="../image/logo.png" alt="Logo" height="90">
+                <a class="navbar-brand" href="${pageContext.request.contextPath}/menuPrincipal.jsp">
+                    <img src="${pageContext.request.contextPath}/image/logo.png" alt="Logo" height="90">
                 </a>
                 <div id="titulo-factura" class="text-light">
                     <h2 class="m-0">Factura</h2>
